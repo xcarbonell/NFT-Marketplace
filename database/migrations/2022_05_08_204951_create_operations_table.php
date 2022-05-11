@@ -15,6 +15,11 @@ class CreateOperationsTable extends Migration
     {
         Schema::create('operations', function (Blueprint $table) {
             $table->id();
+            $table->float('price');
+            $table->foreignId('nft_id')->constrained();
+            $table->integer('seller_id');
+            $table->integer('buyer_id');
+            $table->float('comission');
             $table->timestamps();
         });
     }
