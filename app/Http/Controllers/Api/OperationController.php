@@ -49,7 +49,6 @@ class OperationController extends Controller
     public function store(Request $request)
     {
         //
-        //$operation = new Operation;
 
         $validated = $request->validate([
             'price' => 'required',
