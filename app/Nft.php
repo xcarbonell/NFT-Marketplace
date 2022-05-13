@@ -11,7 +11,7 @@ class Nft extends Model
     use Notifiable;
 
     protected $fillable = [
-        'price', 'description', 'user_id', 'category', 'onStock'
+        'price', 'description', 'user_id', 'category', 'onStock', 'photo'
     ];
 
     public function user()

@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->foreignId('role_id')->constrained();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('photo');
+            $table->tinyInteger('isBanned');
             $table->rememberToken();
             $table->timestamps();
         });
