@@ -18,6 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/vendedores', 'Api\UserController@showSellers')->name('sellers');
 Route::resource('nfts', 'Api\NftController');
-Route::resource('operations', 'Api\OperationController');
 Route::resource('roles', 'Api\RoleController');
+Route::resource('users', 'Api\UserController');
+Route::resource('shops', 'Api\ShopController');
+Route::resource('operations', 'Api\OperationController');
