@@ -21,7 +21,7 @@ class NftController extends Controller
         if (count($nfts) == 0) {
             return response()->json([
                 'success' => false,
-                'message' => 'No NFTs were found'
+                'message' => 'No nfts were found'
             ], 200);
         }
         return response()->json([
@@ -107,20 +107,10 @@ class NftController extends Controller
         }
 
         $validated = $request->validate([
-            'price' => 'required',
-            'user_id' => 'required',
-            'description' => 'required',
-            'category' => 'required|max:50',
-            'onStock' => '',
-            'photo' => ''
+            'title' => 'required|max:50'
         ]);
 
-        $nft->price = $validated['price'];
-        $nft->user_id = $validated['user_id'];
-        $nft->description = $validated['description'];
-        $nft->category = $validated['category'];
-        $nft->onStock = $validated['onStock'];
-        $nft->photo = $validated['photo'];
+        $nft->title = $validated['title'];
 
         if (!$nft->update($validated)) {
             return response()->json([
@@ -144,18 +134,5 @@ class NftController extends Controller
     public function destroy($id)
     {
         //
-        $nft = Nft::where('id', $id)->delete();
-
-        if (!$nft) {
-            return response()->json([
-                'success' => false,
-                'message' => 'NFT with id ' . $id . ' not found'
-            ], 200);
-        }
-
-        return response()->json([
-            'success' => true,
-            'data' => 'NFT deleted'
-        ], 200);
     }
 }
