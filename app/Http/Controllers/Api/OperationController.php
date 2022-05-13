@@ -48,7 +48,7 @@ class OperationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //jakdgfklagf
 
         $validated = $request->validate([
             'price' => 'required',
