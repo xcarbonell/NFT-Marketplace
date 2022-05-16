@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Nft;
 
 class UserController extends Controller
 {
@@ -16,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::where('role_id', 2)->get(['name', 'photo']);
+        $users = User::where('role_id', 2)->get(['id', 'name', 'photo']);
 
         if (count($users) == 0) {
             return response()->json([
@@ -31,24 +32,30 @@ class UserController extends Controller
     }
 
     /**
-     * Lista de usuarios registrados en el sitio web.
+     * Lista de usuarios que tienen un NFT en venta.
      *
      * @return \Illuminate\Http\Response
      */
     public function showSellers()
     {
         //
-        $users = User::where('role_id', 2)->get(['name', 'photo']);
+        //id de los usuarios con items en venta
+        $usersSellingID = Nft::where('onStock', 1)->groupBy('user_id')->get(['user_id']);
+        $users = [];
+        foreach ($usersSellingID as $u) {
+            $lista = User::find($u, ['id', 'name', 'photo']);
+            $users[] = $lista[0];
+        }
 
         if (count($users) == 0) {
             return response()->json([
                 'success' => false,
-                'message' => 'No users were found'
+                'message' => 'No sellers were found'
             ], 200);
         }
         return response()->json([
             'success' => true,
-            'data' => $users->toArray()
+            'data' => $users
         ], 200);
     }
 
@@ -82,6 +89,19 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = User::find($id)->get(['id', 'name', 'email', 'photo', 'isBanned']);
+
+        if (count($user) == 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User with id ' . $id . ' not found'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $user->toArray()
+        ], 200);
     }
 
     /**

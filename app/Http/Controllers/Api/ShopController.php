@@ -4,17 +4,30 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Nft;
 
 class ShopController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Lista de NFT en venta.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         //
+        $nfts = Nft::where('onStock', 1)->get(['id', 'title', 'price', 'user_id', 'category', 'photo']);
+
+        if (count($nfts) == 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No nfts were found'
+            ], 200);
+        }
+        return response()->json([
+            'success' => true,
+            'data' => $nfts->toArray()
+        ], 200);
     }
 
     /**
