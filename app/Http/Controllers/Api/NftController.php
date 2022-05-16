@@ -83,8 +83,20 @@ class NftController extends Controller
      */
     public function edit($id)
     {
-        //retorna la vista para editar un NFT
-        return view();
+        //
+        $nft = Nft::where('id', $id)->get();
+
+        if (count($nft) == 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'NFT with id ' . $id . ' not found'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $nft->toArray()
+        ], 200);
     }
 
     /**
@@ -134,5 +146,27 @@ class NftController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Mostrar NFT por categoria.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexCategory($category)
+    {
+        //
+        $nfts = Nft::where('category', $category)->where('onStock', 1)->get();
+
+        if (count($nfts) == 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No nfts were found'
+            ], 200);
+        }
+        return response()->json([
+            'success' => true,
+            'data' => $nfts->toArray()
+        ], 200);
     }
 }

@@ -15,6 +15,7 @@ class CreateNftsTable extends Migration
     {
         Schema::create('nfts', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->unique();
             $table->float('price');
             $table->foreignId('user_id')->constrained();
             $table->text('description');

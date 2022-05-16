@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::where('role_id', 2)->get(['name', 'photo']);
+        $users = User::where('role_id', 2)->get(['id', 'name', 'photo']);
 
         if (count($users) == 0) {
             return response()->json([
@@ -43,7 +43,7 @@ class UserController extends Controller
         $usersSellingID = Nft::where('onStock', 1)->groupBy('user_id')->get(['user_id']);
         $users = [];
         foreach ($usersSellingID as $u) {
-            $lista = User::find($u, ['name', 'photo']);
+            $lista = User::find($u, ['id', 'name', 'photo']);
             $users[] = $lista[0];
         }
 
@@ -89,6 +89,19 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = User::find($id)->get(['id', 'name', 'email', 'photo', 'isBanned']);
+
+        if (count($user) == 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User with id ' . $id . ' not found'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $user->toArray()
+        ], 200);
     }
 
     /**
