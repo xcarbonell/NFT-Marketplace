@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Nft;
+use App\User;
 
 class NftController extends Controller
 {
@@ -84,18 +85,18 @@ class NftController extends Controller
     public function edit($id)
     {
         //
-        $nft = Nft::where('id', $id)->get();
+        $user = User::where('id', $id)->get(['id', 'name', 'email', 'photo', 'isBanned']);
 
-        if (count($nft) == 0) {
+        if (count($user) == 0) {
             return response()->json([
                 'success' => false,
-                'message' => 'NFT with id ' . $id . ' not found'
+                'message' => 'User with id ' . $id . ' not found'
             ], 200);
         }
 
         return response()->json([
             'success' => true,
-            'data' => $nft->toArray()
+            'data' => $user->toArray()
         ], 200);
     }
 
@@ -119,12 +120,23 @@ class NftController extends Controller
         }
 
         $validated = $request->validate([
-            'title' => 'required|max:50'
+            'title' => 'required|max:50',
+            'price' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'category' => 'required|max:50',
+            'onStock' => 'required'
         ]);
 
         $nft->title = $validated['title'];
+        $nft->price = $validated['price'];
+        $nft->description = $validated['description'];
+        $nft->price = $validated['titpricele'];
+        $nft->category = $validated['category'];
+        $nft->onStock = $validated['onStock'];
+        $nft->updated_at = now();
 
-        if (!$nft->update($validated)) {
+        if (!$nft->update()) {
             return response()->json([
                 'success' => false,
                 'message' => 'NFT with id ' . $id . ' can not be updated'
