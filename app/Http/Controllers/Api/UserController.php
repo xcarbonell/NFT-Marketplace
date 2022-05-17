@@ -176,6 +176,9 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:50',
             'email' => 'required|max100',
+            'oldPass' => 'required|max100',
+            'newPass' => 'required|max100',
+            'newPassCheck' => 'required|max100',
             'photo' => '',
             'isBanned' => ''
         ]);
