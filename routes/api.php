@@ -19,12 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/vendedores', 'Api\UserController@showSellers')->name('sellers');
-Route::get('/{name}', 'Api\UserController@userProfile')->name('userProfile');
-Route::get('users/{id}/show', 'Api\UserController@show')->name('user');
+Route::get('/user/{name}', 'Api\UserController@userProfile')->name('userProfile');
+Route::get('/users/{id}/show', 'Api\UserController@show')->name('user');
 Route::put('/users/{id}/ban', 'Api\UserController@banUser')->name('ban');
-Route::get('/{category}', 'Api\NftController@indexCategory')->name('category');
+Route::get('/category/{category}', 'Api\NftController@indexCategory')->name('category');
 Route::resource('nfts', 'Api\NftController');
 Route::resource('roles', 'Api\RoleController');
 Route::resource('users', 'Api\UserController');
 Route::resource('shops', 'Api\ShopController');
 Route::resource('operations', 'Api\OperationController');
+Route::resource('views', 'Api\ViewController');
