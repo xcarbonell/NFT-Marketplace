@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\Nft;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -175,18 +176,33 @@ class UserController extends Controller
 
         $validated = $request->validate([
             'name' => 'required|max:50',
-            'email' => 'required|max100',
-            'oldPass' => 'required|max100',
-            'newPass' => 'required|max100',
-            'newPassCheck' => 'required|max100',
+            'email' => 'required|max:100',
+            'oldPass' => 'required|max:100',
+            'newPass' => 'required|max:100',
+            'newPassCheck' => 'required|max:100',
             'photo' => '',
             'isBanned' => ''
         ]);
+
+        if (!Hash::check($validated['oldPass'], $user->password)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Old password does not match'
+            ], 200);
+        }
+
+        if($validated['newPass'] != $validated['newPassCheck']){
+            return response()->json([
+                'success' => false,
+                'message' => 'New passwords are not equal'
+            ], 200);
+        }
 
         $user->name = $validated['name'];
         $user->email = $validated['email'];
         $user->photo = $validated['photo'];
         $user->isBanned = $validated['isBanned'];
+        $user->password = Hash::make($validated['newPass']);
         $user->updated_at = now();
 
         if (!$user->update($validated)) {
