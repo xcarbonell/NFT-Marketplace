@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/vendedores', 'Api\UserController@showSellers')->name('sellers');
+Route::get('/{name}', 'Api\UserController@userProfile')->name('user');
+Route::put('/users/{id}/ban', 'Api\UserController@banUser')->name('ban');
 Route::resource('nfts', 'Api\NftController');
 Route::resource('roles', 'Api\RoleController');
 Route::resource('users', 'Api\UserController');

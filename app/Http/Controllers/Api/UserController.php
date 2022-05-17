@@ -81,7 +81,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Mostra el perfil de l'usuari loguejat
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -105,6 +105,39 @@ class UserController extends Controller
     }
 
     /**
+     * Mostra el perfil d'un usuari registrat al lloc, amb les seves dades i NFT
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function userProfile($id)
+    {
+        //
+        $user = User::find($id)->get(['id', 'name', 'email', 'photo', 'isBanned']);
+
+        if (count($user) == 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User with id ' . $id . ' not found'
+            ], 200);
+        }
+
+        $nfts = Nft::where('user_id', $id)->get();
+
+        if (count($nfts) == 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'This user has no NFTs'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => compact(['user' => $user->toArray(), 'nfts' => $nfts])
+        ], 200);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -113,6 +146,19 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $nft = Nft::where('id', $id)->get();
+
+        if (count($nft) == 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'NFT with id ' . $id . ' not found'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $nft->toArray()
+        ], 200);
     }
 
     /**
@@ -125,6 +171,32 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::find($id);
+
+        $validated = $request->validate([
+            'name' => 'required|max:50',
+            'email' => 'required|max100',
+            'photo' => '',
+            'isBanned' => ''
+        ]);
+
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->photo = $validated['photo'];
+        $user->isBanned = $validated['isBanned'];
+        $user->updated_at = now();
+
+        if (!$user->update($validated)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User with id ' . $id . ' can not be updated'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => 'User updated'
+        ], 200);
     }
 
     /**
@@ -136,5 +208,24 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Bannejar usuari
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function banUser($id)
+    {
+        //
+        $user = User::find($id);
+        if ($user->isBanned == 1) {
+            $user->isBanned = 0;
+        }
+        if ($user->isBanned == 0) {
+            $user->isBanned = 1;
+        }
+        $user->update();
     }
 }
