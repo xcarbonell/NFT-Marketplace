@@ -131,7 +131,6 @@ class NftController extends Controller
         $nft->title = $validated['title'];
         $nft->price = $validated['price'];
         $nft->description = $validated['description'];
-        $nft->price = $validated['titpricele'];
         $nft->category = $validated['category'];
         $nft->onStock = $validated['onStock'];
         $nft->updated_at = now();
