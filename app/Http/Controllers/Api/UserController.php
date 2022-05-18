@@ -111,20 +111,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function userProfile($id)
+    public function userProfile($name)
     {
         //
-        $user = User::find($id)->get(['id', 'name', 'email', 'photo', 'isBanned']);
+        $user = User::where('name', $name)->get(['id', 'name', 'email', 'photo', 'isBanned']);
 
         if (count($user) == 0) {
             return response()->json([
                 'success' => false,
-                'message' => 'User with id ' . $id . ' not found'
+                'message' => 'User with name ' . $name . ' not found'
             ], 200);
         }
 
-        $nfts = Nft::where('user_id', $id)->get();
-
+        $nfts = Nft::where('user_id', $user[0]->id)->get();
+        
         if (count($nfts) == 0) {
             return response()->json([
                 'success' => false,
@@ -134,7 +134,8 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => compact(['user' => $user->toArray(), 'nfts' => $nfts])
+            'user' => $user,
+            'nfts' => $nfts
         ], 200);
     }
 
@@ -191,7 +192,7 @@ class UserController extends Controller
             ], 200);
         }
 
-        if($validated['newPass'] != $validated['newPassCheck']){
+        if ($validated['newPass'] != $validated['newPassCheck']) {
             return response()->json([
                 'success' => false,
                 'message' => 'New passwords are not equal'
