@@ -62,7 +62,7 @@ class OperationController extends Controller
             'nft_id' => $validated['nft_id'],
             'seller_id' => $validated['seller_id'],
             'buyer_id' => $validated['buyer_id'],
-            'comission' => $validated['price']*0.02
+            'comission' => $validated['price'] * 0.02
         ]);
 
         if (!$op) {
