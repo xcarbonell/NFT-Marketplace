@@ -90,7 +90,7 @@ class UserController extends Controller
     public function show($id)
     {
         //
-        $user = User::find($id)->get(['id', 'name', 'email', 'photo', 'isBanned']);
+        $user = User::where('id', $id)->get(['id', 'name', 'email', 'photo', 'isBanned']);
 
         if (count($user) == 0) {
             return response()->json([
@@ -101,7 +101,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $user->toArray()
+            'data' => $user[0]
         ], 200);
     }
 
@@ -124,7 +124,7 @@ class UserController extends Controller
         }
 
         $nfts = Nft::where('user_id', $user[0]->id)->get();
-        
+
         if (count($nfts) == 0) {
             return response()->json([
                 'success' => false,
@@ -134,7 +134,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'user' => $user,
+            'user' => $user[0],
             'nfts' => $nfts
         ], 200);
     }
@@ -148,18 +148,18 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $nft = Nft::where('id', $id)->get();
+        $user = User::where('id', $id)->get(['id', 'name', 'email', 'photo', 'isBanned']);
 
-        if (count($nft) == 0) {
+        if (count($user) == 0) {
             return response()->json([
                 'success' => false,
-                'message' => 'NFT with id ' . $id . ' not found'
+                'message' => 'User with id ' . $id . ' not found'
             ], 200);
         }
 
         return response()->json([
             'success' => true,
-            'data' => $nft->toArray()
+            'data' => $user[0]
         ], 200);
     }
 
@@ -181,9 +181,10 @@ class UserController extends Controller
             'oldPass' => 'required|max:100',
             'newPass' => 'required|max:100',
             'newPassCheck' => 'required|max:100',
-            'photo' => '',
-            'isBanned' => ''
+            'photo' => 'required',
+            'isBanned' => 'required'
         ]);
+
 
         if (!Hash::check($validated['oldPass'], $user->password)) {
             return response()->json([
@@ -240,12 +241,30 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User with id ' . $id . ' not found'
+            ], 200);
+        }
+
         if ($user->isBanned == 1) {
             $user->isBanned = 0;
-        }
-        if ($user->isBanned == 0) {
+        } else {
             $user->isBanned = 1;
         }
-        $user->update();
+
+        if (!$user->update()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User with id ' . $id . ' can not be updated'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => 'User updated'
+        ], 200);
     }
 }

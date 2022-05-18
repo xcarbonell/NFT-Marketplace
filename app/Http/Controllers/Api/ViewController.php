@@ -13,13 +13,6 @@ class ViewController extends Controller
     //pagina de inicio
     public function index()
     {
-        /*$usersSellingID = Nft::where('onStock', 1)->groupBy('user_id')->limit(5)->get(['user_id']);
-        $users = [];
-        foreach ($usersSellingID as $u) {
-            $lista = User::inRandomOrder()->first();
-            $users[] = $lista;
-        }*/
-
         $usersSellingID = Nft::where('onStock', 1)->groupBy('user_id')->get(['user_id']);
         
         $users = [];
