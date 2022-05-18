@@ -28,3 +28,4 @@ Route::resource('roles', 'Api\RoleController');
 Route::resource('users', 'Api\UserController');
 Route::resource('shops', 'Api\ShopController');
 Route::resource('operations', 'Api\OperationController');
+Route::resource('views', 'Api\ViewController');
