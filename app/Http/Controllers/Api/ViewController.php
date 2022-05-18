@@ -28,12 +28,6 @@ class ViewController extends Controller
             $users[] = $lista;
         }
         shuffle($users);
-        //var_dump($users[0]);
-        
-        $randomUsers[] = $users[0][0];
-        $randomUsers[] = $users[1][0];
-
-        shuffle($users);
         
         $randomUsers[] = $users[0][0];
         $randomUsers[] = $users[1][0];
