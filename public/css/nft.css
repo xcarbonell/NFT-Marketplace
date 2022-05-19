@@ -1,0 +1,262 @@
+#nftindividual{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+#caracteristicasnft{
+    width:400px;
+    height:80%;
+    border-radius:5px;
+}
+#nft-title{
+    width:100%;
+    height:60px;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+.arrowback{
+    width:50px;
+    height:100%;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.titlenft{
+    width:70%;
+    height:100%;
+    padding-left:20px;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+#nft-image{
+    width:100%;
+    height: 200px;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+#nft-image > img {
+    width:auto;
+    height:100%;
+}
+#nft-information{
+    width:100%;
+    height:60px;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    margin-top:15px;
+}
+#nft-username{
+    width:40%;
+    height:100%;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+#nft-usertitle{
+    width:100%;
+    height:20px;
+    font-size:14px;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding-left:5px;
+}
+#nft-photouser{
+    width:100%;
+    height:35px;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+#nft-photo{
+    width:35px;
+    height:35px;
+    border-radius:50px;
+}
+#nft-photo > img {
+    width:auto;
+    height:100%;
+    border-radius:100px;
+}
+#nft-name{
+    font-size:14px;
+    padding-left:5px;
+}
+#nft-price{
+    width:60%;
+    height:100%;
+    margin-left:auto;
+    z-index:2;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+#nft-euro{
+    width:70px;
+    height:100%;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-right:10px;
+}
+#nftcomprar{
+    width:120px;
+    height:50px;
+    background:#3A9335;
+    border-radius:5px;
+    color:white;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+}
+#nftcomprar:hover{
+    background:#56b951;
+}
+#nft-description{
+    width:100%;
+    height:100px;
+    background:#E8E8E8;
+    border-radius:10px;
+    padding-top:15px;
+    padding-left:15px;
+    margin-top:5px;
+}
+#confirmation{
+    width:100vw;
+    height:100vh;
+    position:fixed;
+    z-index:2;
+    background:rgba(0, 0, 0, 0.39);
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+}
+#creditcard{
+    width:350px;
+    height:420px;
+    background:white;
+    border-radius:10px;
+    display:flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+#creditcard > img {
+    width:180px;
+    height:auto;
+    margin-top:20px;
+}
+#namecreditcard{
+    width:100%;
+    height:50px;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    padding-left:50px;
+    margin-top:5px;
+}
+#namecreditcard > input{
+    width:250px;
+    height:50px;
+    border:none;
+    border-bottom:1px solid #403D3D;
+}
+#namecreditcard >input:focus{
+    outline:none;
+}
+#numbercreditcard{
+    width:100%;
+    height:50px;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding-left:32px;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+#numbercreditcard > div{
+    width:45%;
+    height:50px;
+}
+#numbercreditcard > div > p{
+    font-size:12px;
+}
+#numbercreditcard > div > input{
+    width:70px;
+    height:30px;
+    border:none;
+    border-bottom:1px solid #403D3D;
+}
+#numbercreditcard > div > input:focus{
+    outline:none;
+}
+#nftconfirmar{
+    width:120px;
+    height:50px;
+    background:#3A9335;
+    border-radius:5px;
+    color:white;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+}
+#successful{
+    width:350px;
+    height:420px;
+    background:white;
+    border-radius:10px;
+    display:flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+#successful > img {
+    width:170px;
+    height:auto;
+    margin-top:20px;
+}
+#successful > p{
+    width:280px;
+    padding-left:5px;
+    margin-top:15px;
+}
+#successful > div{
+    width:120px;
+    height:50px;
+    background:#282B2F;
+    border-radius:5px;
+    color:white;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top:30px;
+    cursor:pointer;
+}
+#successful > div:hover{
+    background:#535558;
+
+}
+#successful > div > a{
+    text-decoration: none;
+    color:white;
+    width:100%;
+    height:100%;
+
+}

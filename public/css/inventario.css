@@ -1,0 +1,76 @@
+#inventario{
+    max-width:1204px;
+    width:auto;
+    height:auto;
+
+    display:inline-flex;
+    flex-flow: row wrap;
+    margin-left:25%;
+}
+
+.card-nft{
+    width:242px;
+    height:358px;
+    margin:2px;
+    background:white;
+    display:flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.card-image{
+    width:90%;
+    height:75%;
+    background:grey;
+    margin-top:10px;
+    border-radius:18px;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.card-info{
+    width:90%;
+    height:17%;
+
+    margin-top:10px;
+}
+.card-title{
+    font-weight: bold;
+}
+.card-username{
+    width:210px;
+    height:66%;
+    display:inline-flex;
+    flex-flow: row nowrap;
+
+}
+.card-photouser{
+    width:40px;
+    height:40px;
+    border-radius:50px;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+}
+.card-photouser > img {
+    width:100%;
+    height:auto;
+    border-radius:50px;
+}
+.card-name{
+    width:60%;
+    height:100%;
+    font-size:11px;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-left:5px;
+}
+.card-price{
+    display:inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}

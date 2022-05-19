@@ -1,0 +1,88 @@
+.transacciones{
+    background-color: white;
+    width: 100%;
+}
+.titulo{
+    height: 76px;
+    align-content: center;
+    text-align: start;
+    
+}
+.titulo > h1{
+    margin-left: 15px;
+    margin-top: 15px;
+}
+.transacciones_tabla{
+    margin-top: 50px;
+    width: 470px;
+    align-self: center;
+}
+
+.transacciones_info{
+    display: flex;
+    height: 84px;
+    background-color: black;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    align-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.transaccion > h1{
+    color: white;
+    text-align: center;
+    align-content: center;
+    font-size: 13px;
+}
+.informacion_transacciones{
+    display: flex;
+    background-color: white;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 97px;
+}
+.id_transaccion {
+
+}
+.fecha_transaccion {
+
+}
+.comprador_transaccion {
+
+}
+.vendedor_transaccion{
+
+}
+.id_transaccion > h1{
+    color: black;
+    font-size: 15px;
+    text-align: center;
+    width: 52px;
+}
+.fecha_transaccion > h1{
+    color: black;
+    font-size: 15px;
+    text-align: center;
+    margin-left: -20px;
+}
+.comprador_transaccion > h1{
+    color: black;
+    font-size: 15px;
+    text-align: center;
+    margin-left: -13px;
+}
+.vendedor_transaccion > h1 {
+    color: black;
+    font-size: 15px;
+    text-align: center;
+}
+.precio_transaccion > h1{
+    color: black;
+    font-size: 15px;
+    text-align: center;
+}
+.transaccion {
+    width: 92px;
+}

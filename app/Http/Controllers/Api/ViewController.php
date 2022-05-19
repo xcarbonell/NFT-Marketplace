@@ -14,14 +14,14 @@ class ViewController extends Controller
     public function index()
     {
         $usersSellingID = Nft::where('onStock', 1)->groupBy('user_id')->get(['user_id']);
-        
+
         $users = [];
         foreach ($usersSellingID as $u) {
             $lista = User::find($u, ['id', 'name', 'photo']);
             $users[] = $lista;
         }
         shuffle($users);
-        
+
         $randomUsers[] = $users[0][0];
         $randomUsers[] = $users[1][0];
 
@@ -33,7 +33,7 @@ class ViewController extends Controller
         }
 
         $categories = Nft::all()->groupBy('category');
-        $randomCat = array_rand($categories->toArray(),3);
+        $randomCat = array_rand($categories->toArray(), 3);
 
         if (count($randomCat) == 0) {
             return response()->json([
@@ -41,7 +41,7 @@ class ViewController extends Controller
                 'message' => 'No categories were found'
             ], 200);
         }
-        
+
         return response()->json([
             'success' => true,
             'categories' => $randomCat,
@@ -53,14 +53,14 @@ class ViewController extends Controller
     public function loggedIndex()
     {
         $usersSellingID = Nft::where('onStock', 1)->groupBy('user_id')->get(['user_id']);
-        
+
         $users = [];
         foreach ($usersSellingID as $u) {
             $lista = User::find($u, ['id', 'name', 'photo']);
             $users[] = $lista;
         }
         shuffle($users);
-        
+
         $randomUsers[] = $users[0][0];
         $randomUsers[] = $users[1][0];
 
@@ -73,7 +73,7 @@ class ViewController extends Controller
         }
 
         $categories = Nft::all()->groupBy('category');
-        $randomCat = array_rand($categories->toArray(),3);
+        $randomCat = array_rand($categories->toArray(), 3);
 
         if (count($randomCat) == 0) {
             return response()->json([
@@ -83,7 +83,7 @@ class ViewController extends Controller
         }
 
         $nftsAll = Nft::where('onStock', 1)->get('id');
-        
+
         $nfts = [];
         foreach ($nftsAll as $nft) {
             $lista = Nft::find($nft, ['id', 'title', 'price', 'user_id', 'category', 'photo']);
@@ -93,8 +93,6 @@ class ViewController extends Controller
 
         $randomNFT[] = $nfts[0];
         $randomNFT[] = $nfts[1];
-
-        //$nfts = Nft::where('onStock', 1)->inRandomOrder()->limit(5)->get(['id', 'title', 'price', 'user_id', 'category', 'photo']);
 
         if (count($nfts) == 0) {
             return response()->json([
