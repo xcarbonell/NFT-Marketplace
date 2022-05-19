@@ -1,0 +1,137 @@
+.formlogin{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    text-align: center;
+    margin-top: 80px;
+    box-sizing: border-box;
+
+}
+.rowlogin{
+    display: flex;
+    font-size: 0.7em;
+}
+#btnacceso {
+    background-color: #282B2F;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: white;
+    width: 8em;
+    height: 2.1em;
+    cursor: pointer;
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden ;
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+
+#btnregistrarse{
+    background-color: #d0d0d0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: black;
+    width: 8em;
+    height: 2.1em;
+    cursor: pointer;
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden ;
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+
+.rowform{
+    display: flex;
+    background-color: #d0d0d0;
+    flex-direction: column;
+    align-items: center;
+    width: 21em;
+    border-radius: 5px;
+}
+.email{
+    background-color: white;
+    width: 14.6em;
+    height: 3em;
+    border-radius: 5px;
+    margin-top: 40px;
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden ;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    margin-top: 16px;
+    margin-left: 18px;
+} 
+.usuario{
+    background-color: white;
+    width: 14.6em;
+    height: 3em;
+    border-radius: 5px;
+    margin-top: 40px;
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden ;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    margin-top: 16px;
+    margin-left: 18px;
+}
+.password{
+    background-color: white;
+    height: 3em;
+    border-radius: 5px;
+    margin-top: 40px;
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden ;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    margin-top: 16px;
+    margin-left: 18px;
+}
+a {
+    color: black;
+    text-size-adjust: 15px;
+}
+.btnenviar > button{
+    background-color: #282B2F;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin-bottom: 24px;
+    width: 4em;
+    height: 1.9em;
+    cursor: pointer;
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden ;
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+.forgotten{
+    font-size: 0.7em;
+    margin-top: 5px;
+}
+.forgotenviar{
+    display: flex;
+    margin-top: 39px;
+    width: 21em;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+input{
+    border-top-style: hidden;
+    border-bottom-style: hidden ;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    margin-top: 15px;
+}
+
