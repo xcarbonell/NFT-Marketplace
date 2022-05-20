@@ -2,7 +2,7 @@
 @section('content')
     <div id="herosection">
         <div class="heropart">
-            <img src="{{ asset('img/astronauta.png') }}"></img>
+            <img src="{{ asset('img/astronauta.png') }}">
         </div>
         <div class="heropart">
             <h1>Bienvenidos al Nuevo Mundo</h1>
