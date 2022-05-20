@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div id="nftindividual">
+    <div class="headercomprar">Comprar</div>
     <div id="caracteristicasnft">
         <div id="nft-title">
             <div class="arrowback"><-</div>

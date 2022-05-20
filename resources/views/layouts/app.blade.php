@@ -18,21 +18,55 @@
     <nav>
         <ul>
             <label id="paginas">Páginas</label>
-            <li><img src="{{ asset('img/Home.png') }}"></img>Inicio</li>
-            <li><img src="{{ asset('img/Bag.png') }}"></img>Mercado</li>
-            <li><img src="{{ asset('img/Logout.png') }}"></img>Acceso</li>
+            <li><img src="{{ asset('img/Home.png') }}"></img><a href="/">Inicio</a></li>
+            <li><img src="{{ asset('img/Bag.png') }}"></img><a href="/mercado">Mercado</a></li>
+            <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
         </ul>
         <ul>
             <label>Información</label>
-            <li><img src="{{ asset('img/Profile.png') }}"></img>Mi perfil</li>
-            <li><img src="{{ asset('img/Transaction.png') }}"></img>Transacciones</li>
-            <li><img src="{{ asset('img/Bookmark.png') }}"></img>Guardados</li>
+            <li><img src="{{ asset('img/Profile.png') }}"></img><a href="/perfil">Mi perfil</a></li>
+            <li><img src="{{ asset('img/Transaction.png') }}"></img><a href="/transacciones">Transacciones</a></li>
+            <li><img src="{{ asset('img/Bookmark.png') }}"></img><a href="/guardados">Guardados</a></li>
         </ul>
         <div class="logout">Cerrar Sesión</div>
     </nav>
+    <div id="navmenu">
+        <nav >
+            <ul>
+                <label id="paginas">Páginas</label>
+                <li><img src="{{ asset('img/Home.png') }}"></img><a href="/">Inicio</a></li>
+                <li><img src="{{ asset('img/Bag.png') }}"></img><a href="/mercado">Mercado</a></li>
+                <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
+            </ul>
+            <ul>
+                <label>Información</label>
+                <li><img src="{{ asset('img/Profile.png') }}"></img><a href="/perfil">Mi perfil</a></li>
+                <li><img src="{{ asset('img/Transaction.png') }}"></img><a href="/transacciones">Transacciones</a></li>
+                <li><img src="{{ asset('img/Bookmark.png') }}"></img><a href="/guardados">Guardados</a></li>
+            </ul>
+            <div class="logout">Cerrar Sesión</div>
+        </nav>
+
+
+
+    </div>
+    <div id="navmobile">
+        <div id="menu"></div>
+    </div>
     <main>
     @yield('content')
     </main>
-
+    <script>
+        const menu = document.getElementById("menu");
+        const navmenu = document.getElementById("navmenu");
+        menu.addEventListener("click",  (e) => {
+            navmenu.style.display = "flex";
+        });
+        navmenu.addEventListener("click", (e) => {
+            if(e.target.id === "navmenu"){
+                navmenu.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>

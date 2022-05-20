@@ -41,5 +41,5 @@ Route::get('/transacciones', function(){
     return view("transactions");
 });
 Route::get('/mercado', function(){
-    return view("showmarketNFT");
+    return view("mercado");
 });

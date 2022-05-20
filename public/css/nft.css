@@ -260,3 +260,28 @@
     height:100%;
 
 }
+
+@media (max-width:568px){
+    .headercomprar{
+        width:90%;
+        height:58px;
+        color:white;
+        background:#282B2F;
+        font-size:1.8em;
+        display:inline-flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        padding-left:100px;
+    }
+    #nftindividual{
+        justify-content: normal;
+        align-items: normal;
+    }
+    #caracteristicasnft{
+        width:90%;
+    }
+    #nft-information, #nft-description{
+        width:80%;
+    }
+
+}
