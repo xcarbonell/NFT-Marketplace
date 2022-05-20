@@ -20,7 +20,7 @@
             <label id="paginas">Páginas</label>
             <li><img src="{{ asset('img/Home.png') }}"></img><a href="/inicio">Inicio</a></li>
             <li><img src="{{ asset('img/Bag.png') }}"></img><a href="/mercado">Mercado</a></li>
-            <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/acceso">Acceso</a></li>
+            <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
         </ul>
         <ul>
             <label>Información</label>
@@ -36,7 +36,7 @@
                 <label id="paginas">Páginas</label>
                 <li><img src="{{ asset('img/Home.png') }}"></img><a href="/inicio">Inicio</a></li>
                 <li><img src="{{ asset('img/Bag.png') }}"></img><a href="/mercado">Mercado</a></li>
-                <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/acceso">Acceso</a></li>
+                <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
             </ul>
             <ul>
                 <label>Información</label>
