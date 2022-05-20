@@ -18,7 +18,7 @@
     <nav>
         <ul>
             <label id="paginas">Páginas</label>
-            <li><img src="{{ asset('img/Home.png') }}"></img><a href="/inicio">Inicio</a></li>
+            <li><img src="{{ asset('img/Home.png') }}"></img><a href="/">Inicio</a></li>
             <li><img src="{{ asset('img/Bag.png') }}"></img><a href="/mercado">Mercado</a></li>
             <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
         </ul>
@@ -34,7 +34,7 @@
         <nav >
             <ul>
                 <label id="paginas">Páginas</label>
-                <li><img src="{{ asset('img/Home.png') }}"></img><a href="/inicio">Inicio</a></li>
+                <li><img src="{{ asset('img/Home.png') }}"></img><a href="/">Inicio</a></li>
                 <li><img src="{{ asset('img/Bag.png') }}"></img><a href="/mercado">Mercado</a></li>
                 <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
             </ul>
