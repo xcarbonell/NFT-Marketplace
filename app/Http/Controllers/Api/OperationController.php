@@ -8,6 +8,13 @@ use App\Operation;
 
 class OperationController extends Controller
 {
+
+    public function __construct()
+        {
+            
+            $this->authorizeResource(Operation::class, 'operation');
+
+        }
     /**
      * Display a listing of the resource.
      *
@@ -40,29 +47,49 @@ class OperationController extends Controller
         //
     }
 
+    public function operation($id){
+
+        $comprador = Auth::user()->id;
+        
+        $nft = Nft::find($id);
+        $price = $nft->price;
+        $vendedor = $nft->user_id;
+
+        $this->store(
+          $comprador, $price, $vendedor, $id  
+        );
+
+        $nft->user_id = $comprador;
+
+        if (!$nft->update()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'This NFT cannot be bought'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => 'NFT bought correctly'
+        ], 200);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($comprador, $precio, $vendedor, $id)
     {
         //
 
-        $validated = $request->validate([
-            'price' => 'required',
-            'nft_id' => 'required',
-            'seller_id' => 'required',
-            'buyer_id' => 'required'
-        ]);
-
         $op = Operation::create([
-            'price' => $validated['price'],
-            'nft_id' => $validated['nft_id'],
-            'seller_id' => $validated['seller_id'],
-            'buyer_id' => $validated['buyer_id'],
-            'comission' => $validated['price'] * 0.02
+            'price' => $precio,
+            'nft_id' => $id,
+            'seller_id' => $vendedor,
+            'buyer_id' => $comprador,
+            'comission' => $precio * 0.02
         ]);
 
         if (!$op) {
