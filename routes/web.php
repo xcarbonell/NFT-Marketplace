@@ -43,6 +43,7 @@ Route::get('/transacciones', function(){
     return view("transactions");
 });
 Route::get('/mercado', function(){
+<<<<<<< HEAD
     return view("showmarketNFT");
 });
 Route::get('/create', function(){
@@ -52,3 +53,7 @@ Route::get('/foto', function(){
     return view("foto");
 });
 Route::resource('user', Api\UserController::class);
+=======
+    return view("mercado");
+});
+>>>>>>> 5e256d3cb36db50c733182049bb11242aefac007
