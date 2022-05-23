@@ -81,8 +81,12 @@
     }
 }
 @media (max-width:568px){
+
     #inventario{
+        display:flex;
+        flex-flow: column nowrap;
         justify-content: center;
         margin-left:0;
     }
+
 }
