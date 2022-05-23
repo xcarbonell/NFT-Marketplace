@@ -1,16 +1,18 @@
 @extends('layouts.app')
 @section('content')
     <div class="formlogin">
+        <div class="rowlogin">
+            <div class="acceso">
+                <button id="btnacceso" type="btnacceso">Acceso</button>
+            </div>
+            <div class="acceso">
+                <a href="{{ route('register') }}">
+                    <button id="btnregistrarse" type="btnregistrarse">Registrarse</button>
+                </a>
+            </div>
+        </div>
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <div class="rowlogin">
-                <div class="acceso">
-                    <button id="btnacceso" type="btnacceso">Acceso</button>
-                </div>
-                <div class="acceso">
-                    <button id="btnregistrarse" type="btnregistrarse">Registrarse</button>
-                </div>
-            </div>
             <div class="rowform">
                 <div class="inputs">
                     <div class="usuario">

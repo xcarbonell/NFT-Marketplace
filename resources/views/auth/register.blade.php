@@ -3,7 +3,9 @@
     <div class="formlogin">
         <div class="rowlogin">
             <div class="acceso">
-                <button id="btnacceso" type="btnacceso">Acceso</button>
+                <a href="{{ route('login') }}">
+                    <button id="btnacceso" type="btnacceso">Acceso</button>
+                </a>
             </div>
             <div class="acceso">
                 <button id="btnregistrarse" type="btnregistrarse">Registrarse</button>

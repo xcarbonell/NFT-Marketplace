@@ -45,3 +45,10 @@ Route::get('/transacciones', function(){
 Route::get('/mercado', function(){
     return view("showmarketNFT");
 });
+Route::get('/create', function(){
+    return view("create");
+});
+Route::get('/foto', function(){
+    return view("foto");
+});
+Route::resource('user', Api\UserController::class);

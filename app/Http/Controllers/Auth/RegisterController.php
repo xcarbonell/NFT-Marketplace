@@ -70,7 +70,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role_id' => 2,
             'email_verified_at' => now(),
-            'photo' => 'url',
+            'photo' => 'photos/R2AwCXKg8WsnmGC0KRSO8DVVZtlNCW6RnDM5AliB.png',
             'isBanned' => false
         ]);
     }

@@ -79,6 +79,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        //$path = $request->file('photo')->store('photos', 'public');
+        //return view('foto');
     }
 
     /**
