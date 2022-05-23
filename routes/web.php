@@ -18,10 +18,12 @@ Route::get('/', function () {
     return view('inicio');
 });
 
+Route::get('/home', function () {
+    return view('inicio');
+});
+
 Auth::routes();
 
-Route::get('users', 'Api\UserController@showSellers');
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/nft', function(){
     return view("nft");
 });
@@ -29,17 +31,24 @@ Route::get('/inventario', function(){
     return view("inventario");
 });
 Route::get('/login', function(){
-    return view("login");
-});
+    return view("auth.login");
+})->name('login');
 Route::get('/perfil', function(){
     return view("perfil");
 });
 Route::get('/register', function(){
-    return view("register");
-});
+    return view("auth.register");
+})->name('register');
 Route::get('/transacciones', function(){
     return view("transactions");
 });
 Route::get('/mercado', function(){
-    return view("showmarketNFT");
+    return view("mercado");
 });
+Route::get('/create', function(){
+    return view("create");
+});
+Route::get('/foto', function(){
+    return view("foto");
+});
+Route::resource('user', Api\UserController::class);

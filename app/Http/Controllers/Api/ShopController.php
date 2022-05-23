@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Nft;
+use App\User;
 
 class ShopController extends Controller
 {
@@ -18,6 +19,10 @@ class ShopController extends Controller
         //
         $nfts = Nft::where('onStock', 1)->get(['id', 'title', 'price', 'user_id', 'category', 'photo']);
 
+        foreach ($nfts as $nft) {
+            $user = User::where('id', $nft->user_id)->get(['name']);
+            $nft->user_id = $user[0]->name;
+        }
         if (count($nfts) == 0) {
             return response()->json([
                 'success' => false,

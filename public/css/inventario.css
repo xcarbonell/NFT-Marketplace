@@ -74,3 +74,19 @@
     justify-content: center;
     align-items: center;
 }
+@media (max-width:900px) and (orientation:portrait){
+    #inventario{
+        margin-left:0;
+        justify-content: center;
+    }
+}
+@media (max-width:568px){
+
+    #inventario{
+        display:flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        margin-left:0;
+    }
+
+}
