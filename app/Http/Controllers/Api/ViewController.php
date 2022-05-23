@@ -10,6 +10,13 @@ use DB;
 
 class ViewController extends Controller
 {
+
+    public function __construct()
+        {
+            
+            $this->authorizeResource(View::class, 'view');
+
+        }
     //pagina de inicio
     public function index()
     {

@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+        {
+            
+            $this->authorizeResource(User::class, 'user');
+
+        }
     /**
      * Lista de usuarios registrados en el sitio web.
      *
