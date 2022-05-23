@@ -9,6 +9,15 @@ use App\User;
 
 class NftController extends Controller
 {
+
+    //constructor para las policies
+
+    public function __construct()
+        {
+            
+            //$this->authorizeResource(Nft::class, 'nft');
+
+        }
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +25,8 @@ class NftController extends Controller
      */
     public function index()
     {
+        //$user = Auth::User();
+        //$this->authorize('viewAny', $user);
         //
         $nfts = Nft::all();
 
@@ -50,6 +61,27 @@ class NftController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function operation($id){
+
+        $user_id = Auth::user()->id;
+        
+        $nft = Nft::find($id);
+
+        $nft->user_id = $user_id;
+
+        if (!$nft->update()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'This NFT cannot be boughth'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => 'NFT bought correctly'
+        ], 200);
     }
 
     /**
@@ -109,7 +141,11 @@ class NftController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         //
+
+        $this->authorize('update' );
+        
         $nft = Nft::find($id);
 
         if (!$nft) {
