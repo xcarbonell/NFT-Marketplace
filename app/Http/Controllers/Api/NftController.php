@@ -8,6 +8,7 @@ use App\Nft;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
+
 class NftController extends Controller
 {
 
@@ -16,6 +17,7 @@ class NftController extends Controller
     public function __construct()
     {
         //$this->authorizeResource(Nft::class, 'nft');
+        //$this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -61,6 +63,8 @@ class NftController extends Controller
     {
         //
     }
+
+
 
     /**
      * Display the specified resource.

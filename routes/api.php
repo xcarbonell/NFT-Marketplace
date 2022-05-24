@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/vendedores', 'Api\UserController@showSellers')->name('sellers');
 Route::get('/users/{name}', 'Api\UserController@userProfile')->name('userProfile');
+Route::get('/userOperations/{id}', 'Api\OperationController@userOperations')->name('userOperations');
 Route::get('/users/{id}/show', 'Api\UserController@show')->name('user');
 Route::put('/users/{id}/ban', 'Api\UserController@banUser')->name('ban');
 Route::get('/categories/{category}', 'Api\NftController@indexCategory')->name('category');
