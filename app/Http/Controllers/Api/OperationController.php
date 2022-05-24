@@ -5,16 +5,17 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Operation;
+use App\Nft;
+use Illuminate\Support\Facades\Auth;
 
 class OperationController extends Controller
 {
 
     public function __construct()
-        {
-            
-            $this->authorizeResource(Operation::class, 'operation');
+    {
 
-        }
+        $this->authorizeResource(Operation::class, 'operation');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -47,17 +48,16 @@ class OperationController extends Controller
         //
     }
 
-    public function operation($id){
+    public function operation($id)
+    {
 
         $comprador = Auth::user()->id;
-        
+
         $nft = Nft::find($id);
         $price = $nft->price;
         $vendedor = $nft->user_id;
 
-        $this->store(
-          $comprador, $price, $vendedor, $id  
-        );
+        $this->store($comprador, $price, $vendedor, $id);
 
         $nft->user_id = $comprador;
 

@@ -100,4 +100,31 @@ class ShopController extends Controller
     {
         //
     }
+
+    /**
+     * Vender un NFT
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function putOnStock($id, Request $request)
+    {
+        //
+        $nft = Nft::where('id', $id)->get();
+
+        $nft->onStock = true;
+        $nft->price = $request->price;
+
+        if (!$nft->update()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'This NFT cannot be sold'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => 'NFT got put on stock correctly'
+        ], 200);
+    }
 }

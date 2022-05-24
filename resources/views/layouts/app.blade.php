@@ -22,7 +22,9 @@
             <label id="paginas">Páginas</label>
             <li><img src="{{ asset('img/Home.png') }}"></img><a href="/">Inicio</a></li>
             <li><img src="{{ asset('img/Bag.png') }}"></img><a href="/mercado">Mercado</a></li>
-            <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
+            @if (!Auth::user())
+                <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
+            @endif
         </ul>
         <ul>
             <label>Información</label>
@@ -30,7 +32,17 @@
             <li><img src="{{ asset('img/Transaction.png') }}"></img><a href="/transacciones">Transacciones</a></li>
             <li><img src="{{ asset('img/Bookmark.png') }}"></img><a href="/guardados">Guardados</a></li>
         </ul>
-        <div class="logout">Cerrar Sesión</div>
+        @if (Auth::user())
+            <div class="logout">
+                <a class="logout" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                </form>
+            </div>
+        @endif
     </nav>
     <div id="navmenu">
         <nav>
@@ -38,7 +50,9 @@
                 <label id="paginas">Páginas</label>
                 <li><img src="{{ asset('img/Home.png') }}"></img><a href="/">Inicio</a></li>
                 <li><img src="{{ asset('img/Bag.png') }}"></img><a href="/mercado">Mercado</a></li>
-                <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
+                @if (!Auth::user())
+                    <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
+                @endif
             </ul>
             <ul>
                 <label>Información</label>
@@ -47,18 +61,27 @@
                 </li>
                 <li><img src="{{ asset('img/Bookmark.png') }}"></img><a href="/guardados">Guardados</a></li>
             </ul>
-            <div class="logout">Cerrar Sesión</div>
+            @if (Auth::user())
+                <div class="logout">
+                    <a class="logout" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                    </form>
+                </div>
+            @endif
         </nav>
-
-
-
     </div>
+
     <div id="navmobile">
         <div id="menu"></div>
     </div>
     <main>
         @yield('content')
     </main>
+
     <script>
         const menu = document.getElementById("menu");
         const navmenu = document.getElementById("navmenu");
