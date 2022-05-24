@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Nft;
 use App\User;
 
+
 class NftController extends Controller
 {
 
@@ -63,26 +64,7 @@ class NftController extends Controller
         //
     }
 
-    public function operation($id){
 
-        $user_id = Auth::user()->id;
-        
-        $nft = Nft::find($id);
-
-        $nft->user_id = $user_id;
-
-        if (!$nft->update()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'This NFT cannot be boughth'
-            ], 200);
-        }
-
-        return response()->json([
-            'success' => true,
-            'data' => 'NFT bought correctly'
-        ], 200);
-    }
 
     /**
      * Display the specified resource.
