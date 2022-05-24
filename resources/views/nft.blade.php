@@ -1,9 +1,29 @@
 @extends('layouts.app')
 @section('content')
-
-
+    <div id="headercomprar">Comprar</div>
+    <div id="backcompra"><- NFT Características</div>
+    <div id="comprarnft">
+        <div id="imgnft">
+            <img src="{{ asset('img/Fotonftexample.png') }}"></img>
+        </div>
+        <div id="compra">
+            <div id="venededorusername">
+                <img src="{{ asset('img/sylvia.png') }}"></img>
+                Username
+            </div>
+            <div id="vendedordescription">
+                Me encanta este nft super curioso y grande, por eso lo vendo a un precio muy asequible.
+            </div>
+            <div id="pricefinal">
+                <div id="price">17,99€</div>
+                <div id="botoncomprar">Comprar</div>
+            </div>
+            
+        </div>
+       
+    </div>
 <script>
-    const comprar = document.getElementById("nftcomprar");
+    const comprar = document.getElementById("botoncomprar");
    
     comprar.addEventListener("click",() => {
         console.log("works");
@@ -58,7 +78,7 @@
             <div id="successful">
                 <img src="{{ asset('img/Group.png') }}"></img>
                 <p>¡Enhorabuena has conseguido un nuevo NFT!</p>
-                <div><a href="/shops">Ir al mercado</a></div>
+                <div><a href="/mercado">Ir al mercado</a></div>
             </div>
         
         `;
