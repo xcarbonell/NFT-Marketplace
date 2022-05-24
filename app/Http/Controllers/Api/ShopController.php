@@ -9,6 +9,15 @@ use App\User;
 
 class ShopController extends Controller
 {
+
+
+    public function __construct()
+        {
+            
+            //$this->authorizeResource(Role::class, 'role');
+            //$this->middleware('auth');
+
+        }
     /**
      * Lista de NFT en venta.
      *

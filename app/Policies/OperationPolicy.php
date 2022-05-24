@@ -20,6 +20,7 @@ class OperationPolicy
     public function viewAny(User $user)
     {
         //
+        return true;
     }
 
     /**
