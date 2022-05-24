@@ -24,7 +24,7 @@ Route::get('/home', function () {
 
 Auth::routes();
 
-Route::get('/nft', function(){
+Route::get('/nfts/{id}', function(){
     return view("nft");
 });
 Route::get('/inventario', function(){

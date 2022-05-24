@@ -4,18 +4,17 @@
     <div id="backcompra"><- NFT Características</div>
     <div id="comprarnft">
         <div id="imgnft">
-            <img src="{{ asset('img/Fotonftexample.png') }}"></img>
+           
         </div>
         <div id="compra">
             <div id="venededorusername">
-                <img src="{{ asset('img/sylvia.png') }}"></img>
-                Username
+
             </div>
             <div id="vendedordescription">
                 Me encanta este nft super curioso y grande, por eso lo vendo a un precio muy asequible.
             </div>
             <div id="pricefinal">
-                <div id="price">17,99€</div>
+                <div id="price">Calculando</div>
                 <div id="botoncomprar">Comprar</div>
             </div>
             
@@ -83,6 +82,29 @@
         
         `;
     }
-
+    const getNFTIndividual = async () => {
+        const id = window.location.href.substring(window.location.href.lastIndexOf('/')+1);
+        const imgnft = document.getElementById("imgnft");
+        const vendedorusername = document.getElementById("venededorusername");
+        const vendedordescription = document.getElementById("vendedordescription");
+        const price = document.getElementById("price");
+        const response = await fetch(`http://localhost:8000/api/nfts/${id}:8000`)
+        .then( res => {
+            return res.json();
+        })
+        .then( data => data)
+        .catch( err => err)
+        imgnft.innerHTML += `
+        <img src="{{ asset('storage/${response.data[0].photo}') }}"></img>
+        `;
+        vendedorusername.innerHTML += `
+        <img src="http://localhost:8000/img/sylvia.png">
+        Username
+        `;
+        vendedordescription.innerHTML = response.data[0].description;
+        price.innerHTML = response.data[0].price+' €';
+        console.log(response);
+    }
+    getNFTIndividual();
 </script>
 @endsection

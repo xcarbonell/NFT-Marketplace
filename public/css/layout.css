@@ -19,6 +19,7 @@ nav{
     display:flex;
     flex-flow: column nowrap;
     align-items: center;
+    z-index:5;
 }
 ul{
     width:100%;
@@ -132,7 +133,6 @@ li > a {
     body{
         display:flex;
         flex-flow: column nowrap;
-        justify-content: center;
         align-items: center;
     }
     nav{
@@ -141,6 +141,7 @@ li > a {
     main{
         width:100%;
         margin-left:0;
+        margin-top:60px;
     }
     #herosection{
         margin-top:0;
@@ -152,6 +153,9 @@ li > a {
         background:#282B2F;
         display:inline-flex;
         align-items: center;
+        position:fixed;
+        z-index:5;
+
     }
     #menu{
         max-width:50px;

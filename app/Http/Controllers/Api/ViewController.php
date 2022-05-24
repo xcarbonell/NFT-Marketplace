@@ -14,7 +14,7 @@ class ViewController extends Controller
     public function __construct()
         {
             
-            $this->authorizeResource(View::class, 'view');
+            //$this->authorizeResource(View::class, 'view');
 
         }
     //pagina de inicio

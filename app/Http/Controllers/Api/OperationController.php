@@ -14,7 +14,7 @@ class OperationController extends Controller
     public function __construct()
     {
 
-        $this->authorizeResource(Operation::class, 'operation');
+        //$this->authorizeResource(Operation::class, 'operation');
     }
     /**
      * Display a listing of the resource.
