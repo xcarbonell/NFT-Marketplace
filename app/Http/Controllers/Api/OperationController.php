@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Operation;
 use App\Nft;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class OperationController extends Controller
@@ -14,7 +15,11 @@ class OperationController extends Controller
     public function __construct()
     {
 
-        $this->authorizeResource(Operation::class, 'operation');
+        //$this->authorizeResource(Operation::class, 'operation');
+<<<<<<< HEAD
+=======
+        //$this->middleware('auth');
+>>>>>>> 744149d2182e951202912698033367042697bed9
     }
     /**
      * Display a listing of the resource.
@@ -25,6 +30,16 @@ class OperationController extends Controller
     {
         //
         $operations = Operation::all();
+
+        foreach($operations as $operation){
+            $comprador = User::where('id', $operation->buyer_id)->get('name');
+        
+            $vendedor = User::where('id', $operation->seller_id)->get('name');
+
+            $operation->buyer_id = $comprador[0]->name;
+            $operation->seller_id =$vendedor[0]->name;
+        }
+
 
         if (count($operations) == 0) {
             return response()->json([
@@ -105,6 +120,25 @@ class OperationController extends Controller
         ], 200);
     }
 
+    public function userOperations($id)
+    {
+        $operations_bought = Operation::where('buyer_id', $id)->get(['id', 'created_at', 'seller_id', 'buyer_id', 'price', 'comission']);
+
+        $operations_sold = Operation::where('seller_id', $id)->get(['id', 'created_at', 'seller_id', 'buyer_id', 'price', 'comission']);
+
+
+        if (count($operations_bought) == 0 && count($operations_sold) == 0){
+            return response()->json([
+                'success' => false,
+                'message' => 'You have not operations'
+            ], 200);
+        }
+        return response()->json([
+            'success' => true,
+            'bought' => $operations_bought->toArray(),
+            'sold' => $operations_sold->toArray()
+        ], 200);
+    }
     /**
      * Display the specified resource.
      *

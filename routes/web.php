@@ -24,7 +24,7 @@ Route::get('/home', function () {
 
 Auth::routes();
 
-Route::get('/nft', function(){
+Route::get('/nfts/{id}', function(){
     return view("nft");
 });
 Route::get('/inventario', function(){
@@ -35,13 +35,13 @@ Route::get('/login', function(){
 })->name('login');
 Route::get('/perfil', function(){
     return view("perfil");
-});
+})->middleware('auth');
 Route::get('/register', function(){
     return view("auth.register");
 })->name('register');
 Route::get('/transacciones', function(){
     return view("transactions");
-});
+})->middleware('auth');
 Route::get('/mercado', function(){
     return view("mercado");
 });
