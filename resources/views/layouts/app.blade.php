@@ -14,8 +14,6 @@
     <link href="{{ asset('css/transactions.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/inventario.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/nft.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/inicio.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/vendedor.css') }}" rel="stylesheet" />
 </head>
 
 <body>
