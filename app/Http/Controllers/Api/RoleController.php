@@ -11,7 +11,11 @@ class RoleController extends Controller
     public function __construct()
         {
             
-            $this->authorizeResource(Role::class, 'role');
+            //$this->authorizeResource(Role::class, 'role');
+<<<<<<< HEAD
+=======
+            //$this->middleware('auth');
+>>>>>>> 744149d2182e951202912698033367042697bed9
 
         }
     /**
