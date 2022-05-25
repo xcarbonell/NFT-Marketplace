@@ -1,0 +1,99 @@
+.inicio_vendedores {
+    width: 100%;
+    height: 100%;
+    margin-top: 100px;
+}
+
+@media (max-width: 568px){
+    .todos_los_vendedores {
+        width: 100%;
+        height: 100%;
+    }
+    .titulos {
+        display: flex;
+        align-content: center;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        width: 95%;
+        height: 54px;
+        margin-top: 5%;
+    }
+    .titulo_del_div {
+        height: auto;
+        width: 100%;
+    }
+    .titulo_del_div > h1 {
+        font-size: 32px;
+        margin-left: 0;
+    }
+    .ver_todos_los_vendedores {
+    width: 100%;
+    margin-top: 15px;
+    height: auto;
+    }
+    .ver_todos_las_categorias {
+        width: 100%;
+        margin-top: 15px;
+        text-align: initial;
+        height: auto;
+    }
+    .ver_todos_los_vendedores > a {
+        color: red;
+        font-size: 14px;
+    }
+    .ver_todos_las_categorias > a {
+        color: red;
+        font-size: 14px;
+    }
+    .las_categorias {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    .vendedor {
+        display: flex;
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    margin-left: 1%;
+    height: 117px;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    }
+    .categoria {
+        display: flex;
+        background-color: white;
+        border-radius: 10px;
+        width: 100%;
+        margin-left: 1%;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+    .los_vendedores {
+        display: flex;
+        margin-top: 40px;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    .todas_las_categorias {
+        width: 100%;
+        height: 100%;
+        margin-top: 30px;
+    }
+}

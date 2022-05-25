@@ -4,11 +4,26 @@
     height: 15%;
     
 }
+.perfil_foto {
+    margin-top: 20px;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+}
+._perfil_foto_imagen{
+    width: 29%;
+    height: auto;
+}
+._perfil_foto_imagen > img{
+    width: 100px;
+    height: 100px;
+    border-radius: 150px;
+}
 .perfil_titulo_titulo{
     height: 76px;
 }
 .perfil_titulo > h1{
-    width: 100%;
     height: 100%;
     margin-left: 10px;
     align-items: center;
@@ -16,6 +31,7 @@
     margin-left: 29px;
 }
 .editar_perfil{
+    margin-top: 50px;
     width: 100%;
     height: 100%;
     display: flex;
@@ -87,4 +103,159 @@
 }
 .btn_save_perfil {
     margin-top: 20px;
+}
+input#correo {
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+input#user {
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+input#curentpassword {
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+input#new_password {
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+input#confirm_password {
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+@media (max-width: 568px){
+    .perfil {
+        background-color: white;
+        width: 100%;
+        height: 19%;
+    }
+    .editar_perfil {
+        margin-top: 130px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        text-align: center;
+        align-content: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .correo {
+        background-color: white;
+        width: 70%;
+        margin-top: -80px;
+        margin-bottom: 10px;
+        height: 3em;
+        border-radius: 5px;
+    }
+    .user {
+        background-color: white;
+        width: 70%;
+        height: 3em;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .curent_password {
+        background-color: white;
+        width: 70%;
+        height: 3em;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .new_password {
+        background-color: white;
+        width: 70%;
+        height: 3em;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .confirm_password {
+        background-color: white;
+        width: 70%;
+        height: 3em;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .btn_save_perfil {
+        margin-top: 20px;
+    }
+    input#email {
+        font-size: 1em;
+        border-top-style: hidden;
+        border-bottom-style: hidden;
+        border-left-style: hidden;
+        border-right-style: hidden;
+        margin-top: 15px;
+    }
+    input#user {
+        font-size: 1em;
+        outline: none;
+        border-top-style: hidden;
+        border-bottom-style: hidden;
+        border-left-style: hidden;
+        border-right-style: hidden;
+        padding-left: 15px;
+        padding-top: 15px;
+    }
+    input#curentpassword {
+        font-size: 1em;
+        outline: none;
+        border-top-style: hidden;
+        border-bottom-style: hidden;
+        border-left-style: hidden;
+        border-right-style: hidden;
+        padding-left: 15px;
+        padding-top: 15px;
+    }
+    input#new_password {
+        font-size: 1em;
+        outline: none;
+        border-top-style: hidden;
+        border-bottom-style: hidden;
+        border-left-style: hidden;
+        border-right-style: hidden;
+        padding-left: 15px;
+        padding-top: 15px;
+    }
+    input#confirm_password {
+        font-size: 1em;
+        outline: none;
+        border-top-style: hidden;
+        border-bottom-style: hidden;
+        border-left-style: hidden;
+        border-right-style: hidden;
+        padding-left: 15px;
+        padding-top: 15px;
+    }
 }

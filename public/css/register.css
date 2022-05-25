@@ -9,38 +9,31 @@
 }
 .rowlogin{
     display: flex;
+    justify-content: center;
     font-size: 0.7em;
+    width: 100%;
 }
-#btnacceso {
+.acceso_register{
+    justify-content: center;
+    width: 25%;
+    color: white;
     background-color: #282B2F;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    color: white;
-    width: 8em;
-    height: 2.1em;
-    cursor: pointer;
-    outline: none;
-    border-top-style: hidden;
-    border-bottom-style: hidden ;
-    border-left-style: hidden;
-    border-right-style: hidden;
+    border-bottom-right-radius: 5px;
 }
 
-#btnregistrarse{
+.registrarse_register{
     background-color: #d0d0d0;
+    justify-content: center;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    color: black;
-    width: 8em;
-    height: 2.1em;
-    cursor: pointer;
-    outline: none;
-    border-top-style: hidden;
-    border-bottom-style: hidden ;
-    border-left-style: hidden;
-    border-right-style: hidden;
+}
+.acceso_register>a>h1 {
+    color: white;
 }
 
 .rowform{
@@ -65,7 +58,7 @@
     margin-top: 16px;
     margin-left: 18px;
 } 
-.usuario{
+.input_user{
     background-color: white;
     width: 14.6em;
     height: 3em;
@@ -79,8 +72,9 @@
     margin-top: 16px;
     margin-left: 18px;
 }
-.password{
+.user_password{
     background-color: white;
+    width: 14.6em;
     height: 3em;
     border-radius: 5px;
     margin-top: 40px;
@@ -127,7 +121,28 @@ a {
     flex-direction: column;
     margin-top: 40px;
 }
-input{
+input#email{
+    border-top-style: hidden;
+    border-bottom-style: hidden ;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    margin-top: 15px;
+}
+input#name{
+    border-top-style: hidden;
+    border-bottom-style: hidden ;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    margin-top: 15px;
+}
+input#password{
+    border-top-style: hidden;
+    border-bottom-style: hidden ;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    margin-top: 15px;
+}
+input#password-confirm{
     border-top-style: hidden;
     border-bottom-style: hidden ;
     border-left-style: hidden;
@@ -135,3 +150,84 @@ input{
     margin-top: 15px;
 }
 
+@media (max-width:568px) {
+    .formlogin{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        margin-top: 0;
+    }
+    .rowlogin{
+        width: 100%;
+        height: 58px;
+        justify-content: center;
+    }
+    .acceso_register {
+        display: flex;
+        color: black;
+        background-color: #d0d0d0;
+        width: 50%;
+        height: 58px;
+        justify-content: center;
+        border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    }
+    .acceso_register > h1{
+        display: flex;
+            align-self: center;
+            justify-content: center;
+            align-items: center;
+            color: black;
+    }
+    .registrarse_register > h1{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+}
+    .registrarse_register {
+    display: flex;
+    color: white;
+    background-color: #282B2F;
+    width: 50%;
+    justify-content: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    }
+    .rowform {
+        background-color: #F2F2F2;
+        margin-top: 50px;
+    }
+    input#user{
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    padding-left: 15px;
+    padding-top: 15px;
+    }
+    input#password{
+        outline: none;
+        border-top-style: hidden;
+        border-bottom-style: hidden;
+        border-left-style: hidden;
+        border-right-style: hidden;
+        padding-left: 15px;
+        padding-top: 15px;
+    }
+    .forgotenviar {
+        display: flex;
+        margin-top: 39px;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+    }
+    .btnenviar > button{
+        margin-top: 30px;
+    }
+}
