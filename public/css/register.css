@@ -86,6 +86,20 @@
     margin-top: 16px;
     margin-left: 18px;
 }
+.password-confirm{
+    background-color: white;
+    width: 14.6em;
+    height: 3em;
+    border-radius: 5px;
+    margin-top: 40px;
+    outline: none;
+    border-top-style: hidden;
+    border-bottom-style: hidden ;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    margin-top: 16px;
+    margin-left: 18px;
+}
 a {
     color: black;
     text-size-adjust: 15px;

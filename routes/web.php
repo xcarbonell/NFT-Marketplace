@@ -54,4 +54,7 @@ Route::get('/foto', function(){
 Route::get('/vendedor', function(){
     return view("vendedor");
 });
+Route::get('/perfil', function(){
+    return view("perfil");
+});
 Route::resource('user', Api\UserController::class);
