@@ -37,6 +37,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        //Gate::define('shop-nft', 'App\Policies\ShopPolicy@viewAny');
+
+        
+
         //
     }
 }
