@@ -27,6 +27,9 @@ Auth::routes();
 Route::get('/nfts/{id}', function(){
     return view("nft");
 });
+Route::get('/users/{name}', function(){
+    return view("vendedor");
+});
 Route::get('/inventario', function(){
     return view("inventario");
 });
@@ -50,5 +53,8 @@ Route::get('/create', function(){
 });
 Route::get('/foto', function(){
     return view("foto");
+});
+Route::get('/vender', function(){
+    return view("vender");
 });
 Route::resource('user', Api\UserController::class);

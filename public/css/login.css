@@ -8,9 +8,10 @@
 }
 .rowlogin{
     display: flex;
+    justify-content: center;
     font-size: 0.7em;
 }
-#btnacceso {
+.acceso {
     background-color: #d0d0d0;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -25,13 +26,11 @@
     border-right-style: hidden;
 }
 
-#btnregistrarse{
+.registrarse{
     background-color: #282B2F;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    color: white;
-    width: 8em;
     height: 2.1em;
     cursor: pointer;
     outline: none;
@@ -39,6 +38,9 @@
     border-bottom-style: hidden ;
     border-left-style: hidden;
     border-right-style: hidden;
+}
+.registrarse>a>h1 {
+    color: white;
 }
 
 .rowform{
@@ -76,10 +78,7 @@
     margin-top: 16px;
     margin-left: 13px;
 }
-a {
-    color: black;
-    text-size-adjust: 15px;
-}
+
 .btnenviar > button{
     background-color: #282B2F;
     color: white;

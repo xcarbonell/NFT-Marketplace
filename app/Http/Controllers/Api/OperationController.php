@@ -16,7 +16,6 @@ class OperationController extends Controller
     {
 
         //$this->authorizeResource(Operation::class, 'operation');
-        //$this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -63,9 +62,7 @@ class OperationController extends Controller
     public function operation($id, $comprador)
     {
 
-        //$comprador = Auth::user()->id;
-        //$comprador = 3;
-
+       //$comprador = Auth::user()->id;
         $nft = Nft::find($id);
         $price = $nft->price;
         $vendedor = $nft->user_id;
