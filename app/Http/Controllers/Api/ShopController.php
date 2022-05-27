@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Nft;
 use App\User;
+use Gate;
 
 class ShopController extends Controller
 {
@@ -26,6 +27,15 @@ class ShopController extends Controller
     public function index()
     {
         //
+        //$role = Auth::user()->role_id;
+        $this->authorize('shop-nft');
+
+        /*if(Auth::user()){
+            $role = Auth::user()->role_id;
+            $this->authorize('shop-nft', $role);
+        }*/
+        
+
         $nfts = Nft::where('onStock', 1)->get(['id', 'title', 'price', 'user_id', 'category', 'photo']);
 
         foreach ($nfts as $nft) {
@@ -42,6 +52,8 @@ class ShopController extends Controller
             'success' => true,
             'data' => $nfts->toArray()
         ], 200);
+
+        
     }
 
     /**

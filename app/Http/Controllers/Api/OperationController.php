@@ -59,7 +59,7 @@ class OperationController extends Controller
         //
     }
 
-    public function operation($id)
+    public function operation($id, $comprador)
     {
 
         $comprador = Auth::user()->id;

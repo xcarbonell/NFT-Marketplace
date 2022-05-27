@@ -28,6 +28,7 @@ Route::put('/nfts/{id}/putOnStock', 'Api\ShopController@putOnStock')->name('puOn
 Route::get('/categories/{category}', 'Api\NftController@indexCategory')->name('category');
 Route::get('/landing', 'Api\ViewController@index')->name('landing');
 Route::get('/home', 'Api\ViewController@loggedIndex')->name('home');
+Route::get('/operation/{id}/{comprador}', 'Api\OperationController@operation')->name('operation');
 Route::resource('nfts', 'Api\NftController');
 Route::resource('roles', 'Api\RoleController');
 Route::resource('users', 'Api\UserController');
