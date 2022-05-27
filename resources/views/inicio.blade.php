@@ -17,7 +17,7 @@
                         <h1>Vendedores</h1>
                     </div>
                     <div class="ver_todos_los_vendedores">
-                        <a href="all_vendedores">Ver todos los vendedores</a>
+                        <a href="vendedores">Ver todos los vendedores</a>
                     </div>
                 </div>
                 <div class="los_vendedores">
@@ -33,7 +33,7 @@
                 <h1>Categorías</h1>
             </div>
             <div class="ver_todos_las_categorias">
-                <a href="all_category">Ver todos las categorías</a>
+                <a href="categories">Ver todos las categorías</a>
             </div>
         </div>
         <div class="las_categorias">
@@ -53,15 +53,9 @@
                     .catch(err => err)
                 console.log(response.data);
                 response.data.map((vendedor) => {
-<<<<<<< HEAD
-                    mostrar_los_vendedores.innerHTML += `
-                    <div class="vendedor" id="${vendedor.id}">
-                        <div class="icono_texto_vendor">
-=======
                     mostrar.innerHTML += `
                     <div class="vendedor" id="${vendedor.name}">
                         <div class="icono_texto_vendor" id="${vendedor.name}">
->>>>>>> 151cdac5863f84d5ae1201ddc9966d791e3d11aa
                             <div class="imagen_del_vendedor">
                                 <img id="${vendedor.name}" src="{{ asset('storage/${vendedor.photo}') }}"></img>
                             </div>
@@ -74,7 +68,6 @@
                 });
                 onClickUser();
             }
-<<<<<<< HEAD
             const mostrar_las_categorias = document.getElementsByClassName("las_categorias")[0];
     async function allCategoria() {
         const response = await fetch('http://localhost:8000/api/categories/Animal')
@@ -97,7 +90,6 @@
         });
     };
         allCategoria(); 
-=======
 
             function onClickUser() {
                 for (let i = 0; i < vendedores.length - 1; i++) {
@@ -107,7 +99,6 @@
                     });
                 }
             }
->>>>>>> 151cdac5863f84d5ae1201ddc9966d791e3d11aa
             window.onload = getListSellers();
         </script>
     @endsection
