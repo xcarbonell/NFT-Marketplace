@@ -56,13 +56,14 @@
                     <li><a href="/login"><img src="{{ asset('img/Logout.png') }}"></img>Acceso</a></li>
                 @endif
             </ul>
-            <ul>
-                <label>Información</label>
-                <li><a href="/perfil"><img src="{{ asset('img/Profile.png') }}"></img>Mi perfil</a></li>
-                <li><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a></li>
-                <li><a href="/guardados"><img src="{{ asset('img/Bookmark.png') }}"></img>Guardados</a></li>
-            </ul>
             @if (Auth::user())
+                <ul>
+                    <label>Información</label>
+                    <li><a href="/perfil"><img src="{{ asset('img/Profile.png') }}"></img>Mi perfil</a></li>
+                    <li><a href="/transacciones"><img
+                                src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a></li>
+                    <li><a href="/guardados"><img src="{{ asset('img/Bookmark.png') }}"></img>Guardados</a></li>
+                </ul>
                 <div class="logout">
                     <a class="logout" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

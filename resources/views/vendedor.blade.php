@@ -22,7 +22,6 @@
     </div>
 
     <script>
-        //api/shops
         const vendedores = document.getElementById("vendedor");
         const inventario = document.getElementById("inventario");
         const mostrar = document.getElementsByClassName("vendedor_info")[0];
