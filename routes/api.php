@@ -14,16 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
 Route::get('/vendedores', 'Api\UserController@showSellers')->name('sellers');
 Route::get('/users/{name}', 'Api\UserController@userProfile')->name('userProfile');
-Route::get('/userOperations/{id}', 'Api\OperationController@userOperations')->name('userOperations');
+Route::get('/operations/{id}/userOperations', 'Api\OperationController@userOperations')->name('userOperations');
+Route::get('/operations/{id}/transaction', 'Api\OperationController@operation')->name('transaction');
 Route::get('/users/{id}/show', 'Api\UserController@show')->name('user');
 Route::put('/users/{id}/ban', 'Api\UserController@banUser')->name('ban');
+Route::put('/nfts/{id}/putOnStock', 'Api\ShopController@putOnStock')->name('puOnStock');
 Route::get('/categories/{category}', 'Api\NftController@indexCategory')->name('category');
+Route::get('/landing', 'Api\ViewController@index')->name('landing');
 Route::get('/home', 'Api\ViewController@loggedIndex')->name('home');
 Route::get('/operation/{id}/{comprador}', 'Api\OperationController@operation')->name('operation');
 Route::resource('nfts', 'Api\NftController');

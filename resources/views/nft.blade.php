@@ -61,9 +61,20 @@
             </div>
         `;
     }
- 
+    async function comprarNFT(){
+        console.log("funciona");
+        console.log("-----------------------------");
+        const id = window.location.href.substring(window.location.href.lastIndexOf('/')+1);
+        const response = await fetch(`http://localhost:8000/api/operations/5/transaction`)
+        .then(res => res.json())
+        .then(data => data)
+        .catch(err => err)
+        console.log(response);
+    }
     function creditcardAccepted(){
         console.log("works");
+        comprarNFT();
+
         document.getElementById("confirmation").remove();
         const div = document.createElement("div");
         div.id = "confirmation";
@@ -88,6 +99,7 @@
         const vendedorusername = document.getElementById("venededorusername");
         const vendedordescription = document.getElementById("vendedordescription");
         const price = document.getElementById("price");
+        const confirmar = document.getElementById("nftconfirmar");
         const response = await fetch(`http://localhost:8000/api/nfts/${id}:8000`)
         .then( res => {
             return res.json();
@@ -106,5 +118,6 @@
         console.log(response);
     }
     getNFTIndividual();
+
 </script>
 @endsection

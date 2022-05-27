@@ -20,8 +20,8 @@
             response.data.map((nft) => {
                 inventario.innerHTML += `
             <div class="card-nft" id="${nft.id}">
-        <div class="card-image">
-            <img src="{{ asset('storage/${nft.photo}') }}"></img>
+        <div class="card-image" id="${nft.id}">
+            <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}"></img>
         </div>
         <div class="card-info">
             <p class="card-title">${nft.title}</p>
@@ -42,6 +42,7 @@
             onClickCard();
         }
 
+<<<<<<< HEAD
         function onClickCard() {
             for (let i = 0; i < cardnft.length - 1; i++) {
                 console.log("hola");
@@ -55,3 +56,21 @@
         console.log("Prueba");
     </script>
 @endsection
+=======
+    function onClickCard(){
+        for(let i = 0; i < cardnft.length; i++){
+        console.log("hola");
+        cardnft[i].addEventListener("click", (e) => {
+            if(e.target.parentElement.id !== "inventario"){
+                window.location = '{{ env('APP_URL') }}'+`:8000/nfts/${e.target.parentElement.id}`
+            }
+           
+            //window.location = '{{ env('APP_URL') }}'+`:8000/nfts/${e.target.parentElement.id}`
+        });
+    }
+    }
+    window.onload = getListNFT();
+    console.log("Prueba");
+</script>
+@endsection
+>>>>>>> 7372cfe89d273b2d58785062a372a0d9e3ca24dc
