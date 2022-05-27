@@ -53,21 +53,28 @@
                     .catch(err => err)
                 console.log(response.data);
                 response.data.map((vendedor) => {
+<<<<<<< HEAD
                     mostrar_los_vendedores.innerHTML += `
                     <div class="vendedor" id="${vendedor.id}">
                         <div class="icono_texto_vendor">
+=======
+                    mostrar.innerHTML += `
+                    <div class="vendedor" id="${vendedor.name}">
+                        <div class="icono_texto_vendor" id="${vendedor.name}">
+>>>>>>> 151cdac5863f84d5ae1201ddc9966d791e3d11aa
                             <div class="imagen_del_vendedor">
-                                <img src="{{ asset('storage/${vendedor.photo}') }}"></img>
+                                <img id="${vendedor.name}" src="{{ asset('storage/${vendedor.photo}') }}"></img>
                             </div>
-                            <div class="nombre_del_vendedor">
-                                <h1>${vendedor.name}</h1>
+                            <div id="${vendedor.name}" class="nombre_del_vendedor">
+                                <h1 id="${vendedor.name}">${vendedor.name}</h1>
                             </div>
                         </div>
                     </div>
                  `;
                 });
-                onClickCard();
+                onClickUser();
             }
+<<<<<<< HEAD
             const mostrar_las_categorias = document.getElementsByClassName("las_categorias")[0];
     async function allCategoria() {
         const response = await fetch('http://localhost:8000/api/categories/Animal')
@@ -90,6 +97,17 @@
         });
     };
         allCategoria(); 
+=======
+
+            function onClickUser() {
+                for (let i = 0; i < vendedores.length - 1; i++) {
+                    vendedores[i].addEventListener("click", (e) => {
+                        window.location = '{{ env('APP_URL') }}' + `:8000/users/${e.target.id}`
+                        console.log(e.target.id);
+                    });
+                }
+            }
+>>>>>>> 151cdac5863f84d5ae1201ddc9966d791e3d11aa
             window.onload = getListSellers();
         </script>
     @endsection

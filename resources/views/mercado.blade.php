@@ -42,13 +42,13 @@
             onClickCard();
         }
 
-<<<<<<< HEAD
         function onClickCard() {
-            for (let i = 0; i < cardnft.length - 1; i++) {
+            for (let i = 0; i < cardnft.length; i++) {
                 console.log("hola");
                 cardnft[i].addEventListener("click", (e) => {
-                    console.log(e.target.parentElement.id);
-                    window.location = '{{ env('APP_URL') }}' + ":8000/nft"
+                    if (e.target.parentElement.id !== "inventario") {
+                        window.location = '{{ env('APP_URL') }}' + `:8000/nfts/${e.target.parentElement.id}`
+                    }
                 });
             }
         }
@@ -56,21 +56,3 @@
         console.log("Prueba");
     </script>
 @endsection
-=======
-    function onClickCard(){
-        for(let i = 0; i < cardnft.length; i++){
-        console.log("hola");
-        cardnft[i].addEventListener("click", (e) => {
-            if(e.target.parentElement.id !== "inventario"){
-                window.location = '{{ env('APP_URL') }}'+`:8000/nfts/${e.target.parentElement.id}`
-            }
-           
-            //window.location = '{{ env('APP_URL') }}'+`:8000/nfts/${e.target.parentElement.id}`
-        });
-    }
-    }
-    window.onload = getListNFT();
-    console.log("Prueba");
-</script>
-@endsection
->>>>>>> 7372cfe89d273b2d58785062a372a0d9e3ca24dc

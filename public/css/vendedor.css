@@ -27,6 +27,13 @@ button#ban {
     justify-content: center;
     align-items: center;
 }
+.vendedor_name{
+    width:100px;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
 .vendedor_name > h1 {
     font-size: 1.1em;
 }

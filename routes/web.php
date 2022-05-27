@@ -27,6 +27,9 @@ Auth::routes();
 Route::get('/nfts/{id}', function(){
     return view("nft");
 });
+Route::get('/users/{name}', function(){
+    return view("vendedor");
+});
 Route::get('/inventario', function(){
     return view("inventario");
 });
