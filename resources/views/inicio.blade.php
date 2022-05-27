@@ -81,27 +81,26 @@
                 console.log(response.data);
                 response.data.map((vendedor) => {
                     mostrar.innerHTML += `
-                    <div class="vendedor" id="${vendedor.id}">
-                        <div class="icono_texto_vendor">
+                    <div class="vendedor" id="${vendedor.name}">
+                        <div class="icono_texto_vendor" id="${vendedor.name}">
                             <div class="imagen_del_vendedor">
-                                <img src="{{ asset('storage/${vendedor.photo}') }}"></img>
+                                <img id="${vendedor.name}" src="{{ asset('storage/${vendedor.photo}') }}"></img>
                             </div>
-                            <div class="nombre_del_vendedor">
-                                <h1>${vendedor.name}</h1>
+                            <div id="${vendedor.name}" class="nombre_del_vendedor">
+                                <h1 id="${vendedor.name}">${vendedor.name}</h1>
                             </div>
                         </div>
                     </div>
                  `;
                 });
-                onClickCard();
+                onClickUser();
             }
 
-            function onClickCard() {
+            function onClickUser() {
                 for (let i = 0; i < vendedores.length - 1; i++) {
-                    console.log("hola");
                     vendedores[i].addEventListener("click", (e) => {
-                        console.log(e.target.parentElement.id);
-                        window.location = '{{ env('APP_URL') }}' + ":8000/user"
+                        window.location = '{{ env('APP_URL') }}' + `:8000/users/${e.target.id}`
+                        console.log(e.target.id);
                     });
                 }
             }
