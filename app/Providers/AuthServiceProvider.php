@@ -21,7 +21,6 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        Nft::class => NftPolicy::class,
         //Operation::class => OperationPolicy::class,
     ];
 
