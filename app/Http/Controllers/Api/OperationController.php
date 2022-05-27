@@ -62,7 +62,7 @@ class OperationController extends Controller
     public function operation($id, $comprador)
     {
 
-        $comprador = Auth::user()->id;
+       //$comprador = Auth::user()->id;
         $nft = Nft::find($id);
         $price = $nft->price;
         $vendedor = $nft->user_id;
@@ -74,7 +74,7 @@ class OperationController extends Controller
         if (!$nft->update()) {
             return response()->json([
                 'success' => false,
-                'message' => 'This NFT cannot be buy it'
+                'message' => 'This NFT cannot be bought'
             ], 200);
         }
 
