@@ -28,7 +28,7 @@ class ShopController extends Controller
     {
         //
         //$role = Auth::user()->role_id;
-        $this->authorize('shop-nft');
+        //$this->authorize('shop-nft');
 
         /*if(Auth::user()){
             $role = Auth::user()->role_id;
