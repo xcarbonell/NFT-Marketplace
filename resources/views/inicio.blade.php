@@ -17,7 +17,7 @@
                         <h1>Vendedores</h1>
                     </div>
                     <div class="ver_todos_los_vendedores">
-                        <a href="">Ver todos los vendedores</a>
+                        <a href="all_vendedores">Ver todos los vendedores</a>
                     </div>
                 </div>
                 <div class="los_vendedores">
@@ -33,44 +33,17 @@
                 <h1>Categorías</h1>
             </div>
             <div class="ver_todos_las_categorias">
-                <a href="">Ver todos las categorías</a>
+                <a href="all_category">Ver todos las categorías</a>
             </div>
         </div>
         <div class="las_categorias">
-            <div class="categoria">
-                <div class="texto_categoria">
-                    <div class="nombre_de_la_categoria">
-                        <h1>Arte</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="categoria">
-                <div class="texto_categoria">
-                    <div class="nombre_de_la_categoria">
-                        <h1>Arte</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="categoria">
-                <div class="texto_categoria">
-                    <div class="nombre_de_la_categoria">
-                        <h1>Arte</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="categoria">
-                <div class="texto_categoria">
-                    <div class="nombre_de_la_categoria">
-                        <h1>Arte</h1>
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
         <script>
             //api/shops
             const vendedores = document.getElementsByClassName("vendedor");
-            const mostrar = document.getElementsByClassName("los_vendedores")[0];
+            const mostrar_los_vendedores = document.getElementsByClassName("los_vendedores")[0];
             const getListSellers = async () => {
                 const response = await fetch('{{ env('APP_URL') }}' + ":8000/api/vendedores")
                     .then(res => {
@@ -80,7 +53,7 @@
                     .catch(err => err)
                 console.log(response.data);
                 response.data.map((vendedor) => {
-                    mostrar.innerHTML += `
+                    mostrar_los_vendedores.innerHTML += `
                     <div class="vendedor" id="${vendedor.id}">
                         <div class="icono_texto_vendor">
                             <div class="imagen_del_vendedor">
@@ -95,17 +68,28 @@
                 });
                 onClickCard();
             }
-
-            function onClickCard() {
-                for (let i = 0; i < vendedores.length - 1; i++) {
-                    console.log("hola");
-                    vendedores[i].addEventListener("click", (e) => {
-                        console.log(e.target.parentElement.id);
-                        window.location = '{{ env('APP_URL') }}' + ":8000/user"
-                    });
-                }
-            }
+            const mostrar_las_categorias = document.getElementsByClassName("las_categorias")[0];
+    async function allCategoria() {
+        const response = await fetch('http://localhost:8000/api/categories/Animal')
+            .then(res => {
+                return res.json();
+            })
+            .then(data => data)
+            .catch(err => err)
+        console.log(response);
+        response.data.map((categories) => {
+            mostrar_las_categorias.innerHTML += `
+            <div class="categoria">
+                    <div class="texto_categoria">
+                    <div class="nombre_de_la_categoria">
+                    <h1>${categories.category}</h1>
+                    </div>
+                </div>
+                </div>
+                 `;
+        });
+    };
+        allCategoria(); 
             window.onload = getListSellers();
-            console.log("Prueba");
         </script>
     @endsection

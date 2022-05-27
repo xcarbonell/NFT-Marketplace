@@ -54,4 +54,10 @@ Route::get('/foto', function(){
 Route::get('/vender', function(){
     return view("vender");
 });
+Route::get('/all_vendedores', function(){
+    return view("all_vendedores");
+});
+Route::get('/all_category', function(){
+    return view("all_category");
+});
 Route::resource('user', Api\UserController::class);
