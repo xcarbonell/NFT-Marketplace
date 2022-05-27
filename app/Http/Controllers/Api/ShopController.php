@@ -15,7 +15,7 @@ class ShopController extends Controller
     public function __construct()
         {
             
-            //$this->authorizeResource(Role::class, 'role');
+            //$this->authorizeResource(Shop::class, 'shop');
             //$this->middleware('auth');
 
         }
@@ -28,7 +28,7 @@ class ShopController extends Controller
     {
         //
         //$role = Auth::user()->role_id;
-        $this->authorize('shop-nft');
+        //$this->authorize('shop-nft');
 
         /*if(Auth::user()){
             $role = Auth::user()->role_id;

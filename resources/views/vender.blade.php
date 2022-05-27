@@ -8,14 +8,14 @@
             <div class="titlenft">NFT Caracteristicas</div>
         </div>
         <div id="nft-image">
-            <img src="{{ asset('img/Fotonftexample.png') }}"></img>
+            <img src="{{ asset('img/Fotonftexample.png') }}">
         </div>
         <div id="nft-information">
             <div id="nft-username">
                 <div id="nft-usertitle">Cool Nft Devep...</div>
                 <div id="nft-photouser">
                     <div id="nft-photo">
-                        <img src="{{ asset('img/sylvia.png') }}"></img>
+                        <img src="{{ asset('img/sylvia.png') }}">
                     </div>
                     <div id="nft-name">Skyler Dias</div>
                 </div>
