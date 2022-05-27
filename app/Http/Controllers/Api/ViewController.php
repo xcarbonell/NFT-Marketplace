@@ -15,10 +15,6 @@ class ViewController extends Controller
         {
             
             //$this->authorizeResource(View::class, 'view');
-<<<<<<< HEAD
-=======
-            //$this->middleware('auth');
->>>>>>> 744149d2182e951202912698033367042697bed9
 
         }
     //pagina de inicio

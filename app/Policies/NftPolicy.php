@@ -22,7 +22,7 @@ class NftPolicy
      //este es el index
     public function viewAny(User $user)
     {
-        return true;
+        return false;
     }
 
     /**
@@ -37,7 +37,7 @@ class NftPolicy
      //este es el show
     public function view(User $user, Nft $nft)
     {
-        return true;
+        return false;
     }
 
     /**

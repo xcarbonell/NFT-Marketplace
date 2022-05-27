@@ -25,6 +25,7 @@ Route::get('/users/{id}/show', 'Api\UserController@show')->name('user');
 Route::put('/users/{id}/ban', 'Api\UserController@banUser')->name('ban');
 Route::get('/categories/{category}', 'Api\NftController@indexCategory')->name('category');
 Route::get('/home', 'Api\ViewController@loggedIndex')->name('home');
+Route::get('/operation/{id}/{comprador}', 'Api\OperationController@operation')->name('operation');
 Route::resource('nfts', 'Api\NftController');
 Route::resource('roles', 'Api\RoleController');
 Route::resource('users', 'Api\UserController');
