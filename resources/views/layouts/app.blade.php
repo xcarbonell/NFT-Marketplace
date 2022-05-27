@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Enefti</title>
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/login.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/register.css') }}" rel="stylesheet" />
@@ -28,9 +28,9 @@
         </ul>
         <ul>
             <label>Información</label>
-            <li><img src="{{ asset('img/Profile.png') }}"></img><a href="/perfil">Mi perfil</a></li>
-            <li><img src="{{ asset('img/Transaction.png') }}"></img><a href="/transacciones">Transacciones</a></li>
-            <li><img src="{{ asset('img/Bookmark.png') }}"></img><a href="/guardados">Guardados</a></li>
+            <li><a href="/perfil"><img src="{{ asset('img/Profile.png') }}"></img>Mi perfil</a></li>
+            <li><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a></li>
+            <li><a href="/guardados"><img src="{{ asset('img/Bookmark.png') }}"></img>Guardados</a></li>
         </ul>
         @if (Auth::user())
             <div class="logout">
@@ -48,18 +48,17 @@
         <nav>
             <ul>
                 <label id="paginas">Páginas</label>
-                <li><img src="{{ asset('img/Home.png') }}"></img><a href="/">Inicio</a></li>
-                <li><img src="{{ asset('img/Bag.png') }}"></img><a href="/mercado">Mercado</a></li>
+                <li><a href="/"><img src="{{ asset('img/Home.png') }}"></img>Inicio</a></li>
+                <li><a href="/mercado"><img src="{{ asset('img/Bag.png') }}"></img>Mercado</a></li>
                 @if (!Auth::user())
-                    <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
+                    <li><a href="/login"><img src="{{ asset('img/Logout.png') }}"></img>Acceso</a></li>
                 @endif
             </ul>
             <ul>
                 <label>Información</label>
-                <li><img src="{{ asset('img/Profile.png') }}"></img><a href="/perfil">Mi perfil</a></li>
-                <li><img src="{{ asset('img/Transaction.png') }}"></img><a href="/transacciones">Transacciones</a>
-                </li>
-                <li><img src="{{ asset('img/Bookmark.png') }}"></img><a href="/guardados">Guardados</a></li>
+                <li><a href="/perfil"><img src="{{ asset('img/Profile.png') }}"></img>Mi perfil</a></li>
+                <li><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a></li>
+                <li><a href="/guardados"><img src="{{ asset('img/Bookmark.png') }}"></img>Guardados</a></li>
             </ul>
             @if (Auth::user())
                 <div class="logout">
@@ -76,7 +75,7 @@
     </div>
 
     <div id="navmobile">
-        <div id="menu"></div>
+        <div id="menu"><img src="{{ asset('img/Burger.svg') }}"></img></div>
     </div>
     <main>
         @yield('content')

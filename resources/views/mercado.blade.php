@@ -20,8 +20,8 @@
         response.data.map((nft) =>  {
             inventario.innerHTML += `
             <div class="card-nft" id="${nft.id}">
-        <div class="card-image">
-            <img src="{{ asset('storage/${nft.photo}') }}"></img>
+        <div class="card-image" id="${nft.id}">
+            <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}"></img>
         </div>
         <div class="card-info">
             <p class="card-title">${nft.title}</p>
@@ -43,11 +43,14 @@
     }
 
     function onClickCard(){
-        for(let i = 0; i < cardnft.length-1; i++){
+        for(let i = 0; i < cardnft.length; i++){
         console.log("hola");
         cardnft[i].addEventListener("click", (e) => {
-            console.log(e.target.parentElement.id);
-            window.location = '{{ env('APP_URL') }}'+":8000/nft"
+            if(e.target.parentElement.id !== "inventario"){
+                window.location = '{{ env('APP_URL') }}'+`:8000/nfts/${e.target.parentElement.id}`
+            }
+           
+            //window.location = '{{ env('APP_URL') }}'+`:8000/nfts/${e.target.parentElement.id}`
         });
     }
     }

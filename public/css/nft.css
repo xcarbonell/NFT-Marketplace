@@ -61,8 +61,6 @@
     font-size:0.9em;
     display:flex;
     flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
     padding-left:5px;
 }
 #botoncomprar{
@@ -232,7 +230,23 @@
     align-items: center;
 
 }
-
+#botonvender{
+    width:120px;
+    height:42px;
+    border-radius:5px;
+    display:inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    font-size:1em;
+    margin-left:auto;
+    cursor:pointer;
+    background:rgb(231, 142, 142);
+}
+#botonvender:hover{
+    background:rgb(203, 101, 101);
+}
 @media (max-width:568px){
 
 

@@ -16,10 +16,6 @@ class OperationController extends Controller
     {
 
         //$this->authorizeResource(Operation::class, 'operation');
-<<<<<<< HEAD
-=======
-        //$this->middleware('auth');
->>>>>>> 744149d2182e951202912698033367042697bed9
     }
     /**
      * Display a listing of the resource.
@@ -67,7 +63,6 @@ class OperationController extends Controller
     {
 
         $comprador = Auth::user()->id;
-
         $nft = Nft::find($id);
         $price = $nft->price;
         $vendedor = $nft->user_id;
@@ -79,7 +74,7 @@ class OperationController extends Controller
         if (!$nft->update()) {
             return response()->json([
                 'success' => false,
-                'message' => 'This NFT cannot be bought'
+                'message' => 'This NFT cannot be buy it'
             ], 200);
         }
 
