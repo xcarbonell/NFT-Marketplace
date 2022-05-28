@@ -1,5 +1,26 @@
 @extends('layouts.app')
 @section('content')
+<<<<<<< HEAD
+<div id="nftindividual">
+    <div class="headercomprar">Comprar</div>
+    <div id="caracteristicasnft">
+        <div id="nft-title">
+            <div class="arrowback"><-</div>
+            <div class="titlenft">NFT Caracteristicas</div>
+        </div>
+        <div id="nft-image">
+            <img src="{{ asset('img/Fotonftexample.png') }}">
+        </div>
+        <div id="nft-information">
+            <div id="nft-username">
+                <div id="nft-usertitle">Cool Nft Devep...</div>
+                <div id="nft-photouser">
+                    <div id="nft-photo">
+                        <img src="{{ asset('img/sylvia.png') }}">
+                    </div>
+                    <div id="nft-name">Skyler Dias</div>
+                </div>
+=======
     <div id="headercomprar">Comprar</div>
     <div id="backcompra"><- NFT Características</div>
     <div id="comprarnft">
@@ -9,6 +30,7 @@
         <div id="compra">
             <div id="venededorusername">
 
+>>>>>>> 151cdac5863f84d5ae1201ddc9966d791e3d11aa
             </div>
             <div id="vendedordescription">
                 Me encanta este nft super curioso y grande, por eso lo vendo a un precio muy asequible.

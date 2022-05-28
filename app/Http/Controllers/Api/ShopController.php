@@ -15,7 +15,7 @@ class ShopController extends Controller
     public function __construct()
         {
             
-            //$this->authorizeResource(Role::class, 'role');
+            //$this->authorizeResource(Shop::class, 'shop');
             //$this->middleware('auth');
 
         }
