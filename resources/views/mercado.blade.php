@@ -6,6 +6,7 @@
     <script>
         //api/shops
         const cardnft = document.getElementsByClassName("card-nft");
+        const carduser = document.getElementsByClassName("card-username");
         const button = document.getElementById("buttonbut");
         const inventario = document.getElementById("inventario");
         const getListNFT = async () => {
@@ -15,28 +16,23 @@
                 })
                 .then(data => data)
                 .catch(err => err)
-            console.log('{{ env('APP_URL') }}');
-            console.log(response.data);
             response.data.map((nft) => {
                 inventario.innerHTML += `
-            <div class="card-nft" id="${nft.id}">
-        <div class="card-image" id="${nft.id}">
-            <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}"></img>
-        </div>
-        <div class="card-info">
-            <p class="card-title">${nft.title}</p>
-            <div class="card-username">
-                <div class="card-photouser">
-                    <img src="{{ asset('img/sylvia.png') }}"></img>
-                </div>
-                <div class="card-name">${nft.user_id}</div>
-                <div class="card-price">
-                    ${nft.price}€
-                </div>
-            </div>
-
-        </div>
-            
+                    <div class="card-nft" id="${nft.id}">
+                        <div class="card-image" id="${nft.id}">
+                            <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}"></img>
+                        </div>
+                        <div class="card-info">
+                            <p class="card-title">${nft.title}</p>
+                            <a href="{{ env('APP_URL') }}:8000/users/${nft.user_id}">
+                                <div class="card-username">
+                                    <div class="card-photouser"><img src="{{ asset('storage/${nft.userData}') }}"></img></div>
+                                    <div class="card-name">${nft.user_id}</div>
+                                    <div class="card-price">${nft.price}€</div>
+                                </div>
+                            </a>
+                        </div>      
+                    </div>            
             `;
             });
             onClickCard();
@@ -44,7 +40,6 @@
 
         function onClickCard() {
             for (let i = 0; i < cardnft.length; i++) {
-                console.log("hola");
                 cardnft[i].addEventListener("click", (e) => {
                     if (e.target.parentElement.id !== "inventario") {
                         window.location = '{{ env('APP_URL') }}' + `:8000/nfts/${e.target.parentElement.id}`
@@ -52,6 +47,16 @@
                 });
             }
         }
+        /*
+        function onClickUserInfo(){
+            for (let i = 0; i < carduser.length; i++) {
+                carduser[i].addEventListener("click", (e) => {
+                    if (e.target.parentElement.id !== "inventario") {
+                        window.location = '{{ env('APP_URL') }}' + `:8000/users/${e.target.parentElement.id}`
+                    }
+                });
+            }
+        }*/
         window.onload = getListNFT();
         console.log("Prueba");
     </script>

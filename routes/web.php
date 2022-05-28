@@ -72,4 +72,8 @@ Route::get('/guardados', function(){
     return view("guardados");
 })->middleware('auth');
 
+Route::get('/unauthorized', function(){
+    return view("err403");
+});
+
 Route::resource('user', Api\UserController::class);

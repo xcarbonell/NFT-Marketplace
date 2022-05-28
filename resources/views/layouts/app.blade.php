@@ -24,9 +24,9 @@
             <label id="paginas">Páginas</label>
             <li><img src="{{ asset('img/Home.png') }}"></img><a href="/">Inicio</a></li>
             <li><img src="{{ asset('img/Bag.png') }}"></img><a href="/mercado">Mercado</a></li>
-            @if (!Auth::user())
+            @guest
                 <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
-            @endif
+            @endguest
         </ul>
         <ul>
             <label>Información</label>
@@ -34,7 +34,7 @@
             <li><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a></li>
             <li><a href="/guardados"><img src="{{ asset('img/Bookmark.png') }}"></img>Guardados</a></li>
         </ul>
-        @if (Auth::user())
+        @auth
             <div class="logout">
                 <a class="logout" href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -44,7 +44,7 @@
                     @csrf
                 </form>
             </div>
-        @endif
+        @endauth
     </nav>
     <div id="navmenu">
         <nav>
@@ -52,16 +52,16 @@
                 <label id="paginas">Páginas</label>
                 <li><a href="/"><img src="{{ asset('img/Home.png') }}"></img>Inicio</a></li>
                 <li><a href="/mercado"><img src="{{ asset('img/Bag.png') }}"></img>Mercado</a></li>
-                @if (!Auth::user())
+                @guest
                     <li><a href="/login"><img src="{{ asset('img/Logout.png') }}"></img>Acceso</a></li>
-                @endif
+                @endguest
             </ul>
-            @if (Auth::user())
+            @auth
                 <ul>
                     <label>Información</label>
                     <li><a href="/perfil"><img src="{{ asset('img/Profile.png') }}"></img>Mi perfil</a></li>
-                    <li><a href="/transacciones"><img
-                                src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a></li>
+                    <li><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a>
+                    </li>
                     <li><a href="/guardados"><img src="{{ asset('img/Bookmark.png') }}"></img>Guardados</a></li>
                 </ul>
                 <div class="logout">
@@ -73,7 +73,7 @@
                         @csrf
                     </form>
                 </div>
-            @endif
+            @endauth
         </nav>
     </div>
 

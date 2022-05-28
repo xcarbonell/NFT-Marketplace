@@ -33,7 +33,6 @@
                 })
                 .then(data => data)
                 .catch(err => err)
-            console.log(response);
             mostrar.innerHTML += `
                 <div class="vendedor_foto_imagen">
                     <img src="{{ asset('storage/${response.user.photo}') }}" alt="">
@@ -41,9 +40,9 @@
                 <div class="vendedor_name">
                     <h1>${response.user.name}</h1>
                 </div>
-                <div class="btnban">
-                    <button id="ban">BAN</button>
-                </div>
+                        <div class="btnban">
+                            <button id="ban">BAN</button>
+                        </div>
                 `;
             response.nfts.map((nft) => {
                 inventario.innerHTML += `
@@ -55,7 +54,7 @@
                         <p class="card-title">${nft.title}</p>
                         <div class="card-username">
                             <div class="card-photouser">
-                                <img src="{{ asset('img/sylvia.png') }}">
+                                <img src="{{ asset('storage/${response.user.photo}') }}">
                             </div>
                             <div class="card-name">${response.user.name}</div>
                             <div class="card-price">
@@ -66,7 +65,19 @@
                 </div>
             `;
             });
+            const banbutton = document.getElementById("ban");
+            banbutton.addEventListener("click", (e) => {
+                console.log(e.target);
+                const responseBan = fetch('{{ env('APP_URL') }}' + `:8000/api/users/${response.user.id}/ban`)
+                    .then(res => {
+                        return res.json();
+                    })
+                    .then(data => data)
+                    .catch(err => err)
+                console.log(responseBan);
+            });
             onClickNFT();
+            ban();
         }
 
         function onClickNFT() {
@@ -79,6 +90,10 @@
                     }
                 });
             }
+        }
+
+        function ban() {
+
         }
         window.onload = getUserData();
     </script>
