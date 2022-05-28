@@ -31,6 +31,7 @@ class ViewController extends Controller
 
         $randomUsers[] = $users[0][0];
         $randomUsers[] = $users[1][0];
+        $randomUsers[] = $users[2][0];
 
         if (count($randomUsers) == 0) {
             return response()->json([
@@ -40,7 +41,7 @@ class ViewController extends Controller
         }
 
         $categories = Nft::all()->groupBy('category');
-        $randomCat = array_rand($categories->toArray(), 3);
+        $randomCat = array_rand($categories->toArray(), 4);
 
         if (count($randomCat) == 0) {
             return response()->json([
@@ -114,5 +115,27 @@ class ViewController extends Controller
             'users' => $randomUsers,
             'nfts' => $randomNFT
         ], 200);
+    }
+
+    //muestra todas las categorias
+    public function categories(){
+
+        $categories = Nft::all()->groupBy('category');
+        $size = count($categories->toArray());
+        $randomCat = array_rand($categories->toArray(), $size);
+        //sort($randomCat);
+
+        if (count($categories) == 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No nfts were found'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $randomCat
+        ], 200);
+
     }
 }

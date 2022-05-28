@@ -25,6 +25,7 @@ Route::get('/operations/{id}/{comprador}/transaction', 'Api\OperationController@
 Route::get('/users/{id}/show', 'Api\UserController@show')->name('user');
 Route::get('/users/{id}/ban', 'Api\UserController@banUser')->name('ban')->middleware('admin');
 Route::get('/nfts/{id}/putOnStock', 'Api\ShopController@putOnStock')->name('puOnStock');
+Route::get('/categories', 'Api\ViewController@categories')->name('categories');
 Route::get('/categories/{category}', 'Api\NftController@indexCategory')->name('category');
 Route::get('/landing', 'Api\ViewController@index')->name('landing');
 Route::get('/home', 'Api\ViewController@loggedIndex')->name('home');
