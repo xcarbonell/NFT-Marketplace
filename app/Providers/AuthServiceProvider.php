@@ -21,11 +21,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        Nft::class => NftPolicy::class,
         //Operation::class => OperationPolicy::class,
-        Role::class => RolePolicy::class,
-        User::class => UserPolicy::class,
-        // 'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -37,10 +33,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //Gate::define('shop-nft', 'App\Policies\ShopPolicy@viewAny');
-
-        
-
-        //
+        //z
     }
 }

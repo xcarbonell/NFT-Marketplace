@@ -68,12 +68,12 @@ Route::get('/vender', function(){
     return view("vender");
 });
 
-Route::get('/guardados', function(){
-    return view("guardados");
-})->middleware('auth');
+Route::get('/vendedores', function(){
+    return view("vendedores");
+});
 
-Route::get('/unauthorized', function(){
-    return view("err403");
+Route::get('/categories', function(){
+    return view("categories");
 });
 
 Route::resource('user', Api\UserController::class);
