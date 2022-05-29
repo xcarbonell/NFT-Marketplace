@@ -10,7 +10,7 @@
         const button = document.getElementById("buttonbut");
         const inventario = document.getElementById("inventario");
         const getListNFT = async () => {
-            const response = await fetch('{{ env('APP_URL') }}' + ":8000/api/shops")
+            const response = await fetch('{{ env('APP_URL') }}' + "/api/shops")
                 .then(res => {
                     return res.json();
                 })
@@ -24,7 +24,7 @@
                         </div>
                         <div class="card-info">
                             <p class="card-title">${nft.title}</p>
-                            <a href="{{ env('APP_URL') }}:8000/users/${nft.user_id}">
+                            <a href="{{ env('APP_URL') }}/users/${nft.user_id}">
                                 <div class="card-username">
                                     <div class="card-photouser"><img src="{{ asset('storage/${nft.userData}') }}"></img></div>
                                     <div class="card-name">${nft.user_id}</div>
@@ -42,7 +42,7 @@
             for (let i = 0; i < cardnft.length; i++) {
                 cardnft[i].addEventListener("click", (e) => {
                     if (e.target.parentElement.id !== "inventario") {
-                        window.location = '{{ env('APP_URL') }}' + `:8000/nfts/${e.target.parentElement.id}`
+                        window.location = '{{ env('APP_URL') }}' + `/nfts/${e.target.parentElement.id}`
                     }
                 });
             }
@@ -52,7 +52,7 @@
             for (let i = 0; i < carduser.length; i++) {
                 carduser[i].addEventListener("click", (e) => {
                     if (e.target.parentElement.id !== "inventario") {
-                        window.location = '{{ env('APP_URL') }}' + `:8000/users/${e.target.parentElement.id}`
+                        window.location = '{{ env('APP_URL') }}' + `/users/${e.target.parentElement.id}`
                     }
                 });
             }

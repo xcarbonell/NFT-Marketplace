@@ -45,7 +45,7 @@
 
     const getTransactions = async () => {
         const tabla = document.getElementsByClassName("transacciones_tabla")[0];
-        const response = await fetch("http://localhost:8000/api/operations/2/userOperations")
+        const response = await fetch("{{ env('APP_URL') }}/api/operations/2/userOperations")
         .then(res => res.json())
         .then(data => data)
         .catch(err => err)
