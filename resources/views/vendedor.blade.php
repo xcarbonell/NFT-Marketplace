@@ -27,7 +27,7 @@
         const mostrar = document.getElementsByClassName("vendedor_info")[0];
         const getUserData = async () => {
             const name = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-            const response = await fetch('{{ env('APP_URL') }}' + `:8000/api/users/${name}`)
+            const response = await fetch('{{ env('APP_URL') }}' + `/api/users/${name}`)
                 .then(res => {
                     return res.json();
                 })
@@ -68,7 +68,7 @@
             const banbutton = document.getElementById("ban");
             banbutton.addEventListener("click", (e) => {
                 console.log(e.target);
-                const responseBan = fetch('{{ env('APP_URL') }}' + `:8000/api/users/${response.user.id}/ban`)
+                const responseBan = fetch('{{ env('APP_URL') }}' + `/api/users/${response.user.id}/ban`)
                     .then(res => {
                         return res.json();
                     })
@@ -86,7 +86,7 @@
                 console.log("hola");
                 cardnft[i].addEventListener("click", (e) => {
                     if (e.target.parentElement.id !== "inventario") {
-                        window.location = '{{ env('APP_URL') }}' + `:8000/nfts/${e.target.parentElement.id}`
+                        window.location = '{{ env('APP_URL') }}' + `/nfts/${e.target.parentElement.id}`
                     }
                 });
             }

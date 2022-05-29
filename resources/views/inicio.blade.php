@@ -47,7 +47,7 @@
             const mostrarCategorias = document.getElementsByClassName("las_categorias")[0];
 
             const getData = async () => {
-                const response = await fetch('{{ env('APP_URL') }}' + ":8000/api/landing")
+                const response = await fetch('{{ env('APP_URL') }}' + "/api/landing")
                     .then(res => {
                         return res.json();
                     })
@@ -88,7 +88,7 @@
             function onClickUser() {
                 for (let i = 0; i < vendedores.length - 1; i++) {
                     vendedores[i].addEventListener("click", (e) => {
-                        window.location = '{{ env('APP_URL') }}' + `:8000/users/${e.target.id}`
+                        window.location = '{{ env('APP_URL') }}' + `/users/${e.target.id}`
                     });
                 }
             }
@@ -96,7 +96,7 @@
             function onClickCategory() {
                 for (let i = 0; i < categorias.length - 1; i++) {
                     categorias[i].addEventListener("click", (e) => {
-                        window.location = '{{ env('APP_URL') }}' + `:8000/categories/${e.target.id}`
+                        window.location = '{{ env('APP_URL') }}' + `/categories/${e.target.id}`
                     });
                 }
             }
