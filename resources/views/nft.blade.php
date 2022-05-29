@@ -69,7 +69,7 @@
                     console.log("-----------------------------");
                     const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
                     const userid = document.getElementById("userid").textContent;
-                    const response = await fetch('{{ env('APP_URL') }}' + `:8000/api/operations/${id}/${userid}/transaction`)
+                    const response = await fetch('{{ env('APP_URL') }}' + `/api/operations/${id}/${userid}/transaction`)
                         .then(res => res.json())
                         .then(data => data)
                         .catch(err => err)
@@ -91,13 +91,13 @@
                 function successfulWindow() {
                     const confirmation = document.getElementById("confirmation");
                     confirmation.innerHTML += `
-            <div id="successful">
-                <img src="{{ asset('img/Group.png') }}"></img>
-                <p>¡Enhorabuena has conseguido un nuevo NFT!</p>
-                <div><a href="/mercado">Ir al mercado</a></div>
-            </div>
+                        <div id="successful">
+                            <img src="{{ asset('img/Group.png') }}"></img>
+                            <p>¡Enhorabuena has conseguido un nuevo NFT!</p>
+                            <div><a href="/mercado">Ir al mercado</a></div>
+                        </div>
         
-        `;
+                    `;
                 }
                 const getNFTIndividual = async () => {
                     const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
@@ -107,7 +107,7 @@
                     const vendedordescription = document.getElementById("vendedordescription");
                     const price = document.getElementById("price");
                     const confirmar = document.getElementById("nftconfirmar");
-                    const response = await fetch(`http://localhost:8000/api/nfts/${id}:8000`)
+                    const response = await fetch(`{{ env('APP_URL') }}/api/nfts/${id}`)
                         .then(res => {
                             return res.json();
                         })
@@ -117,7 +117,7 @@
                         <img src="{{ asset('storage/${response.data[0].photo}') }}"></img>
                     `;
                     vendedorusername.innerHTML += `
-                        <img src="http://localhost:8000/img/sylvia.png">
+                        <img src="{{ env('APP_URL') }}/img/sylvia.png">
                         Username
                     `;
                     vendedordescription.innerHTML = response.data[0].description;
