@@ -36,11 +36,12 @@ class ShopController extends Controller
         }*/
         
 
-        $nfts = Nft::where('onStock', 1)->get(['id', 'title', 'price', 'user_id', 'category', 'photo']);
+        $nfts = Nft::where('onStock', 1)->get(['id', 'title', 'price', 'user_id', 'category', 'photo', 'userData']);
 
         foreach ($nfts as $nft) {
-            $user = User::where('id', $nft->user_id)->get(['name']);
+            $user = User::where('id', $nft->user_id)->get(['name', 'photo']);
             $nft->user_id = $user[0]->name;
+            $nft->userData = $user[0]->photo;
         }
         if (count($nfts) == 0) {
             return response()->json([
