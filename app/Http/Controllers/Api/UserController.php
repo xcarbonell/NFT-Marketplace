@@ -267,7 +267,7 @@ class UserController extends Controller
         if (!$user->update()) {
             return response()->json([
                 'success' => false,
-                'message' => 'User with id ' . $id . ' can not be updated'
+                'message' => 'User with id ' . $id . ' can not be banned'
             ], 200);
         }
 
