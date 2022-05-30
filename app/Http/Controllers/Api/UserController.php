@@ -179,21 +179,22 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
-        $user = User::find($id);
+        $user = User::find($request->userid);
+        //dd($user);
 
         $validated = $request->validate([
             'name' => 'required|max:50',
             'email' => 'required|max:100',
-            'oldPass' => 'required|max:100',
-            'newPass' => 'required|max:100',
-            'newPassCheck' => 'required|max:100',
-            'photo' => 'required',
-            'isBanned' => 'required'
+            'curentpassword' => 'required|max:100',
+            'new_password' => 'required|max:100',
+            'confirm_password' => 'required|max:100',
+            'photo' => 'required'
         ]);
 
+        dd($validated);
 
         if (!Hash::check($validated['oldPass'], $user->password)) {
             return response()->json([
@@ -219,7 +220,7 @@ class UserController extends Controller
         if (!$user->update($validated)) {
             return response()->json([
                 'success' => false,
-                'message' => 'User with id ' . $id . ' can not be updated'
+                'message' => 'User with id ' . $request->userid . ' can not be updated'
             ], 200);
         }
 
@@ -273,7 +274,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => 'User updated'
+            'data' => 'User banned'
         ], 200);
     }
 }

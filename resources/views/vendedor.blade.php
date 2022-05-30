@@ -66,9 +66,9 @@
             `;
             });
             const banbutton = document.getElementById("ban");
-            banbutton.addEventListener("click", (e) => {
+            banbutton.addEventListener("click", async (e) => {
                 console.log(e.target);
-                const responseBan = fetch('{{ env('APP_URL') }}' + `/api/users/${response.user.id}/ban`)
+                const responseBan = await fetch('{{ env('APP_URL') }}' + `/api/users/${response.user.id}/ban`)
                     .then(res => {
                         return res.json();
                     })
