@@ -7,14 +7,14 @@
 </div>
 <div class="perfil_foto">
     <div class="_perfil_foto_imagen">
-        <img src="img/vendor1.png" alt="">
+        <img src="" alt=""id="imagen-user">
     </div>
     <input type="file" name="Cambiar" id="">
 </div>
 <div class="editar_perfil">
-    <div class="correo">
-        <input type="email" id="email" name="correo" placeholder="Correo electrónico">
-    </div>
+<div class="correo">
+            <input type="email" id="email" name="correo" placeholder="asasa">
+            </div>
     <div class="user">
         <input type="user" id="user" name="user" placeholder="Usuario">
     </div>
@@ -34,6 +34,28 @@
     <div class="btn_save_perfil">
         <button type="btn_save_perfil">Guardar perfil</button>
     </div>
+    <div id="userid" hidden>
+    {{Auth::user()->id}}        
+    </div>
 </div>
+<script>
+    const userid = document.getElementById("userid");
+    const email = document.getElementById("email");
+    const user = document.getElementById("user");
+    const imagen = document.getElementById("imagen-user");
+    async function showUser() {
+        const response = await fetch(`http://localhost:8000/api/users/${userid.textContent}/show`)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => data)
+            .catch(err => err)
+        console.log(response);
+            email.placeholder=response.data.email;
+            user.placeholder=response.data.name;
+            imagen.src='/storage/'+response.data.photo;
 
+    };
+    showUser();
+</script>
 @endsection
