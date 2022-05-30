@@ -5,15 +5,17 @@
             <h1>Perfil</h1>
         </div>
     </div>
-    <div class="perfil_foto">
-        <div class="_perfil_foto_imagen">
-            <img src="" alt="" id="imagen-user">
-        </div>
-        <input type="file" name="Cambiar" id="">
-    </div>
+
     <form method="POST" action="{{ route('user.update', Auth::user()->id) }}">
         @method('PUT')
         @csrf
+
+        <div class="perfil_foto">
+            <div class="_perfil_foto_imagen">
+                <img src="" alt="Foto de perfil del usuario" id="imagen-user">
+            </div>
+            <input type="file" name="photo" id="photo">
+        </div>
 
         <div class="editar_perfil">
             <div class="correo">
@@ -35,8 +37,8 @@
                 <input type="password" id="curentpassword" name="curentpassword" placeholder="Contraseña actual">
             </div>
             @auth
-                <div id="userid" name="userid" hidden>
-                    <input type="text" id="userid" name="userid" value="{{ Auth::user()->id }}">
+                <div hidden>
+                    <input hidden type="text" id="userid" name="userid" value="{{ Auth::user()->id }}">
                 </div>
             @endauth
 
@@ -51,7 +53,7 @@
         const user = document.getElementById("user");
         const imagen = document.getElementById("imagen-user");
         async function showUser() {
-            const response = await fetch(`{{ env('APP_URL') }}/api/users/${userid.textContent}/show`)
+            const response = await fetch(`{{ env('APP_URL') }}/api/users/${userid.value}/show`)
                 .then(res => {
                     return res.json();
                 })
@@ -61,7 +63,6 @@
             email.value = response.data.email;
             user.value = response.data.name;
             imagen.src = '/storage/' + response.data.photo;
-
         };
         showUser();
     </script>

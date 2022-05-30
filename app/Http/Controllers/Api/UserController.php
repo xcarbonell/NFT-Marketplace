@@ -183,16 +183,15 @@ class UserController extends Controller
     {
         //
         $user = User::find($request->userid);
-        dd($user);
+        //dd($user);
 
         $validated = $request->validate([
             'name' => 'required|max:50',
             'email' => 'required|max:100',
-            'oldPass' => 'required|max:100',
-            'newPass' => 'required|max:100',
-            'newPassCheck' => 'required|max:100',
-            'photo' => 'required',
-            'isBanned' => 'required'
+            'curentpassword' => 'required|max:100',
+            'new_password' => 'required|max:100',
+            'confirm_password' => 'required|max:100',
+            'photo' => 'required'
         ]);
 
         dd($validated);
@@ -275,7 +274,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => 'User updated'
+            'data' => 'User banned'
         ], 200);
     }
 }
