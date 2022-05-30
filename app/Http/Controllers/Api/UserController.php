@@ -254,7 +254,7 @@ class UserController extends Controller
             $user->isBanned = 1;
         }
 
-        if (!$user->update()) {
+        if (!$user->save()) {
             return response()->json([
                 'success' => false,
                 'message' => 'User with id ' . $id . ' can not be banned'

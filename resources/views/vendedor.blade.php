@@ -33,6 +33,7 @@
                 })
                 .then(data => data)
                 .catch(err => err)
+                console.log(response);
             mostrar.innerHTML += `
                 <div class="vendedor_foto_imagen">
                     <img src="{{ asset('storage/${response.user.photo}') }}" alt="">
@@ -40,10 +41,15 @@
                 <div class="vendedor_name">
                     <h1>${response.user.name}</h1>
                 </div>
-                        <div class="btnban">
-                            <button id="ban">BAN</button>
-                        </div>
-                `;
+                    @auth
+                        @if(Auth::user()->role_id == 1)
+                            <p>Ban: ${response.user.isBanned}</p>
+                            <div class="btnban">
+                                <button id="ban">BAN</button>
+                            </div>
+                        @endif
+                    @endauth
+            `;
             response.nfts.map((nft) => {
                 inventario.innerHTML += `
                 <div class="vendor_card-nft" id="${nft.id}">
