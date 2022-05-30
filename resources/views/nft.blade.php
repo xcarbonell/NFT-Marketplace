@@ -33,6 +33,9 @@
         addCard();
     });
     document.body.addEventListener("mousedown", (e) => {
+        if(e.target.id === "closewindow"){
+            e.target.parentElement.parentElement.remove();
+        }
         if(e.target.id === "confirmation"){
             e.target.remove();
         }
@@ -41,6 +44,7 @@
         const confirmation = document.getElementById("confirmation");
         confirmation.innerHTML += `
             <div id="creditcard">
+                <span id="closewindow">X</span>
                 <img src="{{ asset('img/Fotonftexample.png') }}"></img>
                 <div id="namecreditcard">
                     <p>Nombre del titular de la tarjeta</p>
