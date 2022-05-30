@@ -27,7 +27,7 @@
             <p class="card-title">${nft.title}</p>
             <div class="card-username">
                 <div class="card-photouser">
-                    <img src="{{ asset('img/sylvia.png') }}"></img>
+                    <img src="{{ asset('storage/sylvia.png') }}"></img>
                 </div>
                 <div class="card-name">${nft.user_id}</div>
                 <div class="card-price">
