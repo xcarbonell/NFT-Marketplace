@@ -1,10 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="transacciones">
-    <div class="titulo">
-        <h1>Transacciones</h1>
-    </div>
-</div>
+<div class="transacciones">Transacciones</div>
 <div class="transacciones_tabla">
     <div class="transacciones_info">
         <div class="transaccion">
