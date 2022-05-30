@@ -4,6 +4,9 @@
         <div class="vendedor_username">
             <div class="vendedor_info">
             </div>
+
+            <div id="mostrarban"></div>
+            
             <div class="vendedor_inventario">
                 <div class="inventario_y_venta">
                     <div class="inventario_vendor">
@@ -15,14 +18,13 @@
                 </div>
             </div>
 
-            <div id="inventario">
-
-            </div>
+            <div id="inventario"></div>
         </div>
     </div>
 
     <script>
         const vendedores = document.getElementById("vendedor");
+        const mostrarban = document.getElementById("mostrarban");
         const inventario = document.getElementById("inventario");
         const mostrar = document.getElementsByClassName("vendedor_info")[0];
         const getUserData = async () => {
@@ -33,7 +35,6 @@
                 })
                 .then(data => data)
                 .catch(err => err)
-                console.log(response);
             mostrar.innerHTML += `
                 <div class="vendedor_foto_imagen">
                     <img src="{{ asset('storage/${response.user.photo}') }}" alt="">
@@ -41,14 +42,15 @@
                 <div class="vendedor_name">
                     <h1>${response.user.name}</h1>
                 </div>
-                    @auth
-                        @if(Auth::user()->role_id == 1)
-                            <p>Ban: ${response.user.isBanned}</p>
-                            <div class="btnban">
-                                <button id="ban">BAN</button>
-                            </div>
-                        @endif
-                    @endauth
+            `;
+            mostrarban.innerHTML += `
+                @auth
+                    @if(Auth::user()->role_id == 1)
+                        <div class="btnban">
+                            <button id="ban">Banear usuario</button>
+                        </div>
+                    @endif
+                @endauth
             `;
             response.nfts.map((nft) => {
                 inventario.innerHTML += `
@@ -71,6 +73,8 @@
                 </div>
             `;
             });
+            const vendedor = document.getElementsByClassName("vendedor_info")[0];
+            
             const banbutton = document.getElementById("ban");
             banbutton.addEventListener("click", async (e) => {
                 console.log(e.target);
@@ -81,6 +85,11 @@
                     .then(data => data)
                     .catch(err => err)
                 console.log(responseBan);
+                if(responseBan.user.isBanned == "1"){
+                    vendedor.style.border = "2px solid red";
+                }else{
+                    vendedor.style.border = "none";
+                }
             });
             onClickNFT();
             ban();

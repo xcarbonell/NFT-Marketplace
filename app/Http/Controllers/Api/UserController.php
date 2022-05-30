@@ -263,7 +263,8 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => 'User banned'
+            'data' => 'User banned',
+            'user' => $user
         ], 200);
     }
 }
