@@ -116,7 +116,9 @@
     margin-left:auto;
     margin-top:5px;
     position:relative;
+    cursor:pointer;
 }
+
 #creditcard > img {
     width:180px;
     height:auto;
