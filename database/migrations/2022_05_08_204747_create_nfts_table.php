@@ -22,6 +22,7 @@ class CreateNftsTable extends Migration
             $table->string('category');
             $table->tinyInteger('onStock');
             $table->string('photo');
+            $table->string('userData');
             $table->timestamps();
         });
     }

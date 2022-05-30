@@ -16,7 +16,7 @@ class NftController extends Controller
 
     public function __construct()
     {
-        //$this->authorizeResource(Nft::class, 'nft');
+        $this->authorizeResource(Nft::class, 'nft');
         //$this->middleware('auth');
     }
     /**
@@ -126,7 +126,7 @@ class NftController extends Controller
 
         //
 
-        $this->authorize('update');
+        //$this->authorize('update');
 
         $nft = Nft::find($id);
 
