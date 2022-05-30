@@ -47,7 +47,7 @@
             const mostrarCategorias = document.getElementsByClassName("las_categorias")[0];
 
             const getData = async () => {
-                const response = await fetch('{{ env('APP_URL') }}' + "/api/landing")
+                const response = await fetch("{{ env('APP_URL') }}' + "/api/landing")
                     .then(res => {
                         return res.json();
                     })
