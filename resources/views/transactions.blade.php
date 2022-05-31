@@ -6,23 +6,28 @@
         </div>
     </div>
     <div class="transacciones_tabla">
-
+        @auth
+            @if (Auth::user()->role_id == 1)
+                <button id="btnBenefits" tabindex="0">Mostrar Beneficios</button>
+                <div id="divBenefits"></div>
+            @endif
+        @endauth
         <br>
         <div class="transacciones_info">
             <div class="transaccion">
-                <h1>id</h1>
+                <h1 name="id" tabindex="0">id</h1>
             </div>
             <div class="transaccion">
-                <h1>Fecha</h1>
+                <h1 name="fecha" tabindex="0">Fecha</h1>
             </div>
             <div class="transaccion">
-                <h1>Comprador</h1>
+                <h1 name="comprador" tabindex="0">Comprador</h1>
             </div>
             <div class="transaccion">
-                <h1>Vendedor</h1>
+                <h1 name="vendedor" tabindex="0">Vendedor</h1>
             </div>
             <div class="transaccion">
-                <h1>Precio</h1>
+                <h1 name="precio" tabindex="0">Precio</h1>
             </div>
         </div>
 
@@ -55,22 +60,21 @@
                 const fullDate = date.getDate() + "/" + date.getMonth() + "/" + date.getUTCFullYear();
 
                 informacion_transacciones.innerHTML += `
-                <div class="informacion_transacciones">
+                <div class="informacion_transacciones" name="informacion transacciones" tabindex="0" aria-label="informacion transacciones">
                     <div class="id_transaccion">
-                        <h1>${operation.id}</h1>
+                        <h1 name="id" tabindex="0">${operation.id}</h1>
                     </div>
                     <div class="fecha_transaccion">
-                        <h1>${fullDate}</h1>
+                        <h1 name="fecha transaccion" tabindex="0">${fullDate}</h1>
                     </div>
                     <div class="comprador_transaccion">
-                        <h1>${operation.buyer_id}</h1>
+                        <h1 name="comprador" tabindex="0">${operation.buyer_id}</h1>
                     </div>
                     <div class="vendedor_transaccion">
-                        <h1>${operation.seller_id}</h1>
+                        <h1 name="vendedor" tabindex="0">${operation.seller_id}</h1>
                     </div>
                     <div class="precio_transaccion">
-                        <h1>${operation.price}</h1>
-                    </div>
+                        <h1 name="precio" tabindex="0">${operation.price}</h1>
                 </div>  
             `
             });
