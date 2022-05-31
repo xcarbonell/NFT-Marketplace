@@ -151,6 +151,9 @@
                     if(response.data[0].onStock == "0"){
                         botoncomprar.remove();
                     }
+                    if(response.data[0].price == "0"){
+                        price.innerHTML = "No está en venta";
+                    }
                 }
                 getNFTIndividual();
             </script>
