@@ -32,6 +32,7 @@ class ViewController extends Controller
         $randomUsers[] = $users[0][0];
         $randomUsers[] = $users[1][0];
         $randomUsers[] = $users[2][0];
+        $randomUsers[] = $users[3][0];
 
         if (count($randomUsers) == 0) {
             return response()->json([
