@@ -80,4 +80,8 @@ Route::get('/baneado', function(){
     return view("baneado");
 });
 
+Route::get('/facturacion', function(){
+    return view("benefits");
+})->middleware('admin');
+
 Route::resource('user', Api\UserController::class);
