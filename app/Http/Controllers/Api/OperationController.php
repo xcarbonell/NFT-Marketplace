@@ -27,15 +27,14 @@ class OperationController extends Controller
         //
         $operations = Operation::all();
 
-        foreach($operations as $operation){
+        foreach ($operations as $operation) {
             $comprador = User::where('id', $operation->buyer_id)->get('name');
-        
+
             $vendedor = User::where('id', $operation->seller_id)->get('name');
 
             $operation->buyer_id = $comprador[0]->name;
-            $operation->seller_id =$vendedor[0]->name;
+            $operation->seller_id = $vendedor[0]->name;
         }
-
 
         if (count($operations) == 0) {
             return response()->json([
@@ -43,9 +42,10 @@ class OperationController extends Controller
                 'message' => 'No operations were found'
             ], 200);
         }
+
         return response()->json([
             'success' => true,
-            'data' => $operations->toArray()
+            'bought' => $operations->toArray()
         ], 200);
     }
 
@@ -62,7 +62,7 @@ class OperationController extends Controller
     public function operation($id, $comprador)
     {
 
-       //$comprador = Auth::user()->id;
+        //$comprador = Auth::user()->id;
         $nft = Nft::find($id);
         $price = $nft->price;
         $vendedor = $nft->user_id;
@@ -117,15 +117,32 @@ class OperationController extends Controller
 
     public function userOperations($id)
     {
+
+        $user = User::where('id', $id)->get();
+        if ($user[0]->role_id == 1) {
+            return $this->index();
+        }
+
         $operations_bought = Operation::where('buyer_id', $id)->get(['id', 'created_at', 'seller_id', 'buyer_id', 'price', 'comission']);
+
+        foreach ($operations_bought as $buy) {
+            $seller = User::where('id', $buy->seller_id)->get();
+            $buy->buyer_id = $user[0]->name;
+            $buy->seller_id = $seller[0]->name;
+        }
 
         $operations_sold = Operation::where('seller_id', $id)->get(['id', 'created_at', 'seller_id', 'buyer_id', 'price', 'comission']);
 
+        foreach ($operations_sold as $sell) {
+            $buyer = User::where('id', $sell->buyer_id)->get();
+            $sell->buyer_id = $buyer[0]->name;
+            $sell->seller_id = $user[0]->name;
+        }
 
-        if (count($operations_bought) == 0 && count($operations_sold) == 0){
+        if (count($operations_bought) == 0 && count($operations_sold) == 0) {
             return response()->json([
                 'success' => false,
-                'message' => 'You have not operations'
+                'message' => 'You have no operations'
             ], 200);
         }
         return response()->json([
@@ -199,7 +216,25 @@ class OperationController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => 'operation deleted'
+            'data' => 'Operation deleted'
+        ], 200);
+    }
+
+    public function calculateBenefits()
+    {
+
+        $benefits = Operation::all()->sum('comission');
+
+        if (!$benefits) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No benefits'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $benefits
         ], 200);
     }
 }
