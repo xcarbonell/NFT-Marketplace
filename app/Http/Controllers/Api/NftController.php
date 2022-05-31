@@ -198,27 +198,4 @@ class NftController extends Controller
             'data' => $nfts->toArray()
         ], 200);
     }
-
-    /**
-     * Mostrar NFT por categoria.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function usersNFT()
-    {
-        /*
-        $nfts = Nft::where('category', $category)->where('onStock', 1)->get();
-
-        if (count($nfts) == 0) {
-            return response()->json([
-                'success' => false,
-                'message' => 'No nfts were found'
-            ], 200);
-        }
-        return response()->json([
-            'success' => true,
-            'data' => $nfts->toArray()
-        ], 200);
-        */
-    }
 }

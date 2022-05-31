@@ -76,4 +76,8 @@ Route::get('/categories', function(){
     return view("categories");
 });
 
+Route::get('/baneado', function(){
+    return view("baneado");
+});
+
 Route::resource('user', Api\UserController::class);

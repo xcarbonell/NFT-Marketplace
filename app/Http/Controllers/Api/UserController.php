@@ -267,4 +267,25 @@ class UserController extends Controller
             'user' => $user
         ], 200);
     }
+
+    /**
+     * Mostrar NFT del usuario logueado
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function usersNFT($id)
+    {
+        $nfts = Nft::where('user_id', $id)->get();
+
+        if (count($nfts) == 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No nfts were found'
+            ], 200);
+        }
+        return response()->json([
+            'success' => true,
+            'data' => $nfts->toArray()
+        ], 200);
+    }
 }
