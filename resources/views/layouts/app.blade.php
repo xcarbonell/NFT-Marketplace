@@ -29,11 +29,8 @@
             <li tabindex="0"><img src="{{ asset('img/Home.png') }}"><a href="/" alt="Imagen de inicio">Inicio</a></li>
             <li tabindex="0"><img src="{{ asset('img/Bag.png') }}"><a href="/mercado" alt="Imagen del mercado">Mercado</a></li>
             @guest
-<<<<<<< HEAD
             <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
-=======
                 <li tabindex="0"><img src="{{ asset('img/Logout.png') }}" alt="Imagen para desloguearse"><a href="/login">Acceso</a></li>
->>>>>>> cccaf1b5dacf16d37d49f8859831c1ffdd14ee70
             @endguest
         </ul>
         <ul>
@@ -48,7 +45,6 @@
             @endauth
         </ul>
         @auth
-<<<<<<< HEAD
         <div class="logout">
             <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
@@ -57,7 +53,6 @@
                 @csrf
             </form>
         </div>
-=======
             <div class="logout">
                 <a class="logout" href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();" tabindex="0">
@@ -67,7 +62,6 @@
                     @csrf
                 </form>
             </div>
->>>>>>> cccaf1b5dacf16d37d49f8859831c1ffdd14ee70
         @endauth
     </nav>
     <div id="navmenu" tabindex="0">
@@ -77,7 +71,6 @@
                 <li><a href="/" tabindex="0"><img src="{{ asset('img/Home.png') }}">Inicio</a></li>
                 <li><a href="/mercado" tabindex="0"><img src="{{ asset('img/Bag.png') }}">Mercado</a></li>
                 @guest
-<<<<<<< HEAD
                 <li><a href="/login"><img src="{{ asset('img/Logout.png') }}"></img>Acceso</a></li>
                 @endguest
             </ul>
@@ -105,7 +98,6 @@
                     @csrf
                 </form>
             </div>
-=======
                     <li><a href="/login" tabindex="0"><img src="{{ asset('img/Logout.png') }}">Acceso</a></li>
                 @endguest
             </ul>
@@ -131,7 +123,6 @@
                         @csrf
                     </form>
                 </div>
->>>>>>> cccaf1b5dacf16d37d49f8859831c1ffdd14ee70
             @endauth
         </nav>
     </div>
