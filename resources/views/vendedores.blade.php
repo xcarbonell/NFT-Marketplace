@@ -8,7 +8,7 @@
         const vendedores = document.getElementsByClassName("vendedor");
         const mostrar = document.getElementsByClassName("los_vendedores")[0];
         async function allVendedores() {
-            const response = await fetch('{{ env('APP_URL') }}/api/vendedores')
+            const response = await fetch(`{{ env('APP_URL') }}/api/vendedores`)
                 .then(res => {
                     return res.json();
                 })
@@ -35,7 +35,7 @@
         function onClickUser() {
             for (let i = 0; i < vendedores.length - 1; i++) {
                 vendedores[i].addEventListener("click", (e) => {
-                    window.location = '{{ env('APP_URL') }}' + `/users/${e.target.id}`
+                    window.location = `{{ env('APP_URL') }}` + `/users/${e.target.id}`
                 });
             }
         }

@@ -2,95 +2,106 @@
     width: 100%;
     height: 100%;
 }
+
 .saludo_titulo {
     margin-left: 1%;
     margin-top: 40px;
 }
-.saludo_titulo > h1 {
+
+.saludo_titulo>h1 {
     font-size: 32px;
 }
-.homepage{
 
-}
+.homepage {}
+
 .titulo_section {
     width: 100%;
     margin-top: 5%;
     height: 100%;
 }
-.titulo_section > h1 {
+
+.titulo_section>h1 {
     font-size: 32px;
     text-align: center;
 }
 
-.card-nfts{
+.card-nfts {
     height: 100%;
     width: 100%;
     margin: 5px;
-    border-radius:18px;
-    background:white;
-    display:flex;
+    border-radius: 18px;
+    background: white;
+    display: flex;
     flex-flow: column nowrap;
     align-items: center;
 }
-.card-imagesNFT{
+
+.card-imagesNFT {
     width: 100%;
     height: 100%;
-    margin-top:10px;
-    border-radius:18px;
-    display:flex;
+    margin-top: 10px;
+    border-radius: 18px;
+    display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
 }
-.card-informacion{
+
+.card-informacion {
     display: flex;
     margin-top: 10px;
     flex-direction: column;
     width: 100%;
 }
-.card-titulo{
+
+.card-titulo {
     font-weight: bold;
 }
-.card-ususario{
-    display:inline-flex;
-    flex-flow: row nowrap;
 
+.card-ususario {
+    display: inline-flex;
+    flex-flow: row nowrap;
 }
-.card-iconouser{
-    width:40px;
-    height:40px;
-    border-radius:50px;
-    display:flex;
+
+.card-iconouser {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+}
 
+.card-iconouser>img {
+    width: 100%;
+    height: auto;
+    border-radius: 50px;
 }
-.card-iconouser > img {
-    width:100%;
-    height:auto;
-    border-radius:50px;
-}
-.card-nombre{
-    width:60%;
-    height:100%;
-    font-size:11px;
-    display:inline-flex;
+
+.card-nombre {
+    width: 60%;
+    height: 100%;
+    font-size: 11px;
+    display: inline-flex;
     flex-flow: row nowrap;
     align-items: center;
-    margin-left:5px;
+    margin-left: 5px;
 }
-.card-precio{
-    display:inline-flex;
+
+.card-precio {
+    display: inline-flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
 }
-.todos_los_vendedores{
+
+.todos_los_vendedores {
     width: 100%;
     height: 100%;
 }
-.titulos{
+
+.titulos {
     display: flex;
     align-content: center;
     justify-content: space-between;
@@ -101,15 +112,18 @@
     height: 54px;
     margin-top: 5%;
 }
-.titulo_del_div > h1{
+
+.titulo_del_div>h1 {
     font-size: 32px;
     margin-left: 14%;
 }
-.ver_todos_los_vendedores > a{
-color: red;
-font-size: 14px;
+
+.ver_todos_los_vendedores>a {
+    color: red;
+    font-size: 14px;
 }
-.los_vendedores{
+
+.los_vendedores {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -119,7 +133,9 @@ font-size: 14px;
     width: 95%;
     height: 100%;
 }
-.vendedor{
+
+.vendedor {
+    cursor: pointer;
     display: flex;
     background-color: white;
     border-radius: 10px;
@@ -131,35 +147,39 @@ font-size: 14px;
     flex-wrap: nowrap;
     align-items: center;
 }
-.imagen_del_vendedor > img{
+
+.imagen_del_vendedor>img {
     width: 100%;
     height: auto;
     border-radius: 30px;
 }
-.nombre_del_vendedor > h1{
+
+.nombre_del_vendedor>h1 {
     font-size: 10px;
     margin-top: 5px;
 }
-.icono_texto_vendor{
+
+.icono_texto_vendor {
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
     align-items: center;
     margin-top: 19px;
-
 }
-.todas_las_categorias{
+
+.todas_las_categorias {
     width: 100%;
     height: 100%;
     margin-top: 100px;
-
 }
-.ver_todos_las_categorias > a{
+
+.ver_todos_las_categorias>a {
     color: red;
     font-size: 14px;
 }
-.las_categorias{
+
+.las_categorias {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -169,7 +189,9 @@ font-size: 14px;
     width: 95%;
     height: 136px;
 }
-.categoria{
+
+.categoria {
+    cursor: pointer;
     display: flex;
     background-color: white;
     border-radius: 10px;
@@ -180,16 +202,18 @@ font-size: 14px;
     flex-wrap: nowrap;
     align-items: center;
     margin-left: 1%;
-
 }
-.nombre_de_la_categoria > h1{
+
+.nombre_de_la_categoria>h1 {
     font-size: 15px;
     margin-top: 5px;
 }
+
 .texto_categoria {
-    margin-top: 7px;    
+    margin-top: 7px;
 }
-.nfts{
+
+.nfts {
     width: 100%;
     display: flex;
     height: 100%;
@@ -197,13 +221,15 @@ font-size: 14px;
     justify-content: center;
     align-items: center;
 }
-.card-imagesNFT > img{
+
+.card-imagesNFT>img {
     width: 100%;
     height: 100%;
     padding-left: 5px;
     padding-right: 5px;
 }
-.vendedores_categorias{
+
+.vendedores_categorias {
     margin-top: 100px;
     display: flex;
     width: 100%;

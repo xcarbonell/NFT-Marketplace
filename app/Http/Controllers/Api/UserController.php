@@ -86,8 +86,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        $path = $request->file('photo')->store('photos', 'public');
-        return view('foto');
+        //$path = $request->file('photo')->store('photos', 'public');
+        //return view('foto');
     }
 
     /**
@@ -183,51 +183,40 @@ class UserController extends Controller
     {
         //
         $user = User::find($request->userid);
-        //dd($user);
+        //dd($request->email);
 
         $validated = $request->validate([
-            'name' => 'required|max:50',
+            'user' => 'required|max:50',
             'email' => 'required|max:100',
-            'curentpassword' => 'required|max:100',
-            'new_password' => 'required|max:100',
-            'confirm_password' => 'required|max:100',
-            'photo' => 'required'
+            'curentpassword' => 'nullable|max:100',
+            'new_password' => 'nullable|max:100',
+            'confirm_password' => 'nullable|max:100',
+            'photo' => 'nullable'
         ]);
 
-        dd($validated);
+        //dd($request);
 
-        if (!Hash::check($validated['oldPass'], $user->password)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Old password does not match'
-            ], 200);
+        if (!Hash::check($validated['curentpassword'], $user->password)) {
+            return back();
         }
 
-        if ($validated['newPass'] != $validated['newPassCheck']) {
-            return response()->json([
-                'success' => false,
-                'message' => 'New passwords are not equal'
-            ], 200);
+        if ($validated['new_password'] != $validated['confirm_password']) {
+            return back();
         }
 
-        $user->name = $validated['name'];
+        $user->name = $validated['user'];
         $user->email = $validated['email'];
-        $user->photo = $validated['photo'];
-        $user->isBanned = $validated['isBanned'];
-        $user->password = Hash::make($validated['newPass']);
+        if($request->photo){
+            $user->photo = $validated['photo'];
+        }
+        if($request->new_password){
+            $user->password = Hash::make($validated['new_password']);
+        }
         $user->updated_at = now();
 
-        if (!$user->update($validated)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'User with id ' . $request->userid . ' can not be updated'
-            ], 200);
-        }
+        $user->save();
 
-        return response()->json([
-            'success' => true,
-            'data' => 'User updated'
-        ], 200);
+        return back();
     }
 
     /**
@@ -265,7 +254,7 @@ class UserController extends Controller
             $user->isBanned = 1;
         }
 
-        if (!$user->update()) {
+        if (!$user->save()) {
             return response()->json([
                 'success' => false,
                 'message' => 'User with id ' . $id . ' can not be banned'
@@ -274,7 +263,29 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => 'User banned'
+            'data' => 'User banned',
+            'user' => $user
+        ], 200);
+    }
+
+    /**
+     * Mostrar NFT del usuario logueado
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function usersNFT($id)
+    {
+        $nfts = Nft::where('user_id', $id)->get();
+
+        if (count($nfts) == 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No nfts were found'
+            ], 200);
+        }
+        return response()->json([
+            'success' => true,
+            'data' => $nfts->toArray()
         ], 200);
     }
 }
