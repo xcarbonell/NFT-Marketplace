@@ -11,7 +11,11 @@
                     <div id="venededorusername">
 
                     </div>
+
+                    <div id="nft-titlecomprar"></div>
+
                     <div id="vendedordescription" tabindex="0">
+
                         Me encanta este nft super curioso y grande, por eso lo vendo a un precio muy asequible.
                     </div>
                     <div id="pricefinal">
@@ -88,18 +92,25 @@
                         .then(data => data)
                         .catch(err => err)
                     console.log(response);
+                    return response;
                 }
 
-                function creditcardAccepted() {
+                async function creditcardAccepted() {
                     console.log("works");
-                    comprarNFT();
-
-                    document.getElementById("confirmation").remove();
+                    
+                    const response = await comprarNFT();
+                    if(response.success){
+                        document.getElementById("confirmation").remove();
                     const div = document.createElement("div");
                     div.id = "confirmation";
 
                     document.body.appendChild(div);
                     successfulWindow();
+                    return;
+                    }
+                    const confirm = document.getElementById("confirmation");
+                    confirm.remove();
+                    
                 }
 
                 function successfulWindow() {
@@ -121,6 +132,7 @@
                     const vendedordescription = document.getElementById("vendedordescription");
                     const price = document.getElementById("price");
                     const confirmar = document.getElementById("nftconfirmar");
+                    const nfttitle = document.getElementById("nft-titlecomprar");
                     const response = await fetch(`{{ env('APP_URL') }}/api/nfts/${id}`)
                         .then(res => {
                             return res.json();
@@ -137,6 +149,11 @@
                     `;
                     vendedordescription.innerHTML = response.data[0].description;
                     price.innerHTML = response.data[0].price + ' €';
+                    nfttitle.innerHTML = response.data[0].title;
+                    const botoncomprar = document.getElementById("botoncomprar");
+                    if(response.data[0].onStock == "0"){
+                        botoncomprar.remove();
+                    }
                 }
                 getNFTIndividual();
             </script>
