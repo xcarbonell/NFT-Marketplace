@@ -1,9 +1,18 @@
-.perfil{
-    background-color: white;
+.perfil {
     width: 100%;
-    height: 15%;
-    
+    height: 100px;
+    font-size: 3em;
+    font-weight: bold;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background: #282B2F;
+    color: white;
+    z-index: 1;
 }
+
 .perfil_foto {
     margin-top: 20px;
     align-items: center;
@@ -11,26 +20,27 @@
     display: flex;
     flex-direction: column;
 }
-._perfil_foto_imagen{
+
+._perfil_foto_imagen {
     width: 29%;
     height: auto;
 }
-._perfil_foto_imagen > img{
+
+._perfil_foto_imagen>img {
     width: 100px;
     height: 100px;
     border-radius: 150px;
 }
-.perfil_titulo_titulo{
+
+.perfil_titulo_titulo {
     height: 76px;
 }
-.perfil_titulo > h1{
-    height: 100%;
-    margin-left: 10px;
-    align-items: center;
-    margin-top: 29px;
-    margin-left: 29px;
+
+#form-perfil {
+    margin-top: 100px;
 }
-.editar_perfil{
+
+.editar_perfil {
     width: 100%;
     height: 100%;
     display: flex;
@@ -41,51 +51,53 @@
     justify-content: center;
     align-items: center;
 }
-.info > h1 {
+
+.info>h1 {
     font-size: 8px;
     margin-top: 10px;
     text-align: start;
 }
-.correo{
+
+.correo {
     background-color: white;
     width: 14.6em;
     height: 3em;
     border-radius: 5px;
-
 }
-.user{
-    background-color: white;
-    width: 14.6em;
-    height: 3em;
-    border-radius: 5px;
-    margin-top: 10px;
 
-}
-.curent_password{
+.user {
     background-color: white;
     width: 14.6em;
     height: 3em;
     border-radius: 5px;
     margin-top: 10px;
-
 }
-.new_password{
+
+.curent_password {
     background-color: white;
     width: 14.6em;
     height: 3em;
     border-radius: 5px;
     margin-top: 10px;
-
 }
-.confirm_password{
+
+.new_password {
     background-color: white;
     width: 14.6em;
     height: 3em;
     border-radius: 5px;
     margin-top: 10px;
-
 }
-.btn_save_perfil > button{
+
+.confirm_password {
+    background-color: white;
+    width: 14.6em;
+    height: 3em;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.btn_save_perfil>button {
     background-color: #282B2F;
     color: white;
     border-radius: 5px;
@@ -96,13 +108,15 @@
     cursor: pointer;
     outline: none;
     border-top-style: hidden;
-    border-bottom-style: hidden ;
+    border-bottom-style: hidden;
     border-left-style: hidden;
     border-right-style: hidden;
 }
+
 .btn_save_perfil {
     margin-top: 20px;
 }
+
 input#correo {
     outline: none;
     border-top-style: hidden;
@@ -112,6 +126,7 @@ input#correo {
     padding-left: 15px;
     padding-top: 15px;
 }
+
 input#user {
     outline: none;
     border-top-style: hidden;
@@ -121,6 +136,7 @@ input#user {
     padding-left: 15px;
     padding-top: 15px;
 }
+
 input#curentpassword {
     outline: none;
     border-top-style: hidden;
@@ -130,6 +146,7 @@ input#curentpassword {
     padding-left: 15px;
     padding-top: 15px;
 }
+
 input#new_password {
     outline: none;
     border-top-style: hidden;
@@ -139,6 +156,7 @@ input#new_password {
     padding-left: 15px;
     padding-top: 15px;
 }
+
 input#confirm_password {
     outline: none;
     border-top-style: hidden;
@@ -148,11 +166,11 @@ input#confirm_password {
     padding-left: 15px;
     padding-top: 15px;
 }
-@media (max-width: 568px){
+
+@media (max-width: 568px) {
     .perfil {
-        background-color: white;
-        width: 100%;
-        height: 19%;
+        height: 50px;
+        font-size: 2em;
     }
     .editar_perfil {
         margin-top: 130px;
