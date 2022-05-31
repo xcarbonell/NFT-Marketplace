@@ -66,7 +66,7 @@ Route::get('/foto', function () {
 
 Route::get('/vender/{id}', function () {
     return view("vender");
-})->middleware('regularUser');
+})->middleware(['regularUser', 'property']);
 
 Route::get('/vendedores', function () {
     return view("vendedores");
