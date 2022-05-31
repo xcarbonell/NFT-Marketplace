@@ -16,17 +16,21 @@
     <link href="{{ asset('css/nft.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/inicio.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/vendedor.css') }}" rel="stylesheet" />
-    
+
 </head>
 
 <body>
     <nav>
         <ul>
-            <label id="paginas">Páginas</label>
-            <li><img src="{{ asset('img/Home.png') }}"></img><a href="/">Inicio</a></li>
-            <li><img src="{{ asset('img/Bag.png') }}"></img><a href="/mercado">Mercado</a></li>
+            <label id="paginas" tabindex="0">Páginas</label>
+            <li tabindex="0"><img src="{{ asset('img/Home.png') }}"><a href="/" alt="Imagen de inicio">Inicio</a></li>
+            <li tabindex="0"><img src="{{ asset('img/Bag.png') }}"><a href="/mercado" alt="Imagen del mercado">Mercado</a></li>
             @guest
-                <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
+<<<<<<< HEAD
+            <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
+=======
+                <li tabindex="0"><img src="{{ asset('img/Logout.png') }}" alt="Imagen para desloguearse"><a href="/login">Acceso</a></li>
+>>>>>>> cccaf1b5dacf16d37d49f8859831c1ffdd14ee70
             @endguest
         </ul>
         <ul>
@@ -34,38 +38,88 @@
             <li><a href="/perfil"><img src="{{ asset('img/Profile.png') }}"></img>Mi perfil</a></li>
             <li><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a></li>
             <li><a href="/inventario"><img src="{{ asset('img/Bookmark.png') }}"></img>Inventario</a></li>
+            @auth
+            @if(Auth::user()->role_id == 1)
+            <li><a href="/facturacion"><img src="{{ asset('img/Bookmark.png') }}"></img>Facturación</a></li>
+            @endif
+            @endauth
         </ul>
         @auth
+<<<<<<< HEAD
+        <div class="logout">
+            <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+            </form>
+        </div>
+=======
             <div class="logout">
                 <a class="logout" href="{{ route('logout') }}"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();" tabindex="0">
                     {{ __('Logout') }}
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
                 </form>
             </div>
+>>>>>>> cccaf1b5dacf16d37d49f8859831c1ffdd14ee70
         @endauth
     </nav>
-    <div id="navmenu">
-        <nav>
+    <div id="navmenu" tabindex="0">
+        <nav role="nav">
             <ul>
-                <label id="paginas">Páginas</label>
-                <li><a href="/"><img src="{{ asset('img/Home.png') }}"></img>Inicio</a></li>
-                <li><a href="/mercado"><img src="{{ asset('img/Bag.png') }}"></img>Mercado</a></li>
+                <label id="paginas" tabindex="0">Páginas</label>
+                <li><a href="/" tabindex="0"><img src="{{ asset('img/Home.png') }}">Inicio</a></li>
+                <li><a href="/mercado" tabindex="0"><img src="{{ asset('img/Bag.png') }}">Mercado</a></li>
                 @guest
-                    <li><a href="/login"><img src="{{ asset('img/Logout.png') }}"></img>Acceso</a></li>
+<<<<<<< HEAD
+                <li><a href="/login"><img src="{{ asset('img/Logout.png') }}"></img>Acceso</a></li>
+                @endguest
+            </ul>
+            @auth
+            <ul>
+                <label>Información</label>
+                <li><a href="/perfil"><img src="{{ asset('img/Profile.png') }}"></img>Editar Perfil</a></li>
+                <li><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a>
+                </li>
+                <li><a href="/inventario"><img src="{{ asset('img/Bookmark.png') }}"></img>Inventario</a></li>
+                @auth
+                <li id="mitienda"><a href="{{ env('APP_URL') }}/users/{{Auth::user()->name}}"><img src="{{ asset('img/store.png') }}"></img>Tienda</a></li>
+                @endauth
+                @auth
+                @if(Auth::user()->role_id == 1)
+                <li><a href="/facturacion"><img src="{{ asset('img/wallet.png') }}"></img>Facturación</a></li>
+                @endif
+                @endauth
+            </ul>
+            <div class="logout">
+                <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                </form>
+            </div>
+=======
+                    <li><a href="/login" tabindex="0"><img src="{{ asset('img/Logout.png') }}">Acceso</a></li>
                 @endguest
             </ul>
             @auth
                 <ul>
-                    <label>Información</label>
-                    <li><a href="/perfil"><img src="{{ asset('img/Profile.png') }}"></img>Mi perfil</a></li>
-                    <li><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a>
+                    <label tabindex="0">Información</label>
+                    <li tabindex="0"><a href="/perfil"><img src="{{ asset('img/Profile.png') }}">Mi perfil</a></li>
+                    <li tabindex="0"><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}">Transacciones</a>
                     </li>
                     <li><a href="/inventario"><img src="{{ asset('img/Bookmark.png') }}"></img>Inventario</a></li>
+                    @auth
+                        @if(Auth::user()->role_id == 1)
+                            <li><a href="/facturacion"><img src="{{ asset('img/Bookmark.png') }}"></img>Facturación</a></li>
+                        @endif
+                    @endauth
                 </ul>
-                <div class="logout">
+                <div class="logout" tabindex="0">
                     <a class="logout" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
@@ -74,12 +128,13 @@
                         @csrf
                     </form>
                 </div>
+>>>>>>> cccaf1b5dacf16d37d49f8859831c1ffdd14ee70
             @endauth
         </nav>
     </div>
 
     <div id="navmobile">
-        <div id="menu"><img src="{{ asset('img/Burger.svg') }}"></img></div>
+        <div id="menu" tabindex="0"><img src="{{ asset('img/Burger.svg') }}"></div>
     </div>
     <main>
         @yield('content')
