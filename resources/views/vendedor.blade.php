@@ -58,9 +58,9 @@
                     <div class="card-image" id="${nft.id}">
                         <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}">
                     </div>
-                    <div class="card-info">
+                    <div id="${nft.id}" class="card-info">
                         <p class="card-title">${nft.title}</p>
-                        <div class="card-username">
+                        <div id="${nft.id}" class="card-username">
                             <div class="card-photouser">
                                 <img src="{{ asset('storage/${response.user.photo}') }}">
                             </div>
@@ -73,8 +73,9 @@
                 </div>
             `;
             });
+            onClickNFT();
+
             const vendedor = document.getElementsByClassName("vendedor_info")[0];
-            
             const banbutton = document.getElementById("ban");
             banbutton.addEventListener("click", async (e) => {
                 console.log(e.target);
@@ -91,12 +92,10 @@
                     vendedor.style.border = "none";
                 }
             });
-            onClickNFT();
-            ban();
         }
 
         function onClickNFT() {
-            const cardnft = document.getElementsByClassName("card-nft");
+            const cardnft = document.getElementsByClassName("vendor_card-nft");
             for (let i = 0; i < cardnft.length; i++) {
                 console.log("hola");
                 cardnft[i].addEventListener("click", (e) => {
@@ -105,10 +104,6 @@
                     }
                 });
             }
-        }
-
-        function ban() {
-
         }
         window.onload = getUserData();
     </script>

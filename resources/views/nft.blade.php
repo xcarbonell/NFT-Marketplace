@@ -16,7 +16,9 @@
                     </div>
                     <div id="pricefinal">
                         <div id="price">Calculando</div>
-                        <div id="botoncomprar">Comprar</div>
+                        @auth
+                            <div id="botoncomprar">Comprar</div>
+                        @endauth
                     </div>
 
                 </div>
@@ -117,14 +119,11 @@
                         <img src="{{ asset('storage/${response.data[0].photo}') }}"></img>
                     `;
                     vendedorusername.innerHTML += `
-                        <img src="{{ env('APP_URL') }}/img/sylvia.png">
-                        Username
+                        <img src="{{ asset('storage/${response.data[0].userData}') }}">
+                        ${response.data[0].user_id}
                     `;
                     vendedordescription.innerHTML = response.data[0].description;
                     price.innerHTML = response.data[0].price + ' €';
-                    //userid.textContent = response.data[0].user_id;
-
-                    console.log(response);
                 }
                 getNFTIndividual();
             </script>
