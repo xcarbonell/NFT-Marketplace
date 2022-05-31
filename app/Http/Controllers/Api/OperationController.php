@@ -72,7 +72,6 @@ class OperationController extends Controller
         $nft->user_id = $comprador;
         $nft->onStock = 0;
         $nft->price = 0;
-        
         if (!$nft->update()) {
             return response()->json([
                 'success' => false,
