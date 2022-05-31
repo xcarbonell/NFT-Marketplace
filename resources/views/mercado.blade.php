@@ -17,17 +17,17 @@
                 .catch(err => err)
             response.data.map((nft) => {
                 inventario.innerHTML += `
-                    <div class="card-nft" id="${nft.id}">
+                    <div class="card-nft" id="${nft.id}" aria-label=" informacion nft" role="menu">
                         <div class="card-image" id="${nft.id}">
-                            <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}" alt="NFT: ${nft.title}, ${nft.description}"></img>
+                            <img id="${nft.id}" name="${nft.title}" src="{{ asset('storage/${nft.photo}') }}" alt="NFT: ${nft.title}, ${nft.description}" tabindex="0">
                         </div>
-                        <div class="card-info">
-                            <a class="card-title" href="{{ env('APP_URL') }}/nfts/${nft.id}">${nft.title}</a>
+                        <div class="card-info" name="card-info" tabindex="0">
+                            <p class="card-title">${nft.title}</p>
                             <a href="{{ env('APP_URL') }}/users/${nft.user_id}">
                                 <div class="card-username">
-                                    <div class="card-photouser"><img src="{{ asset('storage/${nft.userData}') }}" alt="Foto de perfil de ${nft.user_id}"></img></div>
-                                    <div class="card-name">${nft.user_id}</div>
-                                    <div class="card-price">${nft.price}€</div>
+                                    <div class="card-photouser"><img src="{{ asset('storage/${nft.userData}') }}" alt="Foto de perfil de ${nft.user_id}" tabindex="0"></div>
+                                    <div class="card-name" tabindex="0">${nft.user_id}</div>
+                                    <div class="card-price" tabindex="0">${nft.price}€</div>
                                 </div>
                             </a>
                         </div>      

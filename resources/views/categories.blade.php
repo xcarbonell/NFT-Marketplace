@@ -19,7 +19,7 @@
                     <div class="categoria" id="${categories}">
                         <div class="texto_categoria" id="${categories}>
                             <div class="nombre_de_la_categoria" id="${categories}>
-                                <h1 id="${categories}">${categories}</h1>
+                                <h1 id="${categories}" tabindex="0" tabindex="0" aria-label="categorias">${categories}</h1>
                             </div>
                         </div>
                     </div>
