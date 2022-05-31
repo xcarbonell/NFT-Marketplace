@@ -61,7 +61,7 @@
                                 </div>
                                 <div>
                                     <p>CVV</p>
-                                    <input type="tel" placeholder="000"></input>
+                                    <input id="cvv" type="number" min="001" max="999" onKeyUp="if(this.value>999){this.value=999}" placeholder="000"></input>
                                 </div>
                             </div>
                             <div id="nftconfirmar" onclick="creditcardAccepted()">Confirmar</div>
