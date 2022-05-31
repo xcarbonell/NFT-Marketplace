@@ -85,3 +85,7 @@ Route::get('/facturacion', function(){
 })->middleware('admin');
 
 Route::resource('user', Api\UserController::class);
+
+Route::put('/nfts/{id}/putOnStock', 'Api\ShopController@putOnStock')->name('putOnStock');
+
+Route::resource('nft', Api\NftController::class);

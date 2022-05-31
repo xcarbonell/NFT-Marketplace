@@ -27,7 +27,7 @@ Route::get('/benefits', 'Api\OperationController@calculateBenefits')->name('bene
 Route::get('/users/{id}/show', 'Api\UserController@show')->name('user');
 Route::get('/users/{id}/ban', 'Api\UserController@banUser')->name('ban');
 Route::get('/users/{id}/nfts', 'Api\UserController@usersNFT')->name('usersNFT');
-Route::get('/nfts/{id}/putOnStock', 'Api\ShopController@putOnStock')->name('puOnStock');
+Route::get('/nfts/{id}/putOnStock', 'Api\ShopController@putOnStock')->name('putOnStock');
 Route::get('/categories', 'Api\ViewController@categories')->name('categories');
 Route::get('/categories/{category}', 'Api\NftController@indexCategory')->name('category');
 Route::get('/landing', 'Api\ViewController@index')->name('landing');
