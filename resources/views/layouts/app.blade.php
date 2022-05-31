@@ -29,10 +29,7 @@
             <li tabindex="0"><img src="{{ asset('img/Home.png') }}"><a href="/" alt="Imagen de inicio">Inicio</a></li>
             <li tabindex="0"><img src="{{ asset('img/Bag.png') }}"><a href="/mercado" alt="Imagen del mercado">Mercado</a></li>
             @guest
-<<<<<<< HEAD
-=======
             <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
->>>>>>> 1376e59cf3883da2b3dfd0303df8f4517cd81c45
                 <li tabindex="0"><img src="{{ asset('img/Logout.png') }}" alt="Imagen para desloguearse"><a href="/login">Acceso</a></li>
             @endguest
         </ul>
@@ -48,8 +45,6 @@
             @endauth
         </ul>
         @auth
-<<<<<<< HEAD
-=======
         <div class="logout">
             <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
@@ -58,7 +53,6 @@
                 @csrf
             </form>
         </div>
->>>>>>> 1376e59cf3883da2b3dfd0303df8f4517cd81c45
             <div class="logout">
                 <a class="logout" href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();" tabindex="0">
