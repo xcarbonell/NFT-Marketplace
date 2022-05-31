@@ -1,12 +1,11 @@
 @extends('layouts.app')
 @section('content')
     <div class="perfil">
-        <div class="perfil_titulo">
-            <h1>Perfil</h1>
+        <div class="perfil_titulo">Perfil
         </div>
     </div>
 
-    <form method="POST" action="{{ route('user.update', Auth::user()->id) }}">
+    <form id="form-perfil" method="POST" action="{{ route('user.update', Auth::user()->id) }}">
         @method('PUT')
         @csrf
 

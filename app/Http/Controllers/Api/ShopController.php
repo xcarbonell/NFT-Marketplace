@@ -43,6 +43,7 @@ class ShopController extends Controller
             $nft->user_id = $user[0]->name;
             $nft->userData = $user[0]->photo;
         }
+        
         if (count($nfts) == 0) {
             return response()->json([
                 'success' => false,

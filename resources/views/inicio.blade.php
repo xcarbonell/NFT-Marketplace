@@ -2,7 +2,7 @@
 @section('content')
     <div id="herosection">
         <div class="heropart">
-            <img src="{{ asset('img/astronauta.png') }}"></img>
+            <img src="{{ asset('img/astronauta.png') }}" alt="Foto de portada de ENEFTI.SHOP"></img>
         </div>
         <div class="heropart">
             <h1>Bienvenidos al Nuevo Mundo</h1>
@@ -59,7 +59,7 @@
                     <div class="vendedor" id="${vendedor.name}">
                         <div class="icono_texto_vendor" id="${vendedor.name}">
                             <div class="imagen_del_vendedor">
-                                <img id="${vendedor.name}" src="{{ asset('storage/${vendedor.photo}') }}"></img>
+                                <img id="${vendedor.name}" src="{{ asset('storage/${vendedor.photo}') }}" alt="Foto de perfil del usuario ${vendedor.name}"></img>
                             </div>
                             <div id="${vendedor.name}" class="nombre_del_vendedor">
                                 <h1 id="${vendedor.name}">${vendedor.name}</h1>

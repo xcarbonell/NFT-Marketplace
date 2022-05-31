@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,10 @@ Route::get('/vendedores', 'Api\UserController@showSellers')->name('sellers');
 Route::get('/users/{name}', 'Api\UserController@userProfile')->name('userProfile');
 Route::get('/operations/{id}/userOperations', 'Api\OperationController@userOperations')->name('userOperations');
 Route::get('/operations/{id}/{comprador}/transaction', 'Api\OperationController@operation')->name('transaction');
+Route::get('/benefits', 'Api\OperationController@calculateBenefits')->name('benefits');
 Route::get('/users/{id}/show', 'Api\UserController@show')->name('user');
 Route::get('/users/{id}/ban', 'Api\UserController@banUser')->name('ban');
+Route::get('/users/{id}/nfts', 'Api\UserController@usersNFT')->name('usersNFT');
 Route::get('/nfts/{id}/putOnStock', 'Api\ShopController@putOnStock')->name('puOnStock');
 Route::get('/categories', 'Api\ViewController@categories')->name('categories');
 Route::get('/categories/{category}', 'Api\NftController@indexCategory')->name('category');
