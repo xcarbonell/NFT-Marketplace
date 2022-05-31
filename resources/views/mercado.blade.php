@@ -20,13 +20,13 @@
                 inventario.innerHTML += `
                     <div class="card-nft" id="${nft.id}">
                         <div class="card-image" id="${nft.id}">
-                            <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}"></img>
+                            <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}" alt="NFT: ${nft.title}, ${nft.description}"></img>
                         </div>
                         <div class="card-info">
                             <p class="card-title">${nft.title}</p>
                             <a href="{{ env('APP_URL') }}/users/${nft.user_id}">
                                 <div class="card-username">
-                                    <div class="card-photouser"><img src="{{ asset('storage/${nft.userData}') }}"></img></div>
+                                    <div class="card-photouser"><img src="{{ asset('storage/${nft.userData}') }}" alt="Foto de perfil de ${nft.user_id}"></img></div>
                                     <div class="card-name">${nft.user_id}</div>
                                     <div class="card-price">${nft.price}€</div>
                                 </div>

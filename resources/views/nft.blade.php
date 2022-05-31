@@ -45,7 +45,7 @@
                     const confirmation = document.getElementById("confirmation");
                     confirmation.innerHTML += `
                         <div id="creditcard">
-                            <img src="{{ asset('img/Fotonftexample.png') }}"></img>
+                            <img src="{{ asset('img/Fotonftexample.png') }}" alt="Foto de nft de ejemplo"></img>
                             <div id="namecreditcard">
                                 <p>Nombre del titular de la tarjeta</p>
                                 <input type="text" placeholder="Hitori Janai"></input>
@@ -92,7 +92,7 @@
                     const confirmation = document.getElementById("confirmation");
                     confirmation.innerHTML += `
                         <div id="successful">
-                            <img src="{{ asset('img/Group.png') }}"></img>
+                            <img src="{{ asset('img/Group.png') }}" alt="Foto de adquisicion de NFT"></img>
                             <p>¡Enhorabuena has conseguido un nuevo NFT!</p>
                             <div><a href="/mercado">Ir al mercado</a></div>
                         </div>
@@ -114,7 +114,7 @@
                         .then(data => data)
                         .catch(err => err)
                     imgnft.innerHTML += `
-                        <img src="{{ asset('storage/${response.data[0].photo}') }}"></img>
+                        <img src="{{ asset('storage/${response.data[0].photo}') }}" alt="NFT: ${response.data[0].title}, ${response.data[0].description}"></img>
                     `;
                     vendedorusername.innerHTML += `
                         <img src="{{ env('APP_URL') }}/img/sylvia.png">
