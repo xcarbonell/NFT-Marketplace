@@ -29,11 +29,11 @@
                         <div class="card-image">
                         <img src="{{ asset('storage/${nft.photo}') }}"></img>
                     </div>
-                    <div class="card-info">
-                        <p class="card-title">${nft.title}</p>
+                    <div id="${nft.id} class="card-info">
+                        <p id="${nft.id} class="card-title">${nft.title}</p>
                         <div class="card-username">
                             <div class="card-photouser">
-                            <img src="{{ asset('storage/sylvia.png') }}"></img>
+                            <img src="{{ asset('storage/${nft.userData}') }}"></img>
                             </div>
                             <div class="card-name">${nft.user_id}</div>
                             <div class="card-price">
@@ -51,11 +51,10 @@
                 console.log("hola");
                 cardnft[i].addEventListener("click", (e) => {
                     console.log(e.target.parentElement.id);
-                    window.location = '{{ env('APP_URL') }}' + "/nft"
+                    window.location = '{{ env('APP_URL') }}' + `/nfts/${e.target.parentElement.id}`;
                 });
             }
         }
         window.onload = getListNFT();
-        console.log("Prueba");
     </script>
 @endsection

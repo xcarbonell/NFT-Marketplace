@@ -77,6 +77,11 @@ class NftController extends Controller
         //
         $nft = Nft::where('id', $id)->get();
 
+        $user = User::where('id', $nft[0]->user_id)->get();
+
+        $nft[0]->user_id = $user[0]->name;
+        $nft[0]->userData = $user[0]->photo;
+
         if (count($nft) == 0) {
             return response()->json([
                 'success' => false,

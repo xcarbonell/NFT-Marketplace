@@ -183,7 +183,6 @@ class UserController extends Controller
     {
         //
         $user = User::find($request->userid);
-        //dd($request->email);
 
         $validated = $request->validate([
             'user' => 'required|max:50',
@@ -193,8 +192,6 @@ class UserController extends Controller
             'confirm_password' => 'nullable|max:100',
             'photo' => 'nullable'
         ]);
-
-        //dd($request);
 
         if (!Hash::check($validated['curentpassword'], $user->password)) {
             return back();
@@ -276,6 +273,13 @@ class UserController extends Controller
     public function usersNFT($id)
     {
         $nfts = Nft::where('user_id', $id)->get();
+
+        $user = User::where('id', $id)->get(['name', 'photo']);
+
+        foreach ($nfts as $nft) {
+            $nft->user_id = $user[0]->name;
+            $nft->userData = $user[0]->photo;
+        }
 
         if (count($nfts) == 0) {
             return response()->json([

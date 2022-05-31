@@ -20,7 +20,7 @@
                 inventario.innerHTML += `
                     <div class="card-nft" id="${nft.id}">
                         <div class="card-image" id="${nft.id}">
-                            <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}"></img>
+                            <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}" alt="NFT: ${nft.title}. ${nft.description}"></img>
                         </div>
                         <div class="card-info">
                             <p class="card-title">${nft.title}</p>
