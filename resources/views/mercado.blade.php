@@ -21,8 +21,8 @@
                         <div class="card-image" id="${nft.id}">
                             <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}" alt="NFT: ${nft.title}, ${nft.description}" tabindex="0">
                         </div>
-                        <div class="card-info" name="card-info" tabindex="0">
-                            <p class="card-title">${nft.title}</p>
+                        <div class="card-info" name="card-info" tabindex="0"  id="${nft.id}">
+                            <p class="card-title" id="${nft.id}">${nft.title}</p>
                             <a href="{{ env('APP_URL') }}/users/${nft.user_id}">
                                 <div class="card-username">
                                     <div class="card-photouser"><img src="{{ asset('storage/${nft.userData}') }}" alt="Foto de perfil de ${nft.user_id}" tabindex="0"></div>
