@@ -11,20 +11,13 @@
                     <div id="venededorusername">
 
                     </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
                     <div id="nft-titlecomprar"></div>
                     <div id="vendedordescription">
-=======
                     <div id="vendedordescription" tabindex="0">
->>>>>>> cb9000db8d2ae7bfbbbf5a29e98c43ec9257d87f
-=======
 
                     <div id="nft-titlecomprar"></div>
 
                     <div id="vendedordescription" tabindex="0">
-
->>>>>>> 6eddadedfdb5222e1f7774dc4cfd6995ed6411f0
                         Me encanta este nft super curioso y grande, por eso lo vendo a un precio muy asequible.
                     </div>
                     <div id="pricefinal">
