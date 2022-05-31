@@ -1,9 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="transacciones">
-        <div class="titulo">
-            <h1>Transacciones</h1>
-        </div>
+        <div class="titulo">Transacciones</div>
     </div>
     <div class="transacciones_tabla">
 
