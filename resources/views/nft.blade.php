@@ -11,11 +11,13 @@
                     <div id="venededorusername">
 
                     </div>
+                    <div id="nft-titlecomprar"></div>
+                    <div id="vendedordescription">
+                    <div id="vendedordescription" tabindex="0">
 
                     <div id="nft-titlecomprar"></div>
 
                     <div id="vendedordescription" tabindex="0">
-
                         Me encanta este nft super curioso y grande, por eso lo vendo a un precio muy asequible.
                     </div>
                     <div id="pricefinal">
@@ -153,6 +155,9 @@
                     const botoncomprar = document.getElementById("botoncomprar");
                     if(response.data[0].onStock == "0"){
                         botoncomprar.remove();
+                    }
+                    if(response.data[0].price == "0"){
+                        price.innerHTML = "No está en venta";
                     }
                 }
                 getNFTIndividual();

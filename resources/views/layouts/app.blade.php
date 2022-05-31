@@ -16,7 +16,10 @@
     <link href="{{ asset('css/nft.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/inicio.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/vendedor.css') }}" rel="stylesheet" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -26,6 +29,10 @@
             <li tabindex="0"><img src="{{ asset('img/Home.png') }}"><a href="/" alt="Imagen de inicio">Inicio</a></li>
             <li tabindex="0"><img src="{{ asset('img/Bag.png') }}"><a href="/mercado" alt="Imagen del mercado">Mercado</a></li>
             @guest
+<<<<<<< HEAD
+=======
+            <li><img src="{{ asset('img/Logout.png') }}"></img><a href="/login">Acceso</a></li>
+>>>>>>> 1376e59cf3883da2b3dfd0303df8f4517cd81c45
                 <li tabindex="0"><img src="{{ asset('img/Logout.png') }}" alt="Imagen para desloguearse"><a href="/login">Acceso</a></li>
             @endguest
         </ul>
@@ -41,6 +48,17 @@
             @endauth
         </ul>
         @auth
+<<<<<<< HEAD
+=======
+        <div class="logout">
+            <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+            </form>
+        </div>
+>>>>>>> 1376e59cf3883da2b3dfd0303df8f4517cd81c45
             <div class="logout">
                 <a class="logout" href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();" tabindex="0">
