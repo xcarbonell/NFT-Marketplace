@@ -17,17 +17,20 @@
                                         <div id="venededorusername">
                                         </div>
                                         <div id="vendedordescription">
-                                            Me encanta este nft super curioso y grande, por eso lo vendo a un precio muy
-                                            asequible.
+
                                         </div>
-                                        <form method="POST" action="">
+                                        <div id="infoventa">
+
+                                        </div>
+                                        <form method="POST" action="{{ route('putOnStock', 1) }}">
                                             @method('PUT')
                                             @csrf
                                             <div id="pricefinal">
-                                                <div id="price"><input type="number"/></div>
-                                                <button id="botonvender">Vender</button>
+                                                <input id="price" name="price" type="number" />
+                                                <input hidden id="nftid" name="nftid" type="text" value="0">
+                                                <input id="botonvender" type="submit" value="Vender">
                                             </div>
-                                        <form>
+                                            <form>
                                     </div>
 
                                 </div>
@@ -42,6 +45,9 @@
                                 const nftimg = document.getElementById("imgnft");
                                 const username = document.getElementById("venededorusername");
                                 const btnVender = document.getElementById("botonvender");
+                                const desc = document.getElementById("vendedordescription");
+                                const divnftid = document.getElementById("nftid");
+                                const infoventa = document.getElementById("infoventa");
 
                                 const getNFTIndividual = async () => {
                                     const response = await fetch(`{{ env('APP_URL') }}/api/nfts/${id}`)
@@ -51,6 +57,7 @@
                                         .then(data => data)
                                         .catch(err => err)
                                     console.log(response);
+                                    divnftid.value = response.data[0].id;
                                     nftimg.innerHTML += `
                                         <img src="{{ asset('storage/${response.data[0].photo}') }}" alt="NFT: ${response.data[0].title}, ${response.data[0].description}"></img>
                                     `;
@@ -58,12 +65,13 @@
                                         <img src="{{ asset('storage/${response.data[0].userData}') }}">
                                         ${response.data[0].user_id}
                                     `;
+                                    desc.innerHTML += `
+                                        ${response.data[0].description}
+                                    `;
+                                    if (response.data[0].onStock) {
+                                        infoventa.innerHTML += "<p>Este item ya está en venta, pero si quieres puedes actualizar su precio. Si lo quieres quitar del mercado, pon que el precio sea 0</p>";
+                                    }
                                 }
-
-                                btnVender.addEventListener("click", async (e) =>{
-                                    console.log('hola')
-                                })
-
                                 getNFTIndividual();
                             </script>
                         @endsection

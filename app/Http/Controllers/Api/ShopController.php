@@ -13,12 +13,12 @@ class ShopController extends Controller
 
 
     public function __construct()
-        {
-            
-            //$this->authorizeResource(Shop::class, 'shop');
-            //$this->middleware('auth');
+    {
 
-        }
+        //$this->authorizeResource(Shop::class, 'shop');
+        //$this->middleware('auth');
+
+    }
     /**
      * Lista de NFT en venta.
      *
@@ -34,7 +34,7 @@ class ShopController extends Controller
             $role = Auth::user()->role_id;
             $this->authorize('shop-nft', $role);
         }*/
-        
+
 
         $nfts = Nft::where('onStock', 1)->get(['id', 'title', 'price', 'user_id', 'category', 'photo', 'userData']);
 
@@ -43,7 +43,7 @@ class ShopController extends Controller
             $nft->user_id = $user[0]->name;
             $nft->userData = $user[0]->photo;
         }
-        
+
         if (count($nfts) == 0) {
             return response()->json([
                 'success' => false,
@@ -54,8 +54,6 @@ class ShopController extends Controller
             'success' => true,
             'data' => $nfts->toArray()
         ], 200);
-
-        
     }
 
     /**
@@ -133,21 +131,32 @@ class ShopController extends Controller
     public function putOnStock($id, Request $request)
     {
         //
-        $nft = Nft::where('id', $id)->get();
+        $nft = Nft::find($request->nftid);
 
-        $nft->onStock = true;
-        $nft->price = $request->price;
+        $validated = $request->validate([
+            'price' => 'required'
+        ]);
 
-        if (!$nft->save()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'This NFT cannot be sold'
-            ], 200);
+        if ($validated['price'] < 0) {
+            return back();
         }
 
-        return response()->json([
-            'success' => true,
-            'data' => 'NFT got put on stock correctly'
-        ], 200);
+        if ($validated['price'] > 0) {
+            $nft->onStock = true;
+        }
+
+        if ($validated['price'] == 0) {
+            $nft->onStock = false;
+        }
+
+        if ($request->price) {
+            $nft->price = $validated['price'];
+        }
+
+        $nft->updated_at = now();
+
+        $nft->save();
+
+        return back();
     }
 }
