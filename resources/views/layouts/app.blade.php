@@ -34,6 +34,11 @@
             <li><a href="/perfil"><img src="{{ asset('img/Profile.png') }}"></img>Mi perfil</a></li>
             <li><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a></li>
             <li><a href="/inventario"><img src="{{ asset('img/Bookmark.png') }}"></img>Inventario</a></li>
+            @auth
+                @if(Auth::user()->role_id == 1)
+                    <li><a href="/facturacion"><img src="{{ asset('img/Bookmark.png') }}"></img>Facturación</a></li>
+                @endif
+            @endauth
         </ul>
         @auth
             <div class="logout">
@@ -64,6 +69,11 @@
                     <li><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a>
                     </li>
                     <li><a href="/inventario"><img src="{{ asset('img/Bookmark.png') }}"></img>Inventario</a></li>
+                    @auth
+                        @if(Auth::user()->role_id == 1)
+                            <li><a href="/facturacion"><img src="{{ asset('img/Bookmark.png') }}"></img>Facturación</a></li>
+                        @endif
+                    @endauth
                 </ul>
                 <div class="logout">
                     <a class="logout" href="{{ route('logout') }}"
