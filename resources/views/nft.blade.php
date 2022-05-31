@@ -46,12 +46,20 @@
                     }
                 });
 
-                function addCard() {
+                async function addCard() {
+                    const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+                    const response = await fetch(`{{ env('APP_URL') }}/api/nfts/${id}`)
+                        .then(res => {
+                            return res.json();
+                        })
+                        .then(data => data)
+                        .catch(err => err)
+                    console.log(response);
                     const confirmation = document.getElementById("confirmation");
                     confirmation.innerHTML += `
                         <div id="creditcard">
                             <span id="closewindow">X</span>
-                            <img src="{{ asset('img/Fotonftexample.png') }}" alt="Foto de nft de ejemplo"></img>
+                            <img src="{{ asset('storage/${response.data[0].photo}') }}" alt="Foto de nft de ejemplo"></img>
                             <div id="namecreditcard">
                                 <p>Nombre del titular de la tarjeta</p>
                                 <input type="text" placeholder="Hitori Janai"></input>
