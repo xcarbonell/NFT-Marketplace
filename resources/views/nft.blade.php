@@ -2,62 +2,70 @@
 @section('content')
     <div id="headercomprar">Comprar</div>
     <div id="backcompra">
-        <- NFT Características</div>
-            <div id="comprarnft">
-                <div id="imgnft">
+        NFT Características</div>
+    <div id="comprarnft">
+        <div id="imgnft">
 
-                </div>
-                <div id="compra">
-                    <div id="venededorusername">
+        </div>
+        <div id="compra">
+            <div id="venededorusername">
 
-                    </div>
-                    <div id="nft-titlecomprar"></div>
-                    <div id="vendedordescription">
-                        Me encanta este nft super curioso y grande, por eso lo vendo a un precio muy asequible.
-                    </div>
-                    <div id="pricefinal">
-                        <div id="price">Calculando</div>
-                        @auth
-                            <div id="botoncomprar">Comprar</div>
-                        @endauth
-                    </div>
-
-                </div>
+            </div>
+            <div id="nft-titlecomprar"></div>
+            <div id="vendedordescription">
+                Me encanta este nft super curioso y grande, por eso lo vendo a un precio muy asequible.
+            </div>
+            <div id="pricefinal">
+                <div id="price">Calculando</div>
+            </div>
+            <div id="divcomprar">
                 @auth
-                    <div id="userid" hidden>{{ Auth::user()->id }}</div>
+                    @if (Auth::user()->role_id == 1)
+                        <div id="botoncomprar">Comprar</div>
+                    @endif
                 @endauth
             </div>
-            <script>
-                const comprar = document.getElementById("botoncomprar");
+            <div id="vendernft">
 
-                comprar.addEventListener("click", () => {
-                    console.log("works");
-                    const div = document.createElement("div");
-                    div.id = "confirmation";
+            </div>
+        </div>
+        @auth
+            <div id="userid" hidden>{{ Auth::user()->id }}</div>
+        @endauth
+        @auth
+            <div id="username" hidden>{{ Auth::user()->name }}</div>
+        @endauth
+    </div>
+    <script>
+        const comprar = document.getElementById("divcomprar");
 
-                    document.body.appendChild(div);
-                    addCard();
-                });
-                document.body.addEventListener("mousedown", (e) => {
-                    if (e.target.id === "closewindow") {
-                        e.target.parentElement.parentElement.remove();
-                    }
-                    if (e.target.id === "confirmation") {
-                        e.target.remove();
-                    }
-                });
+        comprar.addEventListener("click", () => {
+            const div = document.createElement("div");
+            div.id = "confirmation";
 
-                async function addCard() {
-                    const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-                    const response = await fetch(`{{ env('APP_URL') }}/api/nfts/${id}`)
-                        .then(res => {
-                            return res.json();
-                        })
-                        .then(data => data)
-                        .catch(err => err)
-                    console.log(response);
-                    const confirmation = document.getElementById("confirmation");
-                    confirmation.innerHTML += `
+            document.body.appendChild(div);
+            addCard();
+        });
+        document.body.addEventListener("mousedown", (e) => {
+            if (e.target.id === "closewindow") {
+                e.target.parentElement.parentElement.remove();
+            }
+            if (e.target.id === "confirmation") {
+                e.target.remove();
+            }
+        });
+
+        async function addCard() {
+            const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+            const response = await fetch(`{{ env('APP_URL') }}/api/nfts/${id}`)
+                .then(res => {
+                    return res.json();
+                })
+                .then(data => data)
+                .catch(err => err)
+            console.log(response);
+            const confirmation = document.getElementById("confirmation");
+            confirmation.innerHTML += `
                         <div id="creditcard">
                             <span id="closewindow">X</span>
                             <img src="{{ asset('storage/${response.data[0].photo}') }}" alt="Foto de nft de ejemplo"></img>
@@ -78,41 +86,37 @@
                             <div id="nftconfirmar" onclick="creditcardAccepted()">Confirmar</div>
                         </div>
                     `;
-                }
-                async function comprarNFT() {
-                    console.log("funciona");
-                    console.log("-----------------------------");
-                    const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-                    const userid = document.getElementById("userid").textContent;
-                    const response = await fetch('{{ env('APP_URL') }}' + `/api/operations/${id}/${userid}/transaction`)
-                        .then(res => res.json())
-                        .then(data => data)
-                        .catch(err => err)
-                    console.log(response);
-                    return response;
-                }
+        }
+        async function comprarNFT() {
+            const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+            const userid = document.getElementById("userid").textContent;
+            const response = await fetch('{{ env('APP_URL') }}' + `/api/operations/${id}/${userid}/transaction`)
+                .then(res => res.json())
+                .then(data => data)
+                .catch(err => err)
+            console.log(response);
+            return response;
+        }
 
-                async function creditcardAccepted() {
-                    console.log("works");
-                    
-                    const response = await comprarNFT();
-                    if(response.success){
-                        document.getElementById("confirmation").remove();
-                    const div = document.createElement("div");
-                    div.id = "confirmation";
+        async function creditcardAccepted() {
+            const response = await comprarNFT();
+            if (response.success) {
+                document.getElementById("confirmation").remove();
+                const div = document.createElement("div");
+                div.id = "confirmation";
 
-                    document.body.appendChild(div);
-                    successfulWindow();
-                    return;
-                    }
-                    const confirm = document.getElementById("confirmation");
-                    confirm.remove();
-                    
-                }
+                document.body.appendChild(div);
+                successfulWindow();
+                return;
+            }
+            const confirm = document.getElementById("confirmation");
+            confirm.remove();
 
-                function successfulWindow() {
-                    const confirmation = document.getElementById("confirmation");
-                    confirmation.innerHTML += `
+        }
+
+        function successfulWindow() {
+            const confirmation = document.getElementById("confirmation");
+            confirmation.innerHTML += `
                         <div id="successful">
                             <img src="{{ asset('img/Group.png') }}" alt="Foto de adquisicion de NFT"></img>
                             <p>¡Enhorabuena has conseguido un nuevo NFT!</p>
@@ -120,41 +124,46 @@
                         </div>
         
                     `;
-                }
-                const getNFTIndividual = async () => {
-                    const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-                    const imgnft = document.getElementById("imgnft");
-                    const userid = document.getElementById("userid");
-                    const vendedorusername = document.getElementById("venededorusername");
-                    const vendedordescription = document.getElementById("vendedordescription");
-                    const price = document.getElementById("price");
-                    const confirmar = document.getElementById("nftconfirmar");
-                    const nfttitle = document.getElementById("nft-titlecomprar");
-                    const response = await fetch(`{{ env('APP_URL') }}/api/nfts/${id}`)
-                        .then(res => {
-                            return res.json();
-                        })
-                        .then(data => data)
-                        .catch(err => err)
-                    console.log(response);
-                    imgnft.innerHTML += `
+        }
+        const getNFTIndividual = async () => {
+            const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+            const imgnft = document.getElementById("imgnft");
+            const userid = document.getElementById("userid");
+            const username = document.getElementById("username");
+            const vendernft = document.getElementById("vendernft");
+            const vendedorusername = document.getElementById("venededorusername");
+            const vendedordescription = document.getElementById("vendedordescription");
+            const price = document.getElementById("pricefinal");
+            const confirmar = document.getElementById("nftconfirmar");
+            const nfttitle = document.getElementById("nft-titlecomprar");
+            const response = await fetch(`{{ env('APP_URL') }}/api/nfts/${id}`)
+                .then(res => {
+                    return res.json();
+                })
+                .then(data => data)
+                .catch(err => err)
+            console.log(response);
+            imgnft.innerHTML += `
                         <img src="{{ asset('storage/${response.data[0].photo}') }}" alt="NFT: ${response.data[0].title}, ${response.data[0].description}"></img>
                     `;
-                    vendedorusername.innerHTML += `
+            vendedorusername.innerHTML += `
                         <img src="{{ asset('storage/${response.data[0].userData}') }}">
                         ${response.data[0].user_id}
                     `;
-                    vendedordescription.innerHTML = response.data[0].description;
-                    price.innerHTML = response.data[0].price + ' €';
-                    nfttitle.innerHTML = response.data[0].title;
-                    const botoncomprar = document.getElementById("botoncomprar");
-                    if(response.data[0].onStock == "0"){
-                        botoncomprar.remove();
-                    }
-                    if(response.data[0].price == "0"){
-                        price.innerHTML = "No está en venta";
-                    }
-                }
-                getNFTIndividual();
-            </script>
-        @endsection
+            vendedordescription.innerHTML = response.data[0].description;
+            price.innerHTML = response.data[0].price + ' €';
+            nfttitle.innerHTML = response.data[0].title;
+            const botoncomprar = document.getElementById("divcomprar");
+            if (username.innerHTML == response.data[0].user_id) {
+                vendernft.innerHTML += `
+                        <a href="{{ env('APP_URL') }}/vender/${id}"><button>Poner en venta</button></a>
+                    `;
+            }
+            if (response.data[0].onStock == "0") {
+                price.innerHTML = "Este NFT no está en venta";
+                botoncomprar.remove();
+            }
+        }
+        getNFTIndividual();
+    </script>
+@endsection
