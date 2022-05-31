@@ -38,6 +38,9 @@
                     addCard();
                 });
                 document.body.addEventListener("mousedown", (e) => {
+                    if (e.target.id === "closewindow") {
+                        e.target.parentElement.parentElement.remove();
+                    }
                     if (e.target.id === "confirmation") {
                         e.target.remove();
                     }
@@ -47,6 +50,7 @@
                     const confirmation = document.getElementById("confirmation");
                     confirmation.innerHTML += `
                         <div id="creditcard">
+                            <span id="closewindow">X</span>
                             <img src="{{ asset('img/Fotonftexample.png') }}" alt="Foto de nft de ejemplo"></img>
                             <div id="namecreditcard">
                                 <p>Nombre del titular de la tarjeta</p>
@@ -59,7 +63,7 @@
                                 </div>
                                 <div>
                                     <p>CVV</p>
-                                    <input type="tel" placeholder="000"></input>
+                                    <input id="cvv" type="number" min="001" max="999" onKeyUp="if(this.value>999){this.value=999}" placeholder="000"></input>
                                 </div>
                             </div>
                             <div id="nftconfirmar" onclick="creditcardAccepted()">Confirmar</div>
@@ -115,6 +119,7 @@
                         })
                         .then(data => data)
                         .catch(err => err)
+                    console.log(response);
                     imgnft.innerHTML += `
                         <img src="{{ asset('storage/${response.data[0].photo}') }}" alt="NFT: ${response.data[0].title}, ${response.data[0].description}"></img>
                     `;
