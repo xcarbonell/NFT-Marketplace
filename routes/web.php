@@ -64,7 +64,7 @@ Route::get('/foto', function(){
     return view("foto");
 });
 
-Route::get('/vender', function(){
+Route::get('/vender/{id}', function(){
     return view("vender");
 });
 

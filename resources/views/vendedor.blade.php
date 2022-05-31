@@ -37,7 +37,7 @@
                 .catch(err => err)
             mostrar.innerHTML += `
                 <div class="vendedor_foto_imagen">
-                    <img src="{{ asset('storage/${response.user.photo}') }}" alt="">
+                    <img src="{{ asset('storage/${response.user.photo}') }}" alt="Foto de perfil de ${response.user.name}">
                 </div>
                 <div class="vendedor_name">
                     <h1>${response.user.name}</h1>
@@ -56,13 +56,13 @@
                 inventario.innerHTML += `
                 <div class="vendor_card-nft" id="${nft.id}">
                     <div class="card-image" id="${nft.id}">
-                        <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}">
+                        <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}" alt="NFT: ${nft.title}, ${nft.description}">
                     </div>
                     <div id="${nft.id}" class="card-info">
                         <p class="card-title">${nft.title}</p>
                         <div id="${nft.id}" class="card-username">
                             <div class="card-photouser">
-                                <img src="{{ asset('storage/${response.user.photo}') }}">
+                                <img src="{{ asset('storage/${response.user.photo}') }}" alt="Foto de perfil de ${response.user.name}">
                             </div>
                             <div class="card-name">${response.user.name}</div>
                             <div class="card-price">
