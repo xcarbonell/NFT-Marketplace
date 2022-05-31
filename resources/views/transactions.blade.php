@@ -6,12 +6,7 @@
         </div>
     </div>
     <div class="transacciones_tabla">
-        @auth
-            @if (Auth::user()->role_id == 1)
-                <button id="btnBenefits">Mostrar Beneficios</button>
-                <div id="divBenefits"></div>
-            @endif
-        @endauth
+
         <br>
         <div class="transacciones_info">
             <div class="transaccion">
@@ -45,8 +40,6 @@
         const precio_transaccion = document.getElementsByClassName("precio_transaccion");
         const informacion_transacciones = document.getElementsByClassName("transacciones_tabla")[0];
         const userid = document.getElementById("userid");
-        const divBenefits = document.getElementById("divBenefits");
-        const showBenefits = document.getElementById("btnBenefits");
 
         async function getTransactions() {
             const tabla = document.getElementsByClassName("transacciones_tabla");
@@ -57,46 +50,36 @@
                 .then(data => data)
                 .catch(err => err)
             console.log(response);
-            const lista = [...response.bought, ...response.sold];
-            console.log(lista);
-            lista.map(data => {
-                const date = new Date(data.created_at);
+            response.data.map(operation => {
+                const date = new Date(operation.created_at);
                 const fullDate = date.getDate() + "/" + date.getMonth() + "/" + date.getUTCFullYear();
 
                 informacion_transacciones.innerHTML += `
                 <div class="informacion_transacciones">
                     <div class="id_transaccion">
-                        <h1>${data.id}</h1>
+                        <h1>${operation.id}</h1>
                     </div>
                     <div class="fecha_transaccion">
                         <h1>${fullDate}</h1>
                     </div>
                     <div class="comprador_transaccion">
-                        <h1>${data.buyer_id}</h1>
+                        <h1>${operation.buyer_id}</h1>
                     </div>
                     <div class="vendedor_transaccion">
-                        <h1>${data.seller_id}</h1>
+                        <h1>${operation.seller_id}</h1>
                     </div>
                     <div class="precio_transaccion">
-                        <h1>${data.price}</h1>
+                        <h1>${operation.price}</h1>
                     </div>
                 </div>  
-            `});
+            `
+            });
         };
 
-        showBenefits.addEventListener("click", (e) => {
-            getBenefits();
-        })
+        /*showBenefits.addEventListener("click", () => {
+            console.log('hola');
+        })*/
 
-        async function getBenefits() {
-            const responseBenefits = await fetch(`{{ env('APP_URL') }}/api/benefits`)
-                .then(res => {
-                    return res.json();
-                })
-                .then(data => data)
-                .catch(err => err)
-            divBenefits.innerHTML = `${responseBenefits.data} €`
-        }
-        getTransactions();
+        window.onload = getTransactions();
     </script>
 @endsection

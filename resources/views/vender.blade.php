@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<<<<<<< HEAD
 <div id="nftindividual">
     <div class="headercomprar">Comprar</div>
     <div id="caracteristicasnft">
@@ -25,11 +26,22 @@
                         <- NFT Características</div>
                             <div id="comprarnft">
                                 <div id="imgnft">
+=======
+    <div id="nftindividual">    
+        <div id="caracteristicasnft">
+            <div id="nft-title">
+                <div id="nft-information">
+                        <div id="backcompra">
+                            <- NFT Características</div>
+                                <div id="comprarnft">
+                                    <div id="imgnft">
+>>>>>>> 787780f4590e2921d5ff368474ee8c4cbf7280cc
 
                                 </div>
                                 <div id="compra">
                                     <div id="venededorusername">
                                     </div>
+<<<<<<< HEAD
                                     <div id="vendedordescription">
                                         Me encanta este nft super curioso y grande, por eso lo vendo a un precio muy
                                         asequible.
@@ -37,6 +49,22 @@
                                     <div id="pricefinal">
                                         <div id="price">Calculando</div>
                                         <div id="botonvender">vender</div>
+=======
+                                    <div id="compra">
+                                        <div id="venededorusername">
+                                        </div>
+                                        <div id="vendedordescription">
+                                            Me encanta este nft super curioso y grande, por eso lo vendo a un precio muy
+                                            asequible.
+                                        </div>
+                                        <form method="POST">
+                                            @csrf
+                                            <div id="pricefinal">
+                                                <div id="price"><input type="number"/></div>
+                                                <div id="botonvender">vender</div>
+                                            </div>
+                                        <form>
+>>>>>>> 787780f4590e2921d5ff368474ee8c4cbf7280cc
                                     </div>
 
                                 </div>

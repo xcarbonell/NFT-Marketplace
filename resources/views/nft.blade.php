@@ -38,16 +38,28 @@
                     addCard();
                 });
                 document.body.addEventListener("mousedown", (e) => {
+                    if (e.target.id === "closewindow") {
+                        e.target.parentElement.parentElement.remove();
+                    }
                     if (e.target.id === "confirmation") {
                         e.target.remove();
                     }
                 });
 
-                function addCard() {
+                async function addCard() {
+                    const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+                    const response = await fetch(`{{ env('APP_URL') }}/api/nfts/${id}`)
+                        .then(res => {
+                            return res.json();
+                        })
+                        .then(data => data)
+                        .catch(err => err)
+                    console.log(response);
                     const confirmation = document.getElementById("confirmation");
                     confirmation.innerHTML += `
                         <div id="creditcard">
-                            <img src="{{ asset('img/Fotonftexample.png') }}"></img>
+                            <span id="closewindow">X</span>
+                            <img src="{{ asset('storage/${response.data[0].photo}') }}" alt="Foto de nft de ejemplo"></img>
                             <div id="namecreditcard">
                                 <p>Nombre del titular de la tarjeta</p>
                                 <input type="text" placeholder="Hitori Janai"></input>
@@ -59,7 +71,7 @@
                                 </div>
                                 <div>
                                     <p>CVV</p>
-                                    <input type="tel" placeholder="000"></input>
+                                    <input id="cvv" type="number" min="001" max="999" onKeyUp="if(this.value>999){this.value=999}" placeholder="000"></input>
                                 </div>
                             </div>
                             <div id="nftconfirmar" onclick="creditcardAccepted()">Confirmar</div>
@@ -94,7 +106,7 @@
                     const confirmation = document.getElementById("confirmation");
                     confirmation.innerHTML += `
                         <div id="successful">
-                            <img src="{{ asset('img/Group.png') }}"></img>
+                            <img src="{{ asset('img/Group.png') }}" alt="Foto de adquisicion de NFT"></img>
                             <p>¡Enhorabuena has conseguido un nuevo NFT!</p>
                             <div><a href="/mercado">Ir al mercado</a></div>
                         </div>
@@ -115,8 +127,9 @@
                         })
                         .then(data => data)
                         .catch(err => err)
+                    console.log(response);
                     imgnft.innerHTML += `
-                        <img src="{{ asset('storage/${response.data[0].photo}') }}"></img>
+                        <img src="{{ asset('storage/${response.data[0].photo}') }}" alt="NFT: ${response.data[0].title}, ${response.data[0].description}"></img>
                     `;
                     vendedorusername.innerHTML += `
                         <img src="{{ asset('storage/${response.data[0].userData}') }}">

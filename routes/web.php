@@ -64,7 +64,7 @@ Route::get('/foto', function(){
     return view("foto");
 });
 
-Route::get('/vender', function(){
+Route::get('/vender/{id}', function(){
     return view("vender");
 });
 
@@ -79,5 +79,9 @@ Route::get('/categories', function(){
 Route::get('/baneado', function(){
     return view("baneado");
 });
+
+Route::get('/facturacion', function(){
+    return view("benefits");
+})->middleware('admin');
 
 Route::resource('user', Api\UserController::class);
