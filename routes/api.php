@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,9 @@ Route::get('/categories/{category}', 'Api\NftController@indexCategory')->name('c
 Route::get('/landing', 'Api\ViewController@index')->name('landing');
 Route::get('/home', 'Api\ViewController@loggedIndex')->name('home');
 Route::get('/operation/{id}/{comprador}', 'Api\OperationController@operation')->name('operation');
+Route::get('/home', function(){
+    return view("home");
+})->middleware('admin');
 Route::resource('nfts', 'Api\NftController');
 Route::resource('roles', 'Api\RoleController');
 Route::resource('users', 'Api\UserController');
