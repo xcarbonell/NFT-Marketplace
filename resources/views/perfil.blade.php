@@ -5,16 +5,27 @@
         </div>
     </div>
 
+
     <form id="form-perfil" method="POST" action="{{ route('user.update', Auth::user()->id) }}" aria-label="form-perfil">
         @method('PUT')
         @csrf
 
         <div class="perfil_foto">
             <div class="_perfil_foto_imagen">
-                <img src="" alt="Foto de perfil del usuario" id="imagen-user" aria-label="imagen-user">
+                <img src="" alt="Foto de perfil del usuario" id="imagen-user">
             </div>
             <input type="file" name="photo" id="photo">
-        </div>
+    @auth
+        <form id="form-perfil" method="POST" action="{{ route('user.update', Auth::user()->id) }}">
+            @method('PUT')
+            @csrf
+
+            <div class="perfil_foto">
+                <div class="_perfil_foto_imagen">
+                    <img src="" alt="Foto de perfil del usuario" id="imagen-user">
+                </div>
+                <input type="file" name="photo" id="photo">
+            </div>
 
         <div class="editar_perfil">
             <div class="correo">
@@ -36,15 +47,16 @@
                 <input type="password" id="curentpassword" name="curentpassword" placeholder="Contraseña actual" tabindex="0">
             </div>
             @auth
-                <div hidden>
-                    <input hidden type="text" id="userid" name="userid" value="{{ Auth::user()->id }}">
-                </div>
-            @endauth
+                    <div hidden>
+                        <input hidden type="text" id="userid" name="userid" value="{{ Auth::user()->id }}">
+                    </div>
+                @endauth
 
-            <div class="btn_save_perfil">
-                <button type="submit" tabindex="0">Guardar perfil</button>
-            </div>
-    </form>
+                <div class="btn_save_perfil">
+                    <button type="submit" tabindex="0">Guardar perfil</button>
+                </div>
+        </form>
+    @endauth
     </div>
     <script>
         const userid = document.getElementById("userid");

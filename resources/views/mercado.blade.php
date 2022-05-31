@@ -4,7 +4,6 @@
     <div id="inventario">
     </div>
     <script>
-        //api/shops
         const cardnft = document.getElementsByClassName("card-nft");
         const carduser = document.getElementsByClassName("card-username");
         const button = document.getElementById("buttonbut");
@@ -47,17 +46,6 @@
                 });
             }
         }
-        /*
-        function onClickUserInfo(){
-            for (let i = 0; i < carduser.length; i++) {
-                carduser[i].addEventListener("click", (e) => {
-                    if (e.target.parentElement.id !== "inventario") {
-                        window.location = '{{ env('APP_URL') }}' + `/users/${e.target.parentElement.id}`
-                    }
-                });
-            }
-        }*/
         window.onload = getListNFT();
-        console.log("Prueba");
     </script>
 @endsection

@@ -138,7 +138,7 @@ class ShopController extends Controller
         $nft->onStock = true;
         $nft->price = $request->price;
 
-        if (!$nft->update()) {
+        if (!$nft->save()) {
             return response()->json([
                 'success' => false,
                 'message' => 'This NFT cannot be sold'

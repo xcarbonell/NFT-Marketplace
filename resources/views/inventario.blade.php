@@ -48,7 +48,6 @@
 
         function onClickCard() {
             for (let i = 0; i < cardnft.length - 1; i++) {
-                console.log("hola");
                 cardnft[i].addEventListener("click", (e) => {
                     console.log(e.target.parentElement.id);
                     window.location = '{{ env('APP_URL') }}' + `/nfts/${e.target.parentElement.id}`;

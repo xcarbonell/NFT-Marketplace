@@ -38,16 +38,28 @@
                     addCard();
                 });
                 document.body.addEventListener("mousedown", (e) => {
+                    if (e.target.id === "closewindow") {
+                        e.target.parentElement.parentElement.remove();
+                    }
                     if (e.target.id === "confirmation") {
                         e.target.remove();
                     }
                 });
 
-                function addCard() {
+                async function addCard() {
+                    const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+                    const response = await fetch(`{{ env('APP_URL') }}/api/nfts/${id}`)
+                        .then(res => {
+                            return res.json();
+                        })
+                        .then(data => data)
+                        .catch(err => err)
+                    console.log(response);
                     const confirmation = document.getElementById("confirmation");
                     confirmation.innerHTML += `
                         <div id="creditcard" aria-label="informacion tarjeta de credito">
-                            <img src="{{ asset('img/Fotonftexample.png') }}" alt="Foto de nft de ejemplo" tabindex="0">
+                            <span id="closewindow">X</span>
+                            <img src="{{ asset('storage/${response.data[0].photo}') }}" alt="Foto de nft de ejemplo" tabindex="0">
                             <div id="namecreditcard">
                                 <p tabindex="0">Nombre del titular de la tarjeta</p>
                                 <input type="text" placeholder="Hitori Janai" tabindex="0"></input>
@@ -115,6 +127,7 @@
                         })
                         .then(data => data)
                         .catch(err => err)
+                    console.log(response);
                     imgnft.innerHTML += `
                         <img src="{{ asset('storage/${response.data[0].photo}') }}" alt="NFT: ${response.data[0].title}, ${response.data[0].description}" tabindex="0" aria-label="Imagen NFT">
                     `;

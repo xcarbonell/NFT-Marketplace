@@ -45,7 +45,7 @@ class OperationController extends Controller
 
         return response()->json([
             'success' => true,
-            'bought' => $operations->toArray()
+            'data' => $operations->toArray()
         ], 200);
     }
 
@@ -123,23 +123,14 @@ class OperationController extends Controller
             return $this->index();
         }
 
-        $operations_bought = Operation::where('buyer_id', $id)->get(['id', 'created_at', 'seller_id', 'buyer_id', 'price', 'comission']);
+        $operations = Operation::where('buyer_id', $id)->orWhere('seller_id', $id)->get(['id', 'created_at', 'seller_id', 'buyer_id', 'price', 'comission']);
 
-        foreach ($operations_bought as $buy) {
+        foreach ($operations as $buy) {
             $seller = User::where('id', $buy->seller_id)->get();
             $buy->buyer_id = $user[0]->name;
             $buy->seller_id = $seller[0]->name;
         }
-
-        $operations_sold = Operation::where('seller_id', $id)->get(['id', 'created_at', 'seller_id', 'buyer_id', 'price', 'comission']);
-
-        foreach ($operations_sold as $sell) {
-            $buyer = User::where('id', $sell->buyer_id)->get();
-            $sell->buyer_id = $buyer[0]->name;
-            $sell->seller_id = $user[0]->name;
-        }
-
-        if (count($operations_bought) == 0 && count($operations_sold) == 0) {
+        if (count($operations) == 0) {
             return response()->json([
                 'success' => false,
                 'message' => 'You have no operations'
@@ -147,8 +138,7 @@ class OperationController extends Controller
         }
         return response()->json([
             'success' => true,
-            'bought' => $operations_bought->toArray(),
-            'sold' => $operations_sold->toArray()
+            'data' => $operations->toArray()
         ], 200);
     }
     /**

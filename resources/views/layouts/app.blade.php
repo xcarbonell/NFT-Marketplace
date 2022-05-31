@@ -31,9 +31,14 @@
         </ul>
         <ul>
             <label>Información</label>
-            <li><a href="/perfil"><img src="{{ asset('img/Profile.png') }}">Mi perfil</a></li>
-            <li><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}">Transacciones</a></li>
-            <li><a href="/inventario"><img src="{{ asset('img/Bookmark.png') }}">Inventario</a></li>
+            <li><a href="/perfil"><img src="{{ asset('img/Profile.png') }}"></img>Mi perfil</a></li>
+            <li><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}"></img>Transacciones</a></li>
+            <li><a href="/inventario"><img src="{{ asset('img/Bookmark.png') }}"></img>Inventario</a></li>
+            @auth
+                @if(Auth::user()->role_id == 1)
+                    <li><a href="/facturacion"><img src="{{ asset('img/Bookmark.png') }}"></img>Facturación</a></li>
+                @endif
+            @endauth
         </ul>
         @auth
             <div class="logout">
@@ -63,7 +68,12 @@
                     <li tabindex="0"><a href="/perfil"><img src="{{ asset('img/Profile.png') }}">Mi perfil</a></li>
                     <li tabindex="0"><a href="/transacciones"><img src="{{ asset('img/Transaction.png') }}">Transacciones</a>
                     </li>
-                    <li tabindex="0"><a href="/inventario"><img src="{{ asset('img/Bookmark.png') }}">Inventario</a></li>
+                    <li><a href="/inventario"><img src="{{ asset('img/Bookmark.png') }}"></img>Inventario</a></li>
+                    @auth
+                        @if(Auth::user()->role_id == 1)
+                            <li><a href="/facturacion"><img src="{{ asset('img/Bookmark.png') }}"></img>Facturación</a></li>
+                        @endif
+                    @endauth
                 </ul>
                 <div class="logout" tabindex="0">
                     <a class="logout" href="{{ route('logout') }}"
