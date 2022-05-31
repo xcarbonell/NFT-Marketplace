@@ -70,6 +70,8 @@ class OperationController extends Controller
         $this->store($comprador, $price, $vendedor, $id);
 
         $nft->user_id = $comprador;
+        $nft->onStock = 0;
+        $nft->price = 0;
 
         if (!$nft->update()) {
             return response()->json([
