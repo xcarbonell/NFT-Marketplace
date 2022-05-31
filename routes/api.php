@@ -23,6 +23,7 @@ Route::get('/vendedores', 'Api\UserController@showSellers')->name('sellers');
 Route::get('/users/{name}', 'Api\UserController@userProfile')->name('userProfile');
 Route::get('/operations/{id}/userOperations', 'Api\OperationController@userOperations')->name('userOperations');
 Route::get('/operations/{id}/{comprador}/transaction', 'Api\OperationController@operation')->name('transaction');
+Route::get('/benefits', 'Api\OperationController@calculateBenefits')->name('benefits');
 Route::get('/users/{id}/show', 'Api\UserController@show')->name('user');
 Route::get('/users/{id}/ban', 'Api\UserController@banUser')->name('ban');
 Route::get('/users/{id}/nfts', 'Api\UserController@usersNFT')->name('usersNFT');
@@ -32,9 +33,6 @@ Route::get('/categories/{category}', 'Api\NftController@indexCategory')->name('c
 Route::get('/landing', 'Api\ViewController@index')->name('landing');
 Route::get('/home', 'Api\ViewController@loggedIndex')->name('home');
 Route::get('/operation/{id}/{comprador}', 'Api\OperationController@operation')->name('operation');
-Route::get('/home', function(){
-    return view("home");
-})->middleware('admin');
 Route::resource('nfts', 'Api\NftController');
 Route::resource('roles', 'Api\RoleController');
 Route::resource('users', 'Api\UserController');

@@ -20,7 +20,7 @@
                     <div class="vendedor" id="${vendedor.name}">
                         <div class="icono_texto_vendor" id="${vendedor.name}">
                             <div class="imagen_del_vendedor" id="${vendedor.name}">
-                                <img id="${vendedor.name}" src="{{ asset('storage/${vendedor.photo}') }}"></img>
+                                <img id="${vendedor.name}" src="{{ asset('storage/${vendedor.photo}') }}" alt="Foto de perfil de ${vendedor.name}"></img>
                             </div>
                             <div id="${vendedor.name}" class="nombre_del_vendedor">
                                 <h1 id="${vendedor.name}">${vendedor.name}</h1>
