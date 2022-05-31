@@ -84,4 +84,8 @@ Route::get('/facturacion', function(){
     return view("benefits");
 })->middleware('admin');
 
+/*Route::get('/vender', function(){
+    return view("vender");
+})->middleware('regularUser');*/
+
 Route::resource('user', Api\UserController::class);

@@ -4,7 +4,6 @@
     <div id="inventario">
     </div>
     <script>
-        //api/shops
         const cardnft = document.getElementsByClassName("card-nft");
         const carduser = document.getElementsByClassName("card-username");
         const button = document.getElementById("buttonbut");
@@ -23,7 +22,7 @@
                             <img id="${nft.id}" src="{{ asset('storage/${nft.photo}') }}" alt="NFT: ${nft.title}, ${nft.description}"></img>
                         </div>
                         <div class="card-info">
-                            <p class="card-title">${nft.title}</p>
+                            <a class="card-title" href="{{ env('APP_URL') }}/nfts/${nft.id}">${nft.title}</a>
                             <a href="{{ env('APP_URL') }}/users/${nft.user_id}">
                                 <div class="card-username">
                                     <div class="card-photouser"><img src="{{ asset('storage/${nft.userData}') }}" alt="Foto de perfil de ${nft.user_id}"></img></div>
@@ -47,17 +46,6 @@
                 });
             }
         }
-        /*
-        function onClickUserInfo(){
-            for (let i = 0; i < carduser.length; i++) {
-                carduser[i].addEventListener("click", (e) => {
-                    if (e.target.parentElement.id !== "inventario") {
-                        window.location = '{{ env('APP_URL') }}' + `/users/${e.target.parentElement.id}`
-                    }
-                });
-            }
-        }*/
         window.onload = getListNFT();
-        console.log("Prueba");
     </script>
 @endsection

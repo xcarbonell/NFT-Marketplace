@@ -29,8 +29,8 @@
                         <div class="card-image">
                         <img src="{{ asset('storage/${nft.photo}') }}" alt="NFT: ${nft.title}, ${nft.description}"></img>
                     </div>
-                    <div id="${nft.id} class="card-info">
-                        <p id="${nft.id} class="card-title">${nft.title}</p>
+                    <div id="${nft.id}" class="card-info">
+                        <p id="${nft.id}" class="card-title">${nft.title}</p>
                         <div class="card-username">
                             <div class="card-photouser">
                             <img src="{{ asset('storage/${nft.userData}') }}" alt="Foto de perfil de ${nft.user_id}"></img>
@@ -48,7 +48,6 @@
 
         function onClickCard() {
             for (let i = 0; i < cardnft.length - 1; i++) {
-                console.log("hola");
                 cardnft[i].addEventListener("click", (e) => {
                     console.log(e.target.parentElement.id);
                     window.location = '{{ env('APP_URL') }}' + `/nfts/${e.target.parentElement.id}`;

@@ -13,6 +13,10 @@
     z-index: 1;
 }
 
+a {
+    text-decoration: none;
+}
+
 #inventario {
     max-width: 1204px;
     width: auto;

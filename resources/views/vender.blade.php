@@ -1,55 +1,18 @@
 @extends('layouts.app')
 @section('content')
-<<<<<<< HEAD
-<div id="nftindividual">
-    <div class="headercomprar">Comprar</div>
-    <div id="caracteristicasnft">
-        <div id="nft-title">
-            <div class="arrowback">
-                <-< /div>
-                    <div class="titlenft">NFT Caracteristicas</div>
-            </div>
-            <div id="nft-image">
-                <img src="{{ asset('img/Fotonftexample.png') }}">
-            </div>
-            <div id="nft-information">
-                <div id="nft-username">
-                    <div id="nft-usertitle">Cool Nft Devep...</div>
-                    <div id="nft-photouser">
-                        <div id="nft-photo">
-                            <img src="{{ asset('img/sylvia.png') }}">
-                        </div>
-                        <div id="nft-name">Skyler Dias</div>
-                    </div>
-                    <div id="headercomprar">Comprar</div>
+    <div id="nftindividual">
+        <div id="caracteristicasnft">
+            <div id="nft-title">
+                <div id="nft-information">
                     <div id="backcompra">
                         <- NFT Características</div>
                             <div id="comprarnft">
                                 <div id="imgnft">
-=======
-    <div id="nftindividual">    
-        <div id="caracteristicasnft">
-            <div id="nft-title">
-                <div id="nft-information">
-                        <div id="backcompra">
-                            <- NFT Características</div>
-                                <div id="comprarnft">
-                                    <div id="imgnft">
->>>>>>> 787780f4590e2921d5ff368474ee8c4cbf7280cc
 
                                 </div>
                                 <div id="compra">
                                     <div id="venededorusername">
                                     </div>
-<<<<<<< HEAD
-                                    <div id="vendedordescription">
-                                        Me encanta este nft super curioso y grande, por eso lo vendo a un precio muy
-                                        asequible.
-                                    </div>
-                                    <div id="pricefinal">
-                                        <div id="price">Calculando</div>
-                                        <div id="botonvender">vender</div>
-=======
                                     <div id="compra">
                                         <div id="venededorusername">
                                         </div>
@@ -60,18 +23,17 @@
                                         <form method="POST">
                                             @csrf
                                             <div id="pricefinal">
-                                                <div id="price"><input type="number"/></div>
+                                                <div id="price"><input type="number" /></div>
                                                 <div id="botonvender">vender</div>
                                             </div>
-                                        <form>
->>>>>>> 787780f4590e2921d5ff368474ee8c4cbf7280cc
+                                            <form>
                                     </div>
 
                                 </div>
                                 @auth
-                                <div hidden>
-                                    <input hidden type="text" id="userid" name="userid" value="{{ Auth::user()->id }}">
-                                </div>
+                                    <div hidden>
+                                        <input hidden type="text" id="userid" name="userid" value="{{ Auth::user()->id }}">
+                                    </div>
                                 @endauth
                             </div>
                             <script>
@@ -174,4 +136,4 @@
                                 }
                                 getNFTIndividual();
                             </script>
-                            @endsection
+                        @endsection
