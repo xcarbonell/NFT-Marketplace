@@ -84,8 +84,14 @@ Route::get('/facturacion', function () {
     return view("benefits");
 })->middleware('admin');
 
+Route::get('/users/{id}/ban', function () {
+    return view('baneado');
+});
+
 Route::resource('user', Api\UserController::class);
 
 Route::put('/nfts/{id}/putOnStock', 'Api\ShopController@putOnStock')->name('putOnStock');
+
+Route::get('/users/{id}/ban', 'Api\UserController@banUser')->name('ban')->middleware('admin');
 
 Route::resource('nft', Api\NftController::class);

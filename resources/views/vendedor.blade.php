@@ -78,10 +78,9 @@
             onClickNFT();
 
             const vendedor = document.getElementsByClassName("vendedor_info")[0];
-            //const banbutton = document.getElementById("ban");
             mostrarban.addEventListener("click", async (e) => {
                 console.log(e.target);
-                const responseBan = await fetch('{{ env('APP_URL') }}' + `/api/users/${response.user.id}/ban`)
+                const responseBan = await fetch('{{ env('APP_URL') }}' + `/users/${response.user.id}/ban`)
                     .then(res => {
                         return res.json();
                     })
