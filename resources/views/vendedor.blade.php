@@ -78,10 +78,9 @@
             onClickNFT();
 
             const vendedor = document.getElementsByClassName("vendedor_info")[0];
-            const banbutton = document.getElementById("ban");
-            banbutton.addEventListener("click", async (e) => {
+            mostrarban.addEventListener("click", async (e) => {
                 console.log(e.target);
-                const responseBan = await fetch('{{ env('APP_URL') }}' + `/api/users/${response.user.id}/ban`)
+                const responseBan = await fetch('{{ env('APP_URL') }}' + `/users/${response.user.id}/ban`)
                     .then(res => {
                         return res.json();
                     })
@@ -99,7 +98,7 @@
         function onClickNFT() {
             const cardnft = document.getElementsByClassName("vendor_card-nft");
             for (let i = 0; i < cardnft.length; i++) {
-                console.log("hola");
+                console.log("este");
                 cardnft[i].addEventListener("click", (e) => {
                     if (e.target.parentElement.id !== "inventario") {
                         window.location = '{{ env('APP_URL') }}' + `/nfts/${e.target.parentElement.id}`
@@ -118,6 +117,7 @@
                 .catch(err => err)
                 venta.style.background="#282B2F";
                 venta.style.color = "white";
+                venta.style.padding = "5px";
                 inventario_vendor.style.background = "none";
                 inventario_vendor.style.color = "#282B2F";
 
@@ -144,9 +144,8 @@
                 </div>
             `;
                 }
-                
             });
-            
+            onClickNFT();
         }
         async function onClickInventario(){
             const inventario_vendor = document.getElementsByClassName("inventario_vendor")[0];
@@ -159,6 +158,7 @@
                 .catch(err => err)
                 inventario_vendor.style.color="white"
                 inventario_vendor.style.background="#282B2F";
+                inventario_vendor.style.padding="5px";
                 venta.style.background = "none";
                 venta.style.color = "#282B2F";
                 inventario.innerHTML = "";
@@ -182,9 +182,8 @@
                     </div>
                 </div>
             `;
-                
             });
-            
+            onClickNFT();
         }
         const inventario_vendor = document.getElementsByClassName("inventario_vendor")[0];
         const venta = document.getElementsByClassName("venta")[0];

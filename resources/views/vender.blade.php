@@ -6,11 +6,11 @@
                 <div id="nft-information">
                     <div id="backcompra">
                         <- NFT Características</div>
-                            <div id="comprarnft">
+                            <div id="comprarnft" aria-label="menu comprar nft" role="menu">
                                 <div id="imgnft">
 
                                 </div>
-                                <div id="compra">
+                                <div id="compra" tabindex="0">
                                     <div id="venededorusername">
                                     </div>
                                     <div id="compra">
@@ -25,10 +25,10 @@
                                         <form method="POST" action="{{ route('putOnStock', 1) }}">
                                             @method('PUT')
                                             @csrf
-                                            <div id="pricefinal">
-                                                <input id="price" name="price" type="number" />
-                                                <input hidden id="nftid" name="nftid" type="text" value="0">
-                                                <input id="botonvender" type="submit" value="Vender">
+                                            <div id="pricefinal" aria-label="precio-final">
+                                                <input id="price" name="price" type="number" tabindex="0" placeholder="Precio"/>
+                                                <input hidden id="nftid" name="nftid" type="text" value="0" tabindex="0">
+                                                <input id="botonvender" type="submit" value="Vender" tabindex="0">
                                             </div>
                                             <form>
                                     </div>
@@ -62,7 +62,7 @@
                                         <img src="{{ asset('storage/${response.data[0].photo}') }}" alt="NFT: ${response.data[0].title}, ${response.data[0].description}"></img>
                                     `;
                                     username.innerHTML += `
-                                        <img src="{{ asset('storage/${response.data[0].userData}') }}">
+                                        <img src="{{ asset('storage/${response.data[0].userData}') }}" alt="Foto del usuario ${response.data[0].user_id}">
                                         ${response.data[0].user_id}
                                     `;
                                     desc.innerHTML += `

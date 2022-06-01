@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
-class Admin
+class Property
 {
     /**
      * Handle an incoming request.
@@ -16,11 +15,12 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()){
-            if(Auth::user()->role_id == 1){
-                return $next($request);
-            }
+        $uri = explode('/', $_SERVER['REQUEST_URI']);
+        $nft_id = $uri[2];
+        $nft = $request->user()->nfts()->where('id', $nft_id)->get();
+        if (count($nft) == 0) {
+            abort(403);
         }
-        abort(403);
+        return $next($request);
     }
 }
