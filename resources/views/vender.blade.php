@@ -26,7 +26,7 @@
                                             @method('PUT')
                                             @csrf
                                             <div id="pricefinal" aria-label="precio-final">
-                                                <input id="price" name="price" type="number" tabindex="0"/>
+                                                <input id="price" name="price" type="number" tabindex="0" placeholder="Precio"/>
                                                 <input hidden id="nftid" name="nftid" type="text" value="0" tabindex="0">
                                                 <input id="botonvender" type="submit" value="Vender" tabindex="0">
                                             </div>

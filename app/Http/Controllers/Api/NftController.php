@@ -16,8 +16,7 @@ class NftController extends Controller
 
     public function __construct()
     {
-        //$this->authorizeResource(Nft::class, 'nft');
-        //$this->middleware('auth');
+
     }
     /**
      * Display a listing of the resource.
@@ -26,9 +25,6 @@ class NftController extends Controller
      */
     public function index()
     {
-        //$user = Auth::User();
-        //$this->authorize('viewAny', $user);
-        //
         $nfts = Nft::all();
 
         if (count($nfts) == 0) {
