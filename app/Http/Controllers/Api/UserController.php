@@ -201,6 +201,16 @@ class UserController extends Controller
             return back();
         }
 
+        $duplicatedName = User::where('name', $validated['user'])->get();
+        if(count($duplicatedName) > 0){
+            return back();
+        }
+
+        $duplicatedEmail = User::where('email', $validated['email'])->get();
+        if(count($duplicatedEmail) > 0){
+            return back();
+        }
+
         $user->name = $validated['user'];
         $user->email = $validated['email'];
         if($request->photo){

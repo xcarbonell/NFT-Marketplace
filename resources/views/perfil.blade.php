@@ -6,15 +6,6 @@
     </div>
 
 
-    <form id="form-perfil" method="POST" action="{{ route('user.update', Auth::user()->id) }}" aria-label="form-perfil">
-        @method('PUT')
-        @csrf
-
-        <div class="perfil_foto">
-            <div class="_perfil_foto_imagen">
-                <img src="" alt="Foto de perfil del usuario" id="imagen-user">
-            </div>
-            <input type="file" name="photo" id="photo">
     @auth
         <form id="form-perfil" method="POST" action="{{ route('user.update', Auth::user()->id) }}">
             @method('PUT')
@@ -27,26 +18,28 @@
                 <input type="file" name="photo" id="photo">
             </div>
 
-        <div class="editar_perfil">
-            <div class="correo">
-                <input type="email" id="email" name="email" placeholder="Email" tabindex="0">
-            </div>
-            <div class="user">
-                <input type="user" id="user" name="user" placeholder="Usuario" tabindex="0">
-            </div>
-            <div class="new_password">
-                <input type="password" id="new_password" name="new_password" placeholder="Nueva contraseña" tabindex="0">
-            </div>
-            <div class="confirm_password">
-                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmar contraseña" tabindex="0">
-            </div>
-            <div class="info">
-                <h1>Introduce tu contraseña actual para guardar<br> los cambios:</h1>
-            </div>
-            <div class="curent_password">
-                <input type="password" id="curentpassword" name="curentpassword" placeholder="Contraseña actual" tabindex="0">
-            </div>
-            @auth
+            <div class="editar_perfil">
+                <div class="correo">
+                    <input type="email" id="email" name="email" placeholder="Email" tabindex="0">
+                </div>
+                <div class="user">
+                    <input type="user" id="user" name="user" placeholder="Usuario" tabindex="0">
+                </div>
+                <div class="new_password">
+                    <input type="password" id="new_password" name="new_password" placeholder="Nueva contraseña" tabindex="0">
+                </div>
+                <div class="confirm_password">
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmar contraseña"
+                        tabindex="0">
+                </div>
+                <div class="info">
+                    <h1>Introduce tu contraseña actual para guardar<br> los cambios:</h1>
+                </div>
+                <div class="curent_password">
+                    <input type="password" id="curentpassword" name="curentpassword" placeholder="Contraseña actual"
+                        tabindex="0">
+                </div>
+                @auth
                     <div hidden>
                         <input hidden type="text" id="userid" name="userid" value="{{ Auth::user()->id }}">
                     </div>

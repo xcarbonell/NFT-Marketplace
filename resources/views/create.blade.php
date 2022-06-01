@@ -5,7 +5,7 @@
             <h1>Perfil</h1>
         </div>
     </div>
-    <!-- cambiar auth... por $user->id -->
+    <!-- cambiar auth... por $user->id 
     <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div aria-label="formulario perfil" class="editar_perfil" tabindex="0" role="main" aria-label="formulario main">
@@ -36,5 +36,5 @@
             </div>
         </div>
         <input type="submit" value="send" tabindex="0" aria-label="enviar">
-    </form>
+    </form>-->
 @endsection
