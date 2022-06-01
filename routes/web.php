@@ -56,14 +56,14 @@ Route::get('/mercado', function () {
     return view("mercado");
 });
 
-Route::get('/create', function () {
+/*Route::get('/create', function () {
     return view("create");
 });
 
 Route::get('/foto', function () {
     return view("foto");
 });
-
+*/
 Route::get('/vender/{id}', function () {
     return view("vender");
 })->middleware(['regularUser', 'property']);
@@ -72,8 +72,8 @@ Route::get('/vendedores', function () {
     return view("vendedores");
 });
 
-Route::get('/categories', function () {
-    return view("categories");
+Route::get('/categories/{category}', function () {
+    return view("category");
 });
 
 Route::get('/baneado', function () {
@@ -86,6 +86,9 @@ Route::get('/facturacion', function () {
 
 Route::get('/users/{id}/ban', function () {
     return view('baneado');
+});
+Route::get('/category', function () {
+    return view("category");
 });
 
 Route::resource('user', Api\UserController::class);
