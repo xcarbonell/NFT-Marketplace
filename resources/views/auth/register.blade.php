@@ -37,10 +37,9 @@
                 <a href="">Ya tienes tu cuenta? Accede!</a>
             </div>
             <div class="btnenviar">
-                <button type="btnenviar">Enviar</button>
+                <button type="submit">Enviar</button>
             </div>
         </div>
-        <button type="submit">Enviar</button>
     </form>
 </div>
 </div>
